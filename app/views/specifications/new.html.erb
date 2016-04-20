@@ -1,0 +1,27 @@
+<div class="container">
+
+<h1>Create a new specification</h1>
+
+<%= form_tag("/specifications", method: "post") do %>
+  <br/><%= label_tag(:version, "Version:") %>
+  <br/><%= text_field_tag(:version, "1.0", class: "form-control") %>
+  <br/><%= label_tag(:title, "Title:") %>
+  <br/><%= text_field_tag(:title, "RingCentral API", class: "form-control") %>
+  <br/><%= label_tag(:description, "Description:") %>
+  <br/><%= text_field_tag(:description, "RingCentral Connect Platform API", class: "form-control") %>
+  <br/><%= label_tag(:termsOfService, "Terms of Service:") %>
+  <br/><%= text_field_tag(:termsOfService, "http://www.ringcentral.com/legal/eulatos.html", class: "form-control") %>
+  <br/><%= label_tag(:host, "Host:") %>
+  <br/><%= text_field_tag(:host, "platform.devtest.ringcentral.com", class: "form-control") %>
+  <br/><%= label_tag(:basePath, "Base Path:") %>
+  <br/><%= text_field_tag(:basePath, "/restapi", class: "form-control") %>
+  <br/><%= label_tag(:schemes, "Schemes:") %>
+  <br/><%= text_field_tag(:schemes, "https", class: "form-control") %>
+  <br/><%= label_tag(:produces, "Produces:") %>
+  <br/><%= text_field_tag(:produces, "application/json", class: "form-control") %>
+  <br/><%= label_tag(:consumes, "Consumes:") %>
+  <br/><%= text_field_tag(:consumes, "application/json", class: "form-control") %>
+  <br/><%= submit_tag("Create", class: "btn btn-primary") %>
+<% end %>
+
+</div>
