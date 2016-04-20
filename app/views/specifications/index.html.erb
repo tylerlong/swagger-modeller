@@ -1,0 +1,21 @@
+<div class="container">
+
+<h1>Specifications</h1>
+
+<table>
+<% Specification.all.each do |spec| %>
+<tr>
+  <td><%= spec.version %></td>
+  <td><%= spec.title %></td>
+  <td><%= truncate spec.description %></td>
+  <td><%= truncate spec.termsOfService %></td>
+  <td><%= spec.host %></td>
+  <td><%= spec.basePath %></td>
+  <td><%= spec.schemes %></td>
+  <td><%= spec.produces %></td>
+  <td><%= spec.consumes %></td>
+</tr>
+<% end %>
+</table>
+
+</div>
