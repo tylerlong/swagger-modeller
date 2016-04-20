@@ -23,6 +23,12 @@
     <dt>Consumes</dt>
     <dd><%= @spec.consumes %></dd>
   </dl>
+
+
   <h2>Definitions</h2>
+  <hr/>
+
+  <%= link_to "Create a definition", new_specification_definition_path(@spec), class: "btn btn-primary" %>
+
   <h2>Paths</h2>
 </div>

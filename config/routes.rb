@@ -57,5 +57,6 @@ Rails.application.routes.draw do
   root 'specifications#index'
 
   resources :specifications do
+    resources :definitions
   end
 end
