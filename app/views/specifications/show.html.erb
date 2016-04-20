@@ -1,5 +1,6 @@
 <div class="container">
   <h1><%= @spec.title %></h1>
+  <a href="/" class="btn btn-default">Back to list</a>
   <%= link_to 'Edit', edit_specification_path(@spec), class: "btn btn-primary" %>
   <%= link_to 'Destroy', @spec, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
   <dl>
