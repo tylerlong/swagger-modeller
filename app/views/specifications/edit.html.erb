@@ -1,0 +1,27 @@
+<div class="container">
+
+<h1>Edit a specification</h1>
+
+<%= form_tag("/specifications/#{@spec.id}", method: "put") do %>
+  <br/><%= label_tag(:version, "Version:") %>
+  <br/><%= text_field_tag(:version, @spec.version, class: "form-control") %>
+  <br/><%= label_tag(:title, "Title:") %>
+  <br/><%= text_field_tag(:title, @spec.title, class: "form-control") %>
+  <br/><%= label_tag(:description, "Description:") %>
+  <br/><%= text_field_tag(:description, @spec.description, class: "form-control") %>
+  <br/><%= label_tag(:termsOfService, "Terms of Service:") %>
+  <br/><%= text_field_tag(:termsOfService, @spec.termsOfService, class: "form-control") %>
+  <br/><%= label_tag(:host, "Host:") %>
+  <br/><%= text_field_tag(:host, @spec.host, class: "form-control") %>
+  <br/><%= label_tag(:basePath, "Base Path:") %>
+  <br/><%= text_field_tag(:basePath, @spec.basePath, class: "form-control") %>
+  <br/><%= label_tag(:schemes, "Schemes:") %>
+  <br/><%= text_field_tag(:schemes, @spec.schemes, class: "form-control") %>
+  <br/><%= label_tag(:produces, "Produces:") %>
+  <br/><%= text_field_tag(:produces, @spec.schemes, class: "form-control") %>
+  <br/><%= label_tag(:consumes, "Consumes:") %>
+  <br/><%= text_field_tag(:consumes, @spec.schemes, class: "form-control") %>
+  <br/><%= submit_tag("Create", class: "btn btn-primary") %>
+<% end %>
+
+</div>
