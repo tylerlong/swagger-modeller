@@ -3,16 +3,21 @@
 <h1>Specifications</h1>
 
 <table class="table">
-<% Specification.all.each do |spec| %>
-<tr>
-  <td><%= spec.version %></td>
-  <td><%= spec.title %></td>
-  <td><%= truncate spec.description %></td>
-  <td><%= link_to 'View', spec, class: "btn btn-primary" %></td>
-  <td><%= link_to 'Edit', edit_specification_path(spec), class: "btn btn-primary" %></td>
-  <td><%= link_to 'Destroy', spec, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %></td>
-</tr>
-<% end %>
+  <thead>
+    <tr><td>Version</td><td>Title</td><td>Description</td><td>View</td><td>Edit</td><td>Destroy</td></tr>
+  </thead>
+  <tbody>
+  <% Specification.all.order('id desc').each do |spec| %>
+    <tr>
+      <td><%= spec.version %></td>
+      <td><%= spec.title %></td>
+      <td><%= truncate spec.description %></td>
+      <td><%= link_to 'View', spec, class: "btn btn-primary" %></td>
+      <td><%= link_to 'Edit', edit_specification_path(spec), class: "btn btn-primary" %></td>
+      <td><%= link_to 'Destroy', spec, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
 
 <hr/>

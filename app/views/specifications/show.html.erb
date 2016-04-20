@@ -26,6 +26,21 @@
 
 
   <h2>Definitions</h2>
+  <table class="table">
+    <thead>
+      <tr><td>Name</td><td>Description</td><td>Edit</td></tr>
+    </thead>
+    <tbody>
+      <% @spec.definitions.order('id asc').each do |defi| %>
+      <tr>
+        <td><%= defi.name %></td>
+        <td><%= truncate defi.description %></td>
+        <td><%= link_to "Edit", edit_specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
   <hr/>
 
   <%= link_to "Create a definition", new_specification_definition_path(@spec), class: "btn btn-primary" %>
