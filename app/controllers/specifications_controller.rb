@@ -19,6 +19,17 @@ class SpecificationsController < ApplicationController
     @spec = Specification.find(params[:id])
   end
 
+  def destroy
+    Specification.find(params[:id]).destroy
+    redirect_to specifications_url
+  end
+
+  def update
+    spec = Specification.find(params[:id])
+    spec.update_attributes(spec_params)
+    redirect_to spec
+  end
+
   private
 
   def spec_params

@@ -1,7 +1,27 @@
 <div class="container">
   <h1><%= @spec.title %></h1>
-  <ul>
-    <li>Paths</li>
-    <li>Definitions</li>
-  </ul>
+  <%= link_to 'Edit', edit_specification_path(@spec), class: "btn btn-primary" %>
+  <%= link_to 'Destroy', @spec, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
+  <dl>
+    <dt>Version</dt>
+    <dd><%= @spec.version %></dd>
+    <dt>Title</dt>
+    <dd><%= @spec.title %></dd>
+    <dt>Description</dt>
+    <dd><%= @spec.description %></dd>
+    <dt>Terms of Service</dt>
+    <dd><%= @spec.termsOfService %></dd>
+    <dt>Host</dt>
+    <dd><%= @spec.host %></dd>
+    <dt>Base Path</dt>
+    <dd><%= @spec.basePath %></dd>
+    <dt>Schemes</dt>
+    <dd><%= @spec.schemes %></dd>
+    <dt>Produces</dt>
+    <dd><%= @spec.produces %></dd>
+    <dt>Consumes</dt>
+    <dd><%= @spec.consumes %></dd>
+  </dl>
+  <h2>Paths</h2>
+  <h2>Definitions</h2>
 </div>
