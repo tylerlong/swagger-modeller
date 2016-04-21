@@ -10,6 +10,12 @@ class DefinitionsController < ApplicationController
     redirect_to spec
   end
 
+  def destroy
+    defi = Definition.find(params[:id]).destroy
+    spec = Specification.find(params[:specification_id])
+    redirect_to spec
+  end
+
   private
 
   def defi_params

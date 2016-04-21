@@ -14,7 +14,7 @@
       <td><%= truncate spec.description %></td>
       <td><%= link_to 'View', spec, class: "btn btn-primary" %></td>
       <td><%= link_to 'Edit', edit_specification_path(spec), class: "btn btn-primary" %></td>
-      <td><%= link_to 'Destroy', spec, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %></td>
+      <td><%= link_to 'Destroy', spec, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", method: :delete %></td>
     </tr>
   <% end %>
   </tbody>
