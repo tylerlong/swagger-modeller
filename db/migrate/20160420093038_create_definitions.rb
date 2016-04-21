@@ -4,6 +4,7 @@ class CreateDefinitions < ActiveRecord::Migration
       t.integer :specification_id, null: false
       t.string :name, null: false
       t.string :description
+      t.string :properties_text
       t.timestamps null: false
     end
     add_index :definitions, [:specification_id, :name], unique: true

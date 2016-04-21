@@ -1,5 +1,11 @@
 <div class="container">
 
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.title, @spec %></li>
+  <li class="active"><%= @defi.name %></li>
+</ol>
+
 <h1>Edit a definition</h1>
 
 <%= form_tag(specification_definition_path(@spec, @defi), method: "put") do %>
@@ -7,10 +13,10 @@
   <br/><%= text_field_tag(:name, @defi.name, class: "form-control") %>
   <br/><%= label_tag(:description, "Description:") %>
   <br/><%= text_field_tag(:description, @defi.description, class: "form-control") %>
-  <br/><%= label_tag(:properties, "Properties:") %>
-  <br/><%= text_area_tag(:properties, "", class: "form-control", rows: 8) %>
-  <br/><%= submit_tag("Create", class: "btn btn-primary") %>
-  <%= link_to "Cancel", @spec, class: "btn btn-default" %>
+  <br/><%= label_tag(:properties_text, "Properties:") %>
+  <br/><%= text_area_tag(:properties_text, @defi.properties_text, class: "form-control", rows: 8) %>
+  <br/><%= submit_tag("Update", class: "btn btn-primary") %>
+  <%= link_to "Cancel", specification_definition_path(@spec, @defi), class: "btn btn-default" %>
 <% end %>
 
 </div>

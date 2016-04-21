@@ -1,57 +1,58 @@
 <div class="container">
 
-  <ol class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li class="active"><%= @spec.title %></li>
-  </ol>
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li class="active"><%= @spec.title %></li>
+</ol>
 
-  <h1><%= @spec.title %></h1>
-  <a href="/" class="btn btn-default">Back</a>
-  <%= link_to 'Edit', edit_specification_path(@spec), class: "btn btn-primary" %>
-  <%= link_to 'Destroy', @spec, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
-  <dl>
-    <dt>Version</dt>
-    <dd><%= @spec.version %></dd>
-    <dt>Title</dt>
-    <dd><%= @spec.title %></dd>
-    <dt>Description</dt>
-    <dd><%= @spec.description %></dd>
-    <dt>Terms of Service</dt>
-    <dd><%= @spec.termsOfService %></dd>
-    <dt>Host</dt>
-    <dd><%= @spec.host %></dd>
-    <dt>Base Path</dt>
-    <dd><%= @spec.basePath %></dd>
-    <dt>Schemes</dt>
-    <dd><%= @spec.schemes %></dd>
-    <dt>Produces</dt>
-    <dd><%= @spec.produces %></dd>
-    <dt>Consumes</dt>
-    <dd><%= @spec.consumes %></dd>
-  </dl>
+<h1><%= @spec.title %></h1>
+<a href="/" class="btn btn-default">Back</a>
+<%= link_to 'Edit', edit_specification_path(@spec), class: "btn btn-primary" %>
+<%= link_to 'Destroy', @spec, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
+<dl>
+  <dt>Version</dt>
+  <dd><%= @spec.version %></dd>
+  <dt>Title</dt>
+  <dd><%= @spec.title %></dd>
+  <dt>Description</dt>
+  <dd><%= @spec.description %></dd>
+  <dt>Terms of Service</dt>
+  <dd><%= @spec.termsOfService %></dd>
+  <dt>Host</dt>
+  <dd><%= @spec.host %></dd>
+  <dt>Base Path</dt>
+  <dd><%= @spec.basePath %></dd>
+  <dt>Schemes</dt>
+  <dd><%= @spec.schemes %></dd>
+  <dt>Produces</dt>
+  <dd><%= @spec.produces %></dd>
+  <dt>Consumes</dt>
+  <dd><%= @spec.consumes %></dd>
+</dl>
 
 
-  <h2 id="definitions">Definitions</h2>
-  <table class="table">
-    <thead>
-      <tr><th>Name</th><th>Description</th><th>View</th><th>Edit</th><th>Destroy</th></tr>
-    </thead>
-    <tbody>
-      <% @spec.definitions.order('name asc').each do |defi| %>
-      <tr>
-        <td><%= defi.name %></td>
-        <td><%= truncate defi.description %></td>
-        <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
-        <td><%= link_to "Edit", edit_specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
-        <td><%= link_to "Destroy", specification_definition_path(@spec, defi), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", method: :delete %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<h2 id="definitions">Definitions</h2>
+<table class="table">
+  <thead>
+    <tr><th>Name</th><th>Description</th><th>View</th><th>Edit</th><th>Destroy</th></tr>
+  </thead>
+  <tbody>
+    <% @spec.definitions.order('name asc').each do |defi| %>
+    <tr>
+      <td><%= defi.name %></td>
+      <td><%= truncate defi.description %></td>
+      <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
+      <td><%= link_to "Edit", edit_specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
+      <td><%= link_to "Destroy", specification_definition_path(@spec, defi), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", method: :delete %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  <hr/>
+<hr/>
 
-  <%= link_to "Create a definition", new_specification_definition_path(@spec), class: "btn btn-primary" %>
+<%= link_to "Create a definition", new_specification_definition_path(@spec), class: "btn btn-primary" %>
 
-  <h2>Paths</h2>
+<h2>Paths</h2>
+
 </div>

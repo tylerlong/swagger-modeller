@@ -6,13 +6,7 @@ class DefinitionsController < ApplicationController
   def create
     defi = Definition.new(defi_params)
     defi.save!
-    params[:properties].split("\n").collect(&:strip).reject{ |row| row == '' }.each do |row|
-      prop = Property.parse(row)
-      if prop.present?
-        prop.definition = defi
-        prop.save!
-      end
-    end
+    defi.update_properties!
     spec = Specification.find(params[:specification_id])
     redirect_to specification_definition_url(spec, defi)
   end
@@ -33,9 +27,17 @@ class DefinitionsController < ApplicationController
     @defi = Definition.find(params[:id])
   end
 
+  def update
+    spec = Specification.find(params[:specification_id])
+    defi = Definition.find(params[:id])
+    defi.update_attributes(defi_params)
+    defi.update_properties!
+    redirect_to specification_definition_url(spec, defi)
+  end
+
   private
 
   def defi_params
-    params.permit(:name, :description, :specification_id)
+    params.permit(:name, :description, :properties_text, :specification_id)
   end
 end

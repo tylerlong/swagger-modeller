@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20160420095546) do
     t.integer  "specification_id", null: false
     t.string   "name",             null: false
     t.string   "description"
+    t.string   "properties_text"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

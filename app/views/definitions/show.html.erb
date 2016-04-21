@@ -1,35 +1,35 @@
 <div class="container">
 
-  <ol class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><%= link_to @spec.title, @spec %></li>
-    <li class="active"><%= @defi.name %></li>
-  </ol>
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.title, @spec %></li>
+  <li class="active"><%= @defi.name %></li>
+</ol>
 
-  <h1><%= @defi.name %></h1>
-  <%= link_to 'Back', @spec, class: "btn btn-default" %>
-  <%= link_to 'Edit', edit_specification_definition_path(@spec, @defi), class: "btn btn-primary" %>
-  <%= link_to 'Destroy', specification_definition_path(@spec, @defi), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
+<h1><%= @defi.name %></h1>
+<%= link_to 'Back', @spec, class: "btn btn-default" %>
+<%= link_to 'Edit', edit_specification_definition_path(@spec, @defi), class: "btn btn-primary" %>
+<%= link_to 'Destroy', specification_definition_path(@spec, @defi), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
 
-  <br/><br/>
-  <p>Description: <%= @defi.description %></p>
+<br/><br/>
+<p>Description: <%= @defi.description %></p>
 
-  <h2>Properties</h2>
-  <table class="table">
-    <thead>
-      <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <% @defi.properties.order('id asc').each do |prop| %>
-        <tr>
-          <td><%= prop.name %></td>
-          <td><%= prop.type %></td>
-          <td><%= prop.format %></td>
-          <td><%= prop.required %></td>
-          <td><%= prop.description %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<h2>Properties</h2>
+<table class="table">
+  <thead>
+    <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <% @defi.properties.order('id asc').each do |prop| %>
+      <tr>
+        <td><%= prop.name %></td>
+        <td><%= prop.type %></td>
+        <td><%= prop.format %></td>
+        <td><%= prop.required %></td>
+        <td><%= prop.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 </div>
