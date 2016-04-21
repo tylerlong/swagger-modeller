@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160420095546) do
     t.integer  "definition_id", null: false
     t.string   "name",          null: false
     t.string   "type",          null: false
-    t.string   "extra"
+    t.string   "format"
     t.string   "description"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

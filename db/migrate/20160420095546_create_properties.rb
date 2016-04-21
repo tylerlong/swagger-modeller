@@ -4,7 +4,7 @@ class CreateProperties < ActiveRecord::Migration
       t.integer :definition_id, null: false
       t.string :name, null: false
       t.string :type, null: false
-      t.string :extra
+      t.string :format
       t.string :description
       t.timestamps null: false
     end
