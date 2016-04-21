@@ -7,18 +7,24 @@
   </ol>
 
   <h1><%= @defi.name %></h1>
-  <p><%= @defi.description %></p>
+  <%= link_to 'Back', @spec, class: "btn btn-default" %>
+  <%= link_to 'Edit', edit_specification_definition_path(@spec, @defi), class: "btn btn-primary" %>
+  <%= link_to 'Destroy', specification_definition_path(@spec, @defi), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
+
+  <br/><br/>
+  <p>Description: <%= @defi.description %></p>
 
   <h2>Properties</h2>
   <table class="table">
     <thead>
-      <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+      <tr><th>Name</th><th>Type</th><th>Extra</th><th>Description</th></tr>
     </thead>
     <tbody>
       <% @defi.properties.order('id asc').each do |prop| %>
         <tr>
           <td><%= prop.name %></td>
           <td><%= prop.type %></td>
+          <td><%= prop.extra %></td>
           <td><%= prop.description %></td>
         </tr>
       <% end %>
