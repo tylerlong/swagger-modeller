@@ -1,0 +1,16 @@
+<div class="container">
+
+<h1>Edit a definition</h1>
+
+<%= form_tag(specification_definition_path(@spec, @defi), method: "put") do %>
+  <br/><%= label_tag(:name, "Name:") %>
+  <br/><%= text_field_tag(:name, @defi.name, class: "form-control") %>
+  <br/><%= label_tag(:description, "Description:") %>
+  <br/><%= text_field_tag(:description, @defi.description, class: "form-control") %>
+  <br/><%= label_tag(:properties, "Properties:") %>
+  <br/><%= text_area_tag(:properties, "", class: "form-control", rows: 8) %>
+  <br/><%= submit_tag("Create", class: "btn btn-primary") %>
+  <%= link_to "Cancel", @spec, class: "btn btn-default" %>
+<% end %>
+
+</div>

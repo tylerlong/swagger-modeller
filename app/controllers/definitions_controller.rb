@@ -28,6 +28,11 @@ class DefinitionsController < ApplicationController
     @defi = Definition.find(params[:id])
   end
 
+  def edit
+    @spec = Specification.find(params[:specification_id])
+    @defi = Definition.find(params[:id])
+  end
+
   private
 
   def defi_params
