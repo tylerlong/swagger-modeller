@@ -5,6 +5,7 @@ class CreateProperties < ActiveRecord::Migration
       t.string :name, null: false
       t.string :type, null: false
       t.string :format
+      t.boolean :required, default: true
       t.string :description
       t.timestamps null: false
     end

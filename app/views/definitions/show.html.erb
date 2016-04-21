@@ -17,7 +17,7 @@
   <h2>Properties</h2>
   <table class="table">
     <thead>
-      <tr><th>Name</th><th>Type</th><th>Format</th><th>Description</th></tr>
+      <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
     </thead>
     <tbody>
       <% @defi.properties.order('id asc').each do |prop| %>
@@ -25,6 +25,7 @@
           <td><%= prop.name %></td>
           <td><%= prop.type %></td>
           <td><%= prop.format %></td>
+          <td><%= prop.required %></td>
           <td><%= prop.description %></td>
         </tr>
       <% end %>

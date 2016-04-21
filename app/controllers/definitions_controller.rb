@@ -14,7 +14,7 @@ class DefinitionsController < ApplicationController
       end
     end
     spec = Specification.find(params[:specification_id])
-    redirect_to specification_url(spec, anchor: 'definitions')
+    redirect_to specification_definition_url(spec, defi)
   end
 
   def destroy

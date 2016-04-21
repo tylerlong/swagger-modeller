@@ -8,7 +8,7 @@ class SpecificationsController < ApplicationController
   def create
     spec = Specification.new(spec_params)
     spec.save!
-    redirect_to specifications_url
+    redirect_to spec
   end
 
   def show

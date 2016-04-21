@@ -13,6 +13,9 @@ class Property < ActiveRecord::Base
     prop = Property.new
     prop.name = name
     prop.description = description
+    if description.start_with?('Optional.')
+      prop.required = false
+    end
     if type.start_with?('Collection of ')
       prop.type = 'array'
       prop.format = type[14..-1].gsub(/\s+/, '')
