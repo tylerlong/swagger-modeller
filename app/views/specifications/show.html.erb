@@ -34,7 +34,7 @@
 <h2 id="definitions">Definitions</h2>
 <table class="table">
   <thead>
-    <tr><th>Name</th><th>Description</th><th>View</th><th>Edit</th><th>Destroy</th></tr>
+    <tr><th>Name</th><th>Description</th><th>View</th></tr>
   </thead>
   <tbody>
     <% @spec.definitions.order('name asc').each do |defi| %>
@@ -42,8 +42,6 @@
       <td><%= defi.name %></td>
       <td><%= truncate defi.description %></td>
       <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
-      <td><%= link_to "Edit", edit_specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
-      <td><%= link_to "Destroy", specification_definition_path(@spec, defi), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", method: :delete %></td>
     </tr>
     <% end %>
   </tbody>
