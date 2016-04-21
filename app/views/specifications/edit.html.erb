@@ -8,7 +8,7 @@
   <br/><%= label_tag(:title, "Title:") %>
   <br/><%= text_field_tag(:title, @spec.title, class: "form-control") %>
   <br/><%= label_tag(:description, "Description:") %>
-  <br/><%= text_field_tag(:description, @spec.description, class: "form-control") %>
+  <br/><%= text_area_tag(:description, @spec.description, class: "form-control", rows: 4) %>
   <br/><%= label_tag(:termsOfService, "Terms of Service:") %>
   <br/><%= text_field_tag(:termsOfService, @spec.termsOfService, class: "form-control") %>
   <br/><%= label_tag(:host, "Host:") %>

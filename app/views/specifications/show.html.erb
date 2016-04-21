@@ -31,7 +31,7 @@
       <tr><td>Name</td><td>Description</td><td>Edit</td></tr>
     </thead>
     <tbody>
-      <% @spec.definitions.order('id asc').each do |defi| %>
+      <% @spec.definitions.order('name asc').each do |defi| %>
       <tr>
         <td><%= defi.name %></td>
         <td><%= truncate defi.description %></td>

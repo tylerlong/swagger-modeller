@@ -7,7 +7,7 @@
     <tr><td>Version</td><td>Title</td><td>Description</td><td>View</td><td>Edit</td><td>Destroy</td></tr>
   </thead>
   <tbody>
-  <% Specification.all.order('id desc').each do |spec| %>
+  <% Specification.all.order('title asc').each do |spec| %>
     <tr>
       <td><%= spec.version %></td>
       <td><%= spec.title %></td>
