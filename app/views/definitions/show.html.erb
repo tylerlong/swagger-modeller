@@ -1,0 +1,28 @@
+<div class="container">
+
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><%= link_to @spec.title, @spec %></li>
+    <li class="active"><%= @defi.name %></li>
+  </ol>
+
+  <h1><%= @defi.name %></h1>
+  <p><%= @defi.description %></p>
+
+  <h2>Properties</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <% @defi.properties.each do |prop| %>
+        <tr>
+          <td><%= prop.name %></td>
+          <td><%= prop.type %></td>
+          <td><%= prop.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

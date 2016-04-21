@@ -1,4 +1,10 @@
 <div class="container">
+
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active"><%= @spec.title %></li>
+  </ol>
+
   <h1><%= @spec.title %></h1>
   <a href="/" class="btn btn-default">Back to list</a>
   <%= link_to 'Edit', edit_specification_path(@spec), class: "btn btn-primary" %>
@@ -28,13 +34,14 @@
   <h2>Definitions</h2>
   <table class="table">
     <thead>
-      <tr><td>Name</td><td>Description</td><td>Edit</td><td>Destroy</td></tr>
+      <tr><th>Name</th><th>Description</th><th>View</th><th>Edit</th><th>Destroy</th></tr>
     </thead>
     <tbody>
       <% @spec.definitions.order('name asc').each do |defi| %>
       <tr>
         <td><%= defi.name %></td>
         <td><%= truncate defi.description %></td>
+        <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
         <td><%= link_to "Edit", edit_specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
         <td><%= link_to "Destroy", specification_definition_path(@spec, defi), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", method: :delete %></td>
       </tr>
