@@ -16,19 +16,24 @@ class Property < ActiveRecord::Base
     if description.start_with?('Optional.')
       prop.required = false
     end
-    if type.start_with?('Collection of ')
+    if type.start_with?('Collection of ') # array
       prop.type = 'array'
       prop.format = type[14..-1].gsub(/\s+/, '')
       return prop
     end
 
-    if type.start_with?("'") and type.end_with?("'")
+    if type.start_with?("'") and type.end_with?("'") # enum
       prop.type = 'string'
       prop.format = type
       return prop
     end
 
-    if ['string', 'integer', 'number', 'boolean'].include?(type)
+    if type == 'True | False' # boolean
+      prop.type = 'boolean'
+      return prop
+    end
+
+    if ['string', 'integer', 'number', 'boolean'].include?(type) # primitive data types
       prop.type = type
       if prop.type == 'integer' && prop.name == 'conversationId'
         prop.format = 'int64'
@@ -36,7 +41,7 @@ class Property < ActiveRecord::Base
       return prop
     end
 
-    prop.type = type.gsub(/\s+/, '')
+    prop.type = type.gsub(/\s+/, '') # custom data types
     return prop
   end
 
