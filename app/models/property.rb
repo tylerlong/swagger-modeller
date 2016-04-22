@@ -19,6 +19,9 @@ class Property < ActiveRecord::Base
     if type.start_with?('Collection of ') # array
       prop.type = 'array'
       prop.format = type[14..-1].gsub(/\s+/, '')
+      if prop.format == 'URIs'
+        prop.format = 'string'
+      end
       return prop
     end
 
@@ -30,6 +33,12 @@ class Property < ActiveRecord::Base
 
     if type == 'True | False' # boolean
       prop.type = 'boolean'
+      return prop
+    end
+
+    if type == 'datetime' # datetime
+      prop.type = 'string'
+      prop.format = 'date-time'
       return prop
     end
 
