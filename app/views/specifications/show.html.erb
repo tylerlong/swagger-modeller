@@ -33,7 +33,9 @@
 
 <h2 id="definitions">Definitions</h2>
 
-<br/>
+<p>
+<br/><%= link_to "Create a definition", new_specification_definition_path(@spec), class: "btn btn-primary" %>
+</p>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <% @spec.definitions.group_by { |defi| defi.name.split('.')[0] }.each do |key, group| %>
@@ -67,9 +69,6 @@
   <% end %>
 </div>
 
-<hr/>
-
-<%= link_to "Create a definition", new_specification_definition_path(@spec), class: "btn btn-primary" %>
 
 <h2>Paths</h2>
 
