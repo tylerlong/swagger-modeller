@@ -32,20 +32,40 @@
 
 
 <h2 id="definitions">Definitions</h2>
-<table class="table">
-  <thead>
-    <tr><th>Name</th><th>Description</th><th>View</th></tr>
-  </thead>
-  <tbody>
-    <% @spec.definitions.order('name asc').each do |defi| %>
-    <tr>
-      <td><%= defi.name %></td>
-      <td><%= truncate defi.description %></td>
-      <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<br/>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <% @spec.definitions.group_by { |defi| defi.name.split('.')[0] }.each do |key, group| %>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading<%= key %>">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= key %>" aria-expanded="false" aria-controls="collapse<%= key %>">
+          <%= key %>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse<%= key %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= key %>">
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr><th>Name</th><th>Description</th><th>View</th></tr>
+          </thead>
+          <tbody>
+            <% group.each do |defi|%>
+              <tr>
+                <td><%= defi.name %></td>
+                <td><%= truncate defi.description %></td>
+                <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
 
 <hr/>
 
