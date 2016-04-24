@@ -20,7 +20,7 @@
     <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
   </thead>
   <tbody>
-    <% @defi.properties.order('id asc').each do |prop| %>
+    <% @defi.properties.order('position asc').each do |prop| %>
       <tr>
         <td><%= prop.name %></td>
         <td><%= prop.type %></td>

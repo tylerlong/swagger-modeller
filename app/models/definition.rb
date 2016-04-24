@@ -23,8 +23,11 @@ class Definition < ActiveRecord::Base
 
   def parse_properties
     rows = properties_text.split("\n").collect(&:strip).reject{ |row| row.blank? }
-    props = rows.collect{ |row| Property.parse(row) }.reject{ |prop| prop == nil }
-    props.each { |prop| prop.definition = self }
+    props = rows.collect{ |row| Property.parse(row) }.reject{ |prop| prop == nil }.each_with_index.collect do |prop, index|
+      prop.position = index
+      prop.definition = self
+      prop
+    end
     return props
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420095546) do
+ActiveRecord::Schema.define(version: 20160424095355) do
 
   create_table "definitions", force: :cascade do |t|
     t.integer  "specification_id", null: false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160420095546) do
     t.string   "description"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "position",      default: 0
   end
 
   add_index "properties", ["definition_id", "name"], name: "index_properties_on_definition_id_and_name", unique: true
