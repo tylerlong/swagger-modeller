@@ -11,11 +11,15 @@ namespace :definition do
         if ['integer', 'string', 'boolean'].include? type
           next
         end
-        best_match = defi.name.split('.')[0] + '.' + type
+        full_match = type # already specified namespace
+        if Definition.find_by_name(full_match)
+          next
+        end
+        best_match = defi.name.split('.')[0] + '.' + type # find in the current namespace
         if Definition.find_by_name(best_match)
           next
         end
-        common_match = "Common.#{type}"
+        common_match = "Common.#{type}" # find in the common namespace
         if Definition.find_by_name(common_match)
           next
         end
