@@ -25,14 +25,14 @@ class Property < ActiveRecord::Base
       return prop
     end
 
-    if type.start_with?("'") and type.end_with?("'") # enum
-      prop.type = 'string'
-      prop.format = type
+    if type == 'True | False' || type == "'True' | 'False'" # boolean
+      prop.type = 'boolean'
       return prop
     end
 
-    if type == 'True | False' # boolean
-      prop.type = 'boolean'
+    if type.start_with?("'") and type.end_with?("'") # enum
+      prop.type = 'string'
+      prop.format = type
       return prop
     end
 
