@@ -14,6 +14,8 @@
 
 Answering rules get/update same model, different fields
 
+Presence Line Event Extension Info duplicate property name
+
 
 ## notes
 
