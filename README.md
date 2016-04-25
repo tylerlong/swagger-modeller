@@ -15,3 +15,20 @@
 ## notes
 
 In API Reference doc, "Collection of parameters" means following parameters in the table.
+
+
+## commands
+
+Validate definitions:
+
+```
+rake definition:validate
+```
+
+Generate CSharp code:
+
+```
+rake generate:csharp dir=~/Desktop/generated
+```
+
+Code will be saved in directory `~/Desktop/generated`.

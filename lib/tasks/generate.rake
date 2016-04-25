@@ -14,7 +14,7 @@ namespace :generate do
       result = result.gsub(/^\s+$/, '')
       puts result
 
-      dir_name = "./tmp/generated/#{namespace}"
+      dir_name = "#{ENV['dir']}/#{namespace}"
       unless File.directory?(dir_name)
         FileUtils.mkdir_p(dir_name)
       end
