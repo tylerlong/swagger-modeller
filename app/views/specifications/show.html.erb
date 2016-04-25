@@ -55,7 +55,7 @@
           <tbody>
             <% group.each do |defi| %>
               <tr>
-                <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
+                <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary", target: "_blank" %></td>
                 <td><%= defi.name %></td>
                 <td><%= truncate defi.description %></td>
               </tr>
@@ -67,8 +67,5 @@
   </div>
   <% end %>
 </div>
-
-
-<h2>Paths</h2>
 
 </div>
