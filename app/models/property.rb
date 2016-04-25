@@ -1,4 +1,6 @@
 class Property < ActiveRecord::Base
+  default_scope { order("position ASC") }
+
   self.inheritance_column = 'table_type' # http://stackoverflow.com/questions/11470011/activerecordsubclassnotfound
   validates :definition_id, presence: true
   validates :name, presence: true, uniqueness: { scope: :definition_id }

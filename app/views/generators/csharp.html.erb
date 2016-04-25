@@ -1,1 +1,13 @@
-Hello CSharp!
+using Newtonsoft.Json;
+using System;
+
+namespace RingCentral.Models.<%= namespace %>
+{
+    public class <%= class_name %>
+    {
+      <% properties.each do |prop| %>
+        [JsonProperty("<%= prop.name %>")]
+        public <%= prop.type %> <%= prop.name.camelize %>;
+      <% end %>
+    }
+}
