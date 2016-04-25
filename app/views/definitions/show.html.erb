@@ -23,8 +23,8 @@
     <% @defi.properties.order('position asc').each do |prop| %>
       <tr>
         <td><%= prop.name %></td>
-        <td><%= prop.type %></td>
-        <td><%= prop.format %></td>
+        <td><%= link_to_type(prop) %></td>
+        <td><%= link_to_format(prop) %></td>
         <td><%= prop.required %></td>
         <td><%= prop.description %></td>
       </tr>

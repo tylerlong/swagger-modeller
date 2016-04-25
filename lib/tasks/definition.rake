@@ -15,7 +15,7 @@ namespace :definition do
         if Definition.find_by_name(full_match)
           next
         end
-        best_match = defi.name.split('.')[0] + '.' + type # find in the current namespace
+        best_match = defi.prefix + '.' + type # find in the current namespace
         if Definition.find_by_name(best_match)
           next
         end

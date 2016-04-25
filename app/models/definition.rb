@@ -30,4 +30,8 @@ class Definition < ActiveRecord::Base
     end
     return props
   end
+
+  def prefix
+    name.split('.')[0]
+  end
 end

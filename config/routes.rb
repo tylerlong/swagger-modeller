@@ -59,4 +59,9 @@ Rails.application.routes.draw do
   resources :specifications do
     resources :definitions
   end
+
+  resources :properties, only: [] do
+    get 'find', on: :collection
+  end
+
 end

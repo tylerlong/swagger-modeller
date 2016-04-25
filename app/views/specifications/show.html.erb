@@ -38,7 +38,7 @@
 </p>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <% @spec.definitions.group_by { |defi| defi.name.split('.')[0] }.each do |key, group| %>
+  <% @spec.definitions.group_by(&:prefix).each do |key, group| %>
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="heading<%= key %>">
       <h4 class="panel-title">
@@ -54,7 +54,7 @@
             <tr><th>Name</th><th>Description</th><th>View</th></tr>
           </thead>
           <tbody>
-            <% group.each do |defi|%>
+            <% group.each do |defi| %>
               <tr>
                 <td><%= defi.name %></td>
                 <td><%= truncate defi.description %></td>
