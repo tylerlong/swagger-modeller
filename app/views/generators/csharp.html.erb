@@ -7,7 +7,7 @@ namespace RingCentral.Models.<%= namespace %>
     {
       <% properties.each do |prop| %>
         [JsonProperty("<%= prop.name %>")]
-        public <%= prop.type %> <%= prop.name.camelize %>;
+        public <%= csharp_type prop %> <%= prop.name.camelize %>;
       <% end %>
     }
 }

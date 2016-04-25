@@ -1,3 +1,6 @@
+require "#{Rails.root}/app/helpers/generators_helper"
+include GeneratorsHelper
+
 namespace :generate do
 
   desc "generate csharp code for definitions"
