@@ -8,15 +8,15 @@
 
 <table class="table">
   <thead>
-    <tr><th>Version</th><th>Title</th><th>Description</th><th>View</th></tr>
+    <tr><th>View</th><th>Version</th><th>Title</th><th>Description</th></tr>
   </thead>
   <tbody>
   <% Specification.all.order('title asc').each do |spec| %>
     <tr>
+      <td><%= link_to 'View', spec, class: "btn btn-primary" %></td>
       <td><%= spec.version %></td>
       <td><%= spec.title %></td>
       <td><%= truncate spec.description %></td>
-      <td><%= link_to 'View', spec, class: "btn btn-primary" %></td>
     </tr>
   <% end %>
   </tbody>

@@ -7,7 +7,6 @@
 </ol>
 
 <h1><%= @defi.name %></h1>
-<%= link_to 'Back', @spec, class: "btn btn-default" %>
 <%= link_to 'Edit', edit_specification_definition_path(@spec, @defi), class: "btn btn-primary" %>
 <%= link_to 'Destroy', specification_definition_path(@spec, @defi), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
 

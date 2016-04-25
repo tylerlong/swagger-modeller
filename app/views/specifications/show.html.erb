@@ -6,7 +6,6 @@
 </ol>
 
 <h1><%= @spec.display_name %></h1>
-<a href="/" class="btn btn-default">Back</a>
 <%= link_to 'Edit', edit_specification_path(@spec), class: "btn btn-primary" %>
 <%= link_to 'Destroy', @spec, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
 <dl>
@@ -51,14 +50,14 @@
       <div class="panel-body">
         <table class="table">
           <thead>
-            <tr><th>Name</th><th>Description</th><th>View</th></tr>
+            <tr><th>View</th><th>Name</th><th>Description</th></tr>
           </thead>
           <tbody>
             <% group.each do |defi| %>
               <tr>
+                <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
                 <td><%= defi.name %></td>
                 <td><%= truncate defi.description %></td>
-                <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary" %></td>
               </tr>
             <% end %>
           </tbody>
