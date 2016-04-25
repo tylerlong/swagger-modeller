@@ -37,6 +37,16 @@ class DefinitionsController < ApplicationController
     redirect_to specification_definition_url(spec, defi)
   end
 
+  def search
+    name = params[:name]
+    prefix = params[:prefix]
+    defi = Definition.search(name, prefix)
+    if defi.nil?
+      raise ActionController::RoutingError.new('Not Found')
+    end
+    redirect_to specification_definition_url(defi.specification, defi)
+  end
+
   private
 
   def defi_params

@@ -60,8 +60,8 @@ Rails.application.routes.draw do
     resources :definitions
   end
 
-  resources :properties, only: [] do
-    get 'find', on: :collection
+  resources :definitions, only: [] do
+    get 'search', on: :collection
   end
 
 end

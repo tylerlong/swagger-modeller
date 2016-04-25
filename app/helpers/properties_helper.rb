@@ -3,11 +3,13 @@ module PropertiesHelper
     if ['integer', 'string', 'boolean', 'array'].include?(prop.type)
       return prop.type
     end
-    return link_to prop.type, find_properties_path(type: prop.type, prefix: prop.definition.prefix)
+    return link_to prop.type, search_definitions_path(name: prop.type, prefix: prop.definition.prefix)
   end
 
   def link_to_format(prop)
-    # todo: use link_to if it is a type
+    if prop.type == 'array' && !['string'].include?(prop.format)
+      return link_to prop.format, search_definitions_path(name: prop.format, prefix: prop.definition.prefix)
+    end
     return prop.format
   end
 end
