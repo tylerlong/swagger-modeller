@@ -13,7 +13,7 @@ class DefinitionsController < ApplicationController
   end
 
   def destroy
-    defi = Definition.find(params[:id]).destroy
+    Definition.find(params[:id]).destroy
     spec = Specification.find(params[:specification_id])
     redirect_to specification_url(spec, anchor: 'definitions')
   end
