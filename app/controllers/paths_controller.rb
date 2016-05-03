@@ -22,9 +22,20 @@ class PathsController < ApplicationController
     redirect_to specification_path_url(spec, path)
   end
 
+  def new
+    @spec = Specification.find(params[:specification_id])
+  end
+
+  def create
+    path = Path.new(path_params)
+    path.save!
+    spec = Specification.find(params[:specification_id])
+    redirect_to specification_path_url(spec, path)
+  end
+
   private
 
   def path_params
-    params.permit(:uri)
+    params.permit(:uri, :specification_id)
   end
 end
