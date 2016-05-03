@@ -48,7 +48,7 @@
 <div role="tabpanel" class="tab-pane" id="paths">
   <table class="table">
     <% @spec.paths.order('uri asc').each do |path| %>
-      <tr><td><%= path.uri %></td></tr>
+      <tr><td><%= link_to path.uri, specification_path_path(@spec, path) %></td></tr>
     <% end %>
   </table>
 </div><!-- tab #2 -->

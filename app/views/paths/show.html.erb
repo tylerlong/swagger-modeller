@@ -1,0 +1,16 @@
+<div class="container">
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.display_name, @spec %></li>
+  <li class="active"><%= @path.uri %></li>
+</ol>
+
+<h1><%= @path.uri %></h1>
+<%= link_to 'Edit', edit_specification_path_path(@spec, @path), class: "btn btn-primary" %>
+<%= link_to 'Destroy', specification_path_path(@spec, @path), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
+
+<h2>Requests</h2>
+<p>List of requests: GET, POST, PUT...</p>
+
+</div>

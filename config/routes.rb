@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
   resources :specifications do
     resources :definitions
+    resources :paths
   end
 
   resources :definitions, only: [] do
