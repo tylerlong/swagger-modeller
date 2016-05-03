@@ -8,72 +8,91 @@
 <h1><%= @spec.display_name %></h1>
 <%= link_to 'Edit', edit_specification_path(@spec), class: "btn btn-primary" %>
 <%= link_to 'Destroy', @spec, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
-<dl>
-  <dt>Version</dt>
-  <dd><%= @spec.version %></dd>
-  <dt>Title</dt>
-  <dd><%= @spec.title %></dd>
-  <dt>Description</dt>
-  <dd><%= @spec.description %></dd>
-  <dt>Terms of Service</dt>
-  <dd><%= @spec.termsOfService %></dd>
-  <dt>Host</dt>
-  <dd><%= @spec.host %></dd>
-  <dt>Base Path</dt>
-  <dd><%= @spec.basePath %></dd>
-  <dt>Schemes</dt>
-  <dd><%= @spec.schemes %></dd>
-  <dt>Produces</dt>
-  <dd><%= @spec.produces %></dd>
-  <dt>Consumes</dt>
-  <dd><%= @spec.consumes %></dd>
-</dl>
+
+<hr/>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+  <li role="presentation"><a href="#paths" aria-controls="paths" role="tab" data-toggle="tab">Paths</a></li>
+  <li role="presentation"><a href="#definitions" aria-controls="definitions" role="tab" data-toggle="tab">Definitions</a></li>
+</ul>
 
 
-<h2 id="paths">Paths</h2>
+<div class="tab-content">
 
-<table class="table">
-  <% @spec.paths.order('uri asc').each do |path| %>
-    <tr><td><%= path.uri %></td></tr>
-  <% end %>
-</table>
+<!-- tab #1 -->
+<div role="tabpanel" class="tab-pane active" id="info">
+  <dl>
+    <dt>Version</dt>
+    <dd><%= @spec.version %></dd>
+    <dt>Title</dt>
+    <dd><%= @spec.title %></dd>
+    <dt>Description</dt>
+    <dd><%= @spec.description %></dd>
+    <dt>Terms of Service</dt>
+    <dd><%= @spec.termsOfService %></dd>
+    <dt>Host</dt>
+    <dd><%= @spec.host %></dd>
+    <dt>Base Path</dt>
+    <dd><%= @spec.basePath %></dd>
+    <dt>Schemes</dt>
+    <dd><%= @spec.schemes %></dd>
+    <dt>Produces</dt>
+    <dd><%= @spec.produces %></dd>
+    <dt>Consumes</dt>
+    <dd><%= @spec.consumes %></dd>
+  </dl>
+</div><!-- tab #1 -->
 
-<h2 id="definitions">Definitions</h2>
+<!-- tab #2 -->
+<div role="tabpanel" class="tab-pane" id="paths">
+  <table class="table">
+    <% @spec.paths.order('uri asc').each do |path| %>
+      <tr><td><%= path.uri %></td></tr>
+    <% end %>
+  </table>
+</div><!-- tab #2 -->
 
-<p>
-<br/><%= link_to "Create a definition", new_specification_definition_path(@spec), class: "btn btn-primary" %>
-</p>
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <% @spec.definitions.group_by(&:prefix).each do |key, group| %>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="heading<%= key %>">
-      <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= key %>" aria-expanded="false" aria-controls="collapse<%= key %>">
-          <%= key %>
-        </a>
-      </h4>
-    </div>
-    <div id="collapse<%= key %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= key %>">
-      <div class="panel-body">
-        <table class="table">
-          <thead>
-            <tr><th>View</th><th>Name</th><th>Description</th></tr>
-          </thead>
-          <tbody>
-            <% group.each do |defi| %>
-              <tr>
-                <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary", target: "_blank" %></td>
-                <td><%= defi.name %></td>
-                <td><%= truncate defi.description %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+<!-- tab #3 -->
+<div role="tabpanel" class="tab-pane" id="definitions">
+  <p>
+  <br/><%= link_to "Create a definition", new_specification_definition_path(@spec), class: "btn btn-primary" %>
+  </p>
+
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% @spec.definitions.group_by(&:prefix).each do |key, group| %>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="heading<%= key %>">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= key %>" aria-expanded="false" aria-controls="collapse<%= key %>">
+            <%= key %>
+          </a>
+        </h4>
+      </div>
+      <div id="collapse<%= key %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= key %>">
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <tr><th>View</th><th>Name</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <% group.each do |defi| %>
+                <tr>
+                  <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary", target: "_blank" %></td>
+                  <td><%= defi.name %></td>
+                  <td><%= truncate defi.description %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
+</div><!-- tab #3 -->
 
-</div>
+</div> <!-- tabs -->
+
+</div> <!-- container -->
