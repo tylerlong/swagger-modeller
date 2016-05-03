@@ -30,6 +30,14 @@
 </dl>
 
 
+<h2 id="paths">Paths</h2>
+
+<table class="table">
+  <% @spec.paths.order('uri asc').each do |path| %>
+    <tr><td><%= path.uri %></td></tr>
+  <% end %>
+</table>
+
 <h2 id="definitions">Definitions</h2>
 
 <p>

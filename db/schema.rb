@@ -25,12 +25,13 @@ ActiveRecord::Schema.define(version: 20160503071748) do
   add_index "definitions", ["specification_id", "name"], name: "index_definitions_on_specification_id_and_name", unique: true
 
   create_table "paths", force: :cascade do |t|
-    t.string   "uri",        null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "specification_id", null: false
+    t.string   "uri",              null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_index "paths", ["uri"], name: "index_paths_on_uri", unique: true
+  add_index "paths", ["specification_id", "uri"], name: "index_paths_on_specification_id_and_uri", unique: true
 
   create_table "properties", force: :cascade do |t|
     t.integer  "definition_id",                null: false
