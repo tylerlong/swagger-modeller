@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
+# replace <textarea> with CodeMirror
 $ ->
   if $('textarea').length > 0
     CodeMirror.fromTextArea(
@@ -12,5 +13,7 @@ $ ->
         lineWrapping: true,
         viewportMargin: Infinity,
         tabSize: 16,
+        indentUnit: 16,
+        indentWithTabs: true,
       }
     )
