@@ -77,13 +77,12 @@
         <div class="panel-body">
           <table class="table">
             <thead>
-              <tr><th>View</th><th>Name</th><th>Description</th></tr>
+              <tr><th>Name</th><th>Description</th></tr>
             </thead>
             <tbody>
               <% group.each do |defi| %>
                 <tr>
-                  <td><%= link_to "View", specification_definition_path(@spec, defi), class: "btn btn-primary", target: "_blank" %></td>
-                  <td><%= defi.name %></td>
+                  <td><%= link_to defi.name, specification_definition_path(@spec, defi), target: "_blank" %></td>
                   <td><%= truncate defi.description %></td>
                 </tr>
               <% end %>
