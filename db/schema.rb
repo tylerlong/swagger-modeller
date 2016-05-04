@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160504053415) do
     t.string   "name",                       null: false
     t.boolean  "batch",      default: false
     t.string   "visibility",                 null: false
+    t.string   "status",     default: "",    null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end

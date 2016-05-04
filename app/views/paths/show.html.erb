@@ -13,13 +13,20 @@
 <br/><br/><br/>
 
 <table class="table">
-  <tr><th>Name</th><th>Method</th><th>Batch</th><th>Visibility</th></tr>
+  <tr>
+    <th>Name</th>
+    <th>Method</th>
+    <th>Batch</th>
+    <th>Visibility</th>
+    <th>Status</th>
+  </tr>
 <% @path.verbs.each do |verb| %>
 <tr>
   <td><%= verb.name %></td>
   <td><%= verb.method %></td>
   <td><%= verb.batch %></td>
   <td><%= verb.visibility %></td>
+  <td><%= verb.status %></td>
 </tr>
 <% end %>
 </table>

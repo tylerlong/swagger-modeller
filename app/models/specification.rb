@@ -211,7 +211,7 @@ class Specification < ActiveRecord::Base
       verb = path.verbs.find_by_name(name)
       if verb.nil?
         verb = path.verbs.build(method: method, name: name,
-          batch: batch == 'Yes', visibility: visibility)
+          batch: batch == 'Yes', visibility: visibility, status: status)
         verb.save!
       end
     end

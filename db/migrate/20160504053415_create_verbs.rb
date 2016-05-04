@@ -6,6 +6,7 @@ class CreateVerbs < ActiveRecord::Migration
       t.string :name, null: false
       t.boolean :batch, default: false
       t.string :visibility, null: false
+      t.string :status, null: false, default: ''
       t.timestamps null: false
     end
     add_index :verbs, [:path_id, :name], unique: true
