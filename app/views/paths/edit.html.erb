@@ -2,7 +2,7 @@
 
 <ol class="breadcrumb">
   <li><a href="/">Home</a></li>
-  <li><%= link_to @spec.display_name, @spec %></li>
+  <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'paths') %></li>
   <li class="active"><%= @path.uri %></li>
 </ol>
 

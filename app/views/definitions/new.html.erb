@@ -2,7 +2,7 @@
 
 <ol class="breadcrumb">
   <li><a href="/">Home</a></li>
-  <li><%= link_to @spec.display_name, @spec %></li>
+  <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'definitions') %></li>
   <li class="active">Create a definition</li>
 </ol>
 
@@ -16,7 +16,7 @@
   <br/><%= label_tag(:properties_text, "Properties:") %>
   <br/><%= text_area_tag(:properties_text, "", class: "form-control", rows: 8) %>
   <br/><%= submit_tag("Create", class: "btn btn-primary") %>
-  <%= link_to "Cancel", @spec, class: "btn btn-default" %>
+  <%= link_to "Cancel", specification_path(@spec, anchor: 'definitions'), class: "btn btn-default" %>
 <% end %>
 
 </div>
