@@ -11,6 +11,7 @@
 1. code generation:
     1. comments
 1. move excel data to fixture
+1. better editor for csv
 
 
 ## notes

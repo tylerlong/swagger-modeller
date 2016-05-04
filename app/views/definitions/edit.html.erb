@@ -14,7 +14,7 @@
   <br/><%= label_tag(:description, "Description:") %>
   <br/><%= text_field_tag(:description, @defi.description, class: "form-control") %>
   <br/><%= label_tag(:properties_text, "Properties:") %>
-  <br/><%= text_area_tag(:properties_text, @defi.properties_text, class: "form-control", rows: 8) %>
+  <br/><%= text_area_tag(:properties_text, @defi.properties_text, class: "form-control", rows: 8, wrap: 'off') %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
   <%= link_to "Cancel", specification_definition_path(@spec, @defi), class: "btn btn-default" %>
 <% end %>
