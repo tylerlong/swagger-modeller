@@ -3,13 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-# enable tab insertion in <textarea>
 $ ->
-  $("textarea").keydown (e) ->
-    if e.keyCode == 9
-      start = this.selectionStart
-      end = this.selectionEnd
-      $this = $(this)
-      $this.val($this.val().substring(0, start) + "\t" + $this.val().substring(end))
-      this.selectionStart = this.selectionEnd = start + 1
-      return false
+  if $('textarea').length > 0
+    CodeMirror.fromTextArea(
+      $('textarea').get(0),
+      {
+        lineNumbers: true,
+        lineWrapping: true,
+        viewportMargin: Infinity,
+        tabSize: 16,
+      }
+    )
