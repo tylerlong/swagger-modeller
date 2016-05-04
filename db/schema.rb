@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503071748) do
+ActiveRecord::Schema.define(version: 20160504053415) do
 
   create_table "definitions", force: :cascade do |t|
     t.integer  "specification_id", null: false
@@ -62,5 +62,17 @@ ActiveRecord::Schema.define(version: 20160503071748) do
   end
 
   add_index "specifications", ["version", "title"], name: "index_specifications_on_version_and_title", unique: true
+
+  create_table "verbs", force: :cascade do |t|
+    t.integer  "path_id",                    null: false
+    t.string   "method",                     null: false
+    t.string   "name",                       null: false
+    t.boolean  "batch",      default: false
+    t.string   "visibility",                 null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "verbs", ["path_id", "name"], name: "index_verbs_on_path_id_and_name", unique: true
 
 end

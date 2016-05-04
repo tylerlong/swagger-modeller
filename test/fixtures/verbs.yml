@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  method: MyString
+  path_id: 1
+  name: MyString
+  batch: false
+  visibility: MyString
+
+two:
+  method: MyString
+  path_id: 1
+  name: MyString
+  batch: false
+  visibility: MyString
