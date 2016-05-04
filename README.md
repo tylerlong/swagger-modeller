@@ -10,6 +10,7 @@
 1. compare endpoint with RoR routes. interesting
 1. code generation:
     1. comments
+1. move excel data to fixture
 
 
 ## notes

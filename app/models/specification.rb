@@ -202,10 +202,17 @@ class Specification < ActiveRecord::Base
     lines.uniq.each do |line|
       method, uri, name, batch, user_plan_group, app_permission, user_permission, since, style, visibility, status, api_group, api_subgroup, name_for_reports, service_name, priority = line.split("\t").collect(&:strip)
       # create paths
-      if self.paths.find_by_uri(uri).nil?
+      path = self.paths.find_by_uri(uri)
+      if path.nil?
         path = self.paths.build(uri: uri)
         path.save!
-        # todo: create requests
+      end
+      # create verbs
+      verb = path.verbs.find_by_name(name)
+      if verb.nil?
+        verb = path.verbs.build(method: method, name: name,
+          batch: batch == 'Yes', visibility: visibility)
+        verb.save!
       end
     end
   end

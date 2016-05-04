@@ -10,7 +10,18 @@
 <%= link_to 'Edit', edit_specification_path_path(@spec, @path), class: "btn btn-primary" %>
 <%= link_to 'Destroy', specification_path_path(@spec, @path), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
 
-<h2>Requests</h2>
-<p>List of requests: GET, POST, PUT...</p>
+<br/><br/><br/>
+
+<table class="table">
+  <tr><th>Name</th><th>Method</th><th>Batch</th><th>Visibility</th></tr>
+<% @path.verbs.each do |verb| %>
+<tr>
+  <td><%= verb.name %></td>
+  <td><%= verb.method %></td>
+  <td><%= verb.batch %></td>
+  <td><%= verb.visibility %></td>
+</tr>
+<% end %>
+</table>
 
 </div>
