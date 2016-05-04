@@ -83,7 +83,7 @@
               <% group.each do |defi| %>
                 <tr>
                   <td><%= link_to defi.name, specification_definition_path(@spec, defi), target: "_blank" %></td>
-                  <td><%= truncate defi.description %></td>
+                  <td><%= truncate defi.description, length: 64 %></td>
                 </tr>
               <% end %>
             </tbody>
