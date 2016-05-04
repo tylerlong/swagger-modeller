@@ -1,0 +1,2 @@
+class VerbsController < ApplicationController
+end
