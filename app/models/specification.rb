@@ -3,6 +3,7 @@ class Specification < ActiveRecord::Base
   validates :title, presence: true
   has_many :definitions, dependent: :destroy
   has_many :paths, dependent: :destroy
+  has_many :path_parameters, dependent: :destroy
 
   def display_name
     "#{title} #{version}"
