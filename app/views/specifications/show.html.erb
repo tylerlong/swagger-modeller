@@ -44,7 +44,7 @@
   </dl>
 </div><!-- tab #1 -->
 
-<!-- tab #2 -->
+<!-- tab #2: paths -->
 <div role="tabpanel" class="tab-pane" id="paths">
   <p>
   <br/><%= link_to "Create a path", new_specification_path_path(@spec), class: "btn btn-primary" %>
@@ -57,7 +57,7 @@
 </div><!-- tab #2 -->
 
 
-<!-- tab #3 -->
+<!-- tab #3: definitions -->
 <div role="tabpanel" class="tab-pane" id="definitions">
   <p>
   <br/><%= link_to "Create a definition", new_specification_definition_path(@spec), class: "btn btn-primary" %>
@@ -82,7 +82,7 @@
             <tbody>
               <% group.each do |defi| %>
                 <tr>
-                  <td><%= link_to defi.name, specification_definition_path(@spec, defi), target: "_blank" %></td>
+                  <td><%= link_to defi.name, specification_definition_path(@spec, defi) %></td>
                   <td><%= truncate defi.description, length: 64 %></td>
                 </tr>
               <% end %>
