@@ -19,20 +19,19 @@ class Specification < ActiveRecord::Base
     lines = data.split("\n").collect(&:strip).reject{ |line| line == '' }
     papas = lines.collect do |line|
       name, type, description = line.split("\t").collect(&:strip).reject{ |token| token == '' }
-      { name: name, type: type, description: description }
+      self.path_parameters.build({ name: name, type: type, description: description })
     end
     self.path_parameters.each do |old_papa|
-      if not papas.any?{ |papa| papa[:name] == old_papa.name }
+      if not papas.any?{ |papa| papa.name == old_papa.name }
         old_papa.destroy
       end
     end
     papas.each do |papa|
-      old_papa = self.path_parameters.detect{ |old_papa| old_papa.name == papa[:name] }
+      old_papa = self.path_parameters.detect{ |old_papa| old_papa.name == papa.name }
       if old_papa.present?
-        old_papa.update_attributes(papa)
+        old_papa.update_attributes(papa.attributes.reject{ |key| ['id', 'created_at', 'updated_at'].include?(key) })
       else
-        new_papa = self.path_parameters.build(papa)
-        new_papa.save!
+        papa.save!
       end
     end
   end
