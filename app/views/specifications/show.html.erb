@@ -6,6 +6,7 @@
 </ol>
 
 <h1><%= @spec.display_name %></h1>
+<%= link_to 'Back', root_path, class: "btn btn-info" %>
 <%= link_to 'Edit', edit_specification_path(@spec), class: "btn btn-primary" %>
 <%= link_to 'Destroy', @spec, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
 

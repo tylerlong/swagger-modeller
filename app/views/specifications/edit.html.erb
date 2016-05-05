@@ -27,7 +27,7 @@
   <br/><%= label_tag(:consumes, "Consumes:") %>
   <br/><%= text_field_tag(:consumes, @spec.schemes, class: "form-control") %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
-  <a href="/" class="btn btn-default">Cancel</a>
+  <%= link_to "Cancel", @spec, class: "btn btn-default" %>
 <% end %>
 
 </div>
