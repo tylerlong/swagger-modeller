@@ -51,7 +51,7 @@
   <br/><%= link_to "Create a path", new_specification_path_path(@spec), class: "btn btn-primary" %>
   </p>
   <table class="table">
-    <% @spec.paths.order('uri asc').each do |path| %>
+    <% @spec.paths.each do |path| %>
       <tr><td><%= link_to path.uri, specification_path_path(@spec, path) %></td></tr>
     <% end %>
   </table>

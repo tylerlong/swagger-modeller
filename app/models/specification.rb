@@ -1,4 +1,6 @@
 class Specification < ActiveRecord::Base
+  default_scope { order("title ASC") }
+
   validates :version, presence: true, uniqueness: { scope: :title}
   validates :title, presence: true
   has_many :definitions, dependent: :destroy

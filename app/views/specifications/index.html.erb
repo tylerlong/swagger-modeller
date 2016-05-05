@@ -11,7 +11,7 @@
     <tr><th>Specification</th><th>Description</th></tr>
   </thead>
   <tbody>
-  <% Specification.all.order('title asc').each do |spec| %>
+  <% Specification.all.each do |spec| %>
     <tr>
       <td><%= link_to spec.display_name, spec %></td>
       <td><%= truncate spec.description, length: 64 %></td>
