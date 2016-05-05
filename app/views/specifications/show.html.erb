@@ -48,15 +48,6 @@
 <!-- tab #2: paths -->
 <div role="tabpanel" class="tab-pane" id="paths">
   <br/>
-  <h3>Path Parameters</h3>
-  <p><%= link_to "Edit", edit_specification_path_parameters_path(@spec), class: "btn btn-primary" %></p>
-  <table class="table">
-    <tr><th>Name</th><th>Type</th><th>Description</th></tr>
-    <% @spec.path_parameters.each do |papa| %>
-    <tr><td><%= papa.name %></td><td><%= papa.type %></td><td><%= papa.description %></td></tr>
-    <% end %>
-  </table>
-
   <h3>Paths</h3>
   <p>
   <%= link_to "Create a path", new_specification_path_path(@spec), class: "btn btn-primary" %>
@@ -64,6 +55,15 @@
   <table class="table">
     <% @spec.paths.each do |path| %>
       <tr><td><%= link_to path.uri, specification_path_path(@spec, path) %></td></tr>
+    <% end %>
+  </table>
+
+  <h3>Path Parameters</h3>
+  <p><%= link_to "Edit", edit_specification_path_parameters_path(@spec), class: "btn btn-primary" %></p>
+  <table class="table">
+    <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+    <% @spec.path_parameters.each do |papa| %>
+    <tr><td><%= papa.name %></td><td><%= papa.type %></td><td><%= papa.description %></td></tr>
     <% end %>
   </table>
 </div><!-- tab #2 -->
