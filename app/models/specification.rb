@@ -11,6 +11,32 @@ class Specification < ActiveRecord::Base
     "#{title} #{version}"
   end
 
+  def path_parameters_text
+    self.path_parameters.collect{ |papa| "#{papa.name}\t#{papa.type}\t#{papa.description}" }.join("\n")
+  end
+
+  def path_parameters_text=(data)
+    lines = data.split("\n").collect(&:strip).reject{ |line| line == '' }
+    papas = lines.collect do |line|
+      name, type, description = line.split("\t").collect(&:strip).reject{ |token| token == '' }
+      { name: name, type: type, description: description }
+    end
+    self.path_parameters.each do |old_papa|
+      if not papas.any?{ |papa| papa[:name] == old_papa.name }
+        old_papa.destroy
+      end
+    end
+    papas.each do |papa|
+      old_papa = self.path_parameters.detect{ |old_papa| old_papa.name == papa[:name] }
+      if old_papa.present?
+        old_papa.update_attributes(papa)
+      else
+        new_papa = self.path_parameters.build(papa)
+        new_papa.save!
+      end
+    end
+  end
+
   # https://docs.google.com/spreadsheets/d/1Lne2Jz34J9mJ7shlVqglEy12JlmXtweeqHsHXTXHzaM/edit?ts=570c4d57#gid=1204854372
   # copy all and paste into lib/ringcentral-endpoints.csv
   # remove header line
