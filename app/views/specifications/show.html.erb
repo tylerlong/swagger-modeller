@@ -47,6 +47,17 @@
 
 <!-- tab #2: paths -->
 <div role="tabpanel" class="tab-pane" id="paths">
+  <br/>
+  <h3>Path Parameters</h3>
+  <p><%= link_to "Edit", "/", class: "btn btn-primary" %></p>
+  <table class="table">
+    <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+    <% @spec.path_parameters.each do |papa| %>
+    <tr><td>Name</td><td>Type</td><td>Description</td></tr>
+    <% end %>
+  </table>
+
+  <h3>Paths</h3>
   <p>
   <br/><%= link_to "Create a path", new_specification_path_path(@spec), class: "btn btn-primary" %>
   </p>

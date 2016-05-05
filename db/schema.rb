@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504053415) do
+ActiveRecord::Schema.define(version: 20160505021123) do
 
   create_table "definitions", force: :cascade do |t|
     t.integer  "specification_id", null: false
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20160504053415) do
   end
 
   add_index "definitions", ["specification_id", "name"], name: "index_definitions_on_specification_id_and_name", unique: true
+
+  create_table "path_parameters", force: :cascade do |t|
+    t.integer  "specification_id", null: false
+    t.string   "name",             null: false
+    t.string   "type",             null: false
+    t.string   "description",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "path_parameters", ["specification_id", "name"], name: "index_path_parameters_on_specification_id_and_name", unique: true
 
   create_table "paths", force: :cascade do |t|
     t.integer  "specification_id", null: false
