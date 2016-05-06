@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  verb_id: 1
+  name: MyString
+  type: 
+  format: MyString
+  required: false
+  description: MyString
+
+two:
+  verb_id: 1
+  name: MyString
+  type: 
+  format: MyString
+  required: false
+  description: MyString

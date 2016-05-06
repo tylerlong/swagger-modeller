@@ -6,4 +6,5 @@ class Verb < ActiveRecord::Base
   validates :visibility, presence: true
   validates :name, presence: true, uniqueness: { scope: :path_id }
   belongs_to :path
+  has_many :query_parameters, dependent: :destroy
 end
