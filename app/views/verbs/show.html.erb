@@ -1,0 +1,26 @@
+<div class="container">
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'paths') %></li>
+  <li><%= link_to @path.uri, specification_path_path(@spec, @path) %></li>
+  <li class="active"><%= @verb.name %></li>
+</ol>
+
+<h1><%= @verb.name %></h1>
+
+<dl>
+  <dt>Method</dt>
+  <dd><%= @verb.method %></dd>
+  <dt>Batch</dt>
+  <dd><%= @verb.batch %></dd>
+  <dt>Visibility</dt>
+  <dd><%= @verb.visibility %></dd>
+  <dt>status</dt>
+  <dd><%= verb_status(@verb) %></dd>
+</dl>
+
+<h3>Query Parameters</h3>
+
+
+</div>

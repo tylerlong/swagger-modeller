@@ -58,7 +58,9 @@ Rails.application.routes.draw do
 
   resources :specifications do
     resources :definitions
-    resources :paths
+    resources :paths do
+      resources :verbs, path: '/requests'
+    end
     resources :path_parameters, only: [] do
       get 'edit', on: :collection
       put 'update', on: :collection
