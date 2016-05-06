@@ -11,15 +11,15 @@
 
 <%= form_tag(specification_path_verbs_path(@spec, @path), method: "post") do %>
   <br/><%= label_tag(:name, "Name:") %>
-  <br/><%= text_field_tag(:name, "", class: "form-control") %>
+  <br/><%= text_field_tag(:name, "", class: "form-control", placeholder: "What is this request about?") %>
   <br/><%= label_tag(:method, "Method:") %>
-  <br/><%= text_field_tag(:method, "", class: "form-control") %>
+  <br/><%= select_tag(:method, "<option>GET</option><option>POST</option><option>PUT</option><option>DELETE</option>".html_safe, class: "form-control") %>
   <br/><%= label_tag(:batch, "Batch:") %>
-  <br/><%= text_field_tag(:batch, "", class: "form-control") %>
+  <br/><%= select_tag(:batch, "<option>Yes</option><option>No</option>".html_safe, class: "form-control") %>
   <br/><%= label_tag(:visibility, "Visibility:") %>
-  <br/><%= text_field_tag(:visibility, "", class: "form-control") %>
+  <br/><%= text_field_tag(:visibility, "", class: "form-control", placeholder: "Basic, Advanced, Internal...etc") %>
   <br/><%= label_tag(:status, "Status:") %>
-  <br/><%= text_field_tag(:status, "", class: "form-control") %>
+  <br/><%= select_tag(:status, "<option>Normal</option><option>Deprecated</option><option>Disabled</option>".html_safe, class: "form-control") %>
   <br/><%= submit_tag("Create", class: "btn btn-primary") %>
   <%= link_to "Cancel", specification_path_path(@spec, @path), class: "btn btn-default" %>
 <% end %>

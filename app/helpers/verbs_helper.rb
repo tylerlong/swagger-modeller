@@ -1,6 +1,6 @@
 module VerbsHelper
   def verb_status(verb)
-    if verb.status == ''
+    if verb.status == '' || verb.status == 'Normal'
       return raw '<span class="label label-success">Normal</span>'
     end
     if verb.status == 'Deprecated'
