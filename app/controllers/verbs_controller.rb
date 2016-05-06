@@ -18,6 +18,13 @@ class VerbsController < ApplicationController
     redirect_to specification_path_verb_url(spec, path, verb)
   end
 
+  def destroy
+    Verb.find(params[:id]).destroy
+    spec = Specification.find(params[:specification_id])
+    path = Path.find(params[:path_id])
+    redirect_to specification_path_url(spec, path)
+  end
+
   private
 
   def verb_params

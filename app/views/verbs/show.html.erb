@@ -8,6 +8,9 @@
 </ol>
 
 <h1><%= @verb.name %></h1>
+<%= link_to 'Back', specification_path_path(@spec, @path), class: "btn btn-info" %>
+<%= link_to 'Edit', edit_specification_path_verb_path(@spec, @path, @verb), class: "btn btn-primary" %>
+<%= link_to 'Destroy', specification_path_verb_path(@spec, @path, @verb), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
 
 <dl>
   <dt>Method</dt>
@@ -21,6 +24,5 @@
 </dl>
 
 <h3>Query Parameters</h3>
-
 
 </div>
