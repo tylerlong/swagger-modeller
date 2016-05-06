@@ -1,0 +1,27 @@
+<div class="container">
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'paths') %></li>
+  <li><%= link_to @path.uri, specification_path_path(@spec, @path) %></li>
+  <li class="active"><%= @verb.name %></li>
+</ol>
+
+<h1>Edit a request</h1>
+
+<%= form_tag(specification_path_verb_path(@spec, @path, @verb), method: "put") do %>
+  <br/><%= label_tag(:name, "Name:") %>
+  <br/><%= text_field_tag(:name, @verb.name, class: "form-control", placeholder: "What is this request about?") %>
+  <br/><%= label_tag(:method, "Method:") %>
+  <br/><%= select_tag(:method, options_for_select(['GET', 'POST', 'PUT', 'DELETE'], @verb.method), class: "form-control") %>
+  <br/><%= label_tag(:batch, "Batch:") %>
+  <br/><%= select_tag(:batch, options_for_select(['Yes', 'No'], @verb.batch ? 'Yes' : 'No'), class: "form-control") %>
+  <br/><%= label_tag(:visibility, "Visibility:") %>
+  <br/><%= text_field_tag(:visibility, @verb.visibility, class: "form-control", placeholder: "Basic, Advanced, Internal...etc") %>
+  <br/><%= label_tag(:status, "Status:") %>
+  <br/><%= select_tag(:status, options_for_select(['Normal', 'Deprecated', 'Disabled'], @verb.status == '' ? 'Normal' : @verb.status), class: "form-control") %>
+  <br/><%= submit_tag("Update", class: "btn btn-primary") %>
+  <%= link_to "Cancel", specification_path_verb_path(@spec, @path, @verb), class: "btn btn-default" %>
+<% end %>
+
+</div>
