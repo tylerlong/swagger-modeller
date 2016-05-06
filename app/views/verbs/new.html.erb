@@ -1,0 +1,27 @@
+<div class="container">
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'paths') %></li>
+  <li><%= link_to @path.uri, specification_path_path(@spec, @path) %></li>
+  <li class="active">Create a request</li>
+</ol>
+
+<h1>Create a request</h1>
+
+<%= form_tag(specification_path_verbs_path(@spec, @path), method: "post") do %>
+  <br/><%= label_tag(:name, "Name:") %>
+  <br/><%= text_field_tag(:name, "", class: "form-control") %>
+  <br/><%= label_tag(:method, "Method:") %>
+  <br/><%= text_field_tag(:method, "", class: "form-control") %>
+  <br/><%= label_tag(:batch, "Batch:") %>
+  <br/><%= text_field_tag(:batch, "", class: "form-control") %>
+  <br/><%= label_tag(:visibility, "Visibility:") %>
+  <br/><%= text_field_tag(:visibility, "", class: "form-control") %>
+  <br/><%= label_tag(:status, "Status:") %>
+  <br/><%= text_field_tag(:status, "", class: "form-control") %>
+  <br/><%= submit_tag("Create", class: "btn btn-primary") %>
+  <%= link_to "Cancel", specification_path_path(@spec, @path), class: "btn btn-default" %>
+<% end %>
+
+</div>

@@ -6,5 +6,7 @@ class VerbsController < ApplicationController
   end
 
   def new
+    @spec = Specification.find(params[:specification_id])
+    @path = Path.find(params[:path_id])
   end
 end
