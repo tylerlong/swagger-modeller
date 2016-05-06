@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505021123) do
+ActiveRecord::Schema.define(version: 20160506101357) do
 
   create_table "definitions", force: :cascade do |t|
     t.integer  "specification_id", null: false
@@ -57,6 +57,20 @@ ActiveRecord::Schema.define(version: 20160505021123) do
   end
 
   add_index "properties", ["definition_id", "name"], name: "index_properties_on_definition_id_and_name", unique: true
+
+  create_table "query_parameters", force: :cascade do |t|
+    t.integer  "verb_id",                     null: false
+    t.string   "name",                        null: false
+    t.string   "type",                        null: false
+    t.string   "format",      default: ""
+    t.boolean  "required",    default: false
+    t.string   "description",                 null: false
+    t.integer  "position",    default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "query_parameters", ["verb_id", "name"], name: "index_query_parameters_on_verb_id_and_name", unique: true
 
   create_table "specifications", force: :cascade do |t|
     t.string   "version",        null: false

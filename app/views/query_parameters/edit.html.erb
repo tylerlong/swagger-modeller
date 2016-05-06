@@ -1,0 +1,19 @@
+<div class="container">
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'paths') %></li>
+  <li><%= link_to @path.uri, specification_path_path(@spec, @path) %></li>
+  <li><%= link_to @verb.name, specification_path_verb_path(@spec, @path, @verb) %></li>
+  <li class="active">Query Parameters</li>
+</ol>
+
+<h1>Edit query parameters</h1>
+
+<%= form_tag(specification_path_verb_query_parameters_path(@spec, @path, @verb), method: "put") do %>
+  <%= text_area_tag(:query_parameters_text, @verb.query_parameters_text) %>
+  <br/><%= submit_tag("Update", class: "btn btn-primary") %>
+  <%= link_to "Cancel", specification_path_verb_path(@spec, @path, @verb), class: "btn btn-default" %>
+<% end %>
+
+</div>

@@ -25,4 +25,12 @@
 
 <h3>Query Parameters</h3>
 
+<p><%= link_to "Edit", edit_specification_path_verb_query_parameters_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+
+<% if @verb.query_parameters.count == 0 %>
+<p>None</p>
+<% else %>
+query parameters
+<% end %>
+
 </div>
