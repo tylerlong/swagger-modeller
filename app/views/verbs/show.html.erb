@@ -48,4 +48,30 @@
 </table>
 <% end %>
 
+
+<h3>Request Body</h3>
+
+<p><%= link_to "Edit", edit_specification_path_verb_request_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+
+<% if @verb.request_body_properties.count == 0 %>
+<p>None</p>
+<% else %>
+<table class="table">
+  <thead>
+    <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <% @verb.request_body_properties.each do |rbp| %>
+      <tr>
+        <td><%= rbp.name %></td>
+        <td><%= rbp.type %></td>
+        <td><%= rbp.format %></td>
+        <td><%= rbp.required %></td>
+        <td><%= truncate rbp.description, length: 64 %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+
 </div>

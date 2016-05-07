@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507010916) do
+ActiveRecord::Schema.define(version: 20160507034653) do
 
   create_table "definitions", force: :cascade do |t|
     t.integer  "specification_id", null: false
@@ -72,6 +72,20 @@ ActiveRecord::Schema.define(version: 20160507010916) do
 
   add_index "query_parameters", ["verb_id", "name"], name: "index_query_parameters_on_verb_id_and_name", unique: true
 
+  create_table "request_body_properties", force: :cascade do |t|
+    t.integer  "verb_id",                     null: false
+    t.integer  "position",    default: 0
+    t.string   "name",                        null: false
+    t.string   "type",                        null: false
+    t.string   "description",                 null: false
+    t.string   "format",      default: ""
+    t.boolean  "required",    default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "request_body_properties", ["verb_id", "name"], name: "index_request_body_properties_on_verb_id_and_name", unique: true
+
   create_table "specifications", force: :cascade do |t|
     t.string   "version",        null: false
     t.string   "title",          null: false
@@ -98,6 +112,7 @@ ActiveRecord::Schema.define(version: 20160507010916) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.string   "query_parameters_text", default: ""
+    t.string   "request_body_text",     default: ""
   end
 
   add_index "verbs", ["path_id", "name"], name: "index_verbs_on_path_id_and_name", unique: true

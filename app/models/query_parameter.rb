@@ -8,6 +8,7 @@ class QueryParameter < ActiveRecord::Base
   validates :description, presence: true
   belongs_to :verb
 
+  # todo: remove duplicate code
   def self.parse(row)
     name, type, description = row.split("\t").collect(&:strip)
     if name == nil || type == nil || description == nil
@@ -42,4 +43,5 @@ class QueryParameter < ActiveRecord::Base
 
     return nil
   end
+
 end

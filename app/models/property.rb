@@ -7,6 +7,7 @@ class Property < ActiveRecord::Base
   validates :type, presence: true
   belongs_to :definition
 
+  # todo: remove duplicate code
   def self.parse(row)
     name, type, description = row.split("\t").collect(&:strip)
     if name == nil || type == nil || description == nil
