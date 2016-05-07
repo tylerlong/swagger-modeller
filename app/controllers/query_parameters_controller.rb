@@ -9,7 +9,8 @@ class QueryParametersController < ApplicationController
     @spec = Specification.find(params[:specification_id])
     @path = Path.find(params[:path_id])
     @verb = Verb.find(params[:verb_id])
-    # todo: update query parameters
+    @verb.query_parameters_text = params[:query_parameters_text]
+    @verb.save!
     redirect_to specification_path_verb_path(@spec, @path, @verb)
   end
 end

@@ -7,4 +7,10 @@ class Verb < ActiveRecord::Base
   validates :name, presence: true, uniqueness: { scope: :path_id }
   belongs_to :path
   has_many :query_parameters, dependent: :destroy
+
+  def query_parameters_text=(value)
+    # todo: parse and save query_parameters
+    puts 'def query_parameters_text=(value)'
+    write_attribute(:query_parameters_text, value)
+  end
 end
