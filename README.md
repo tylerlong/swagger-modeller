@@ -11,7 +11,7 @@
 1. code generation:
     1. comments
 1. edit query parameters
-1. post body
+1. request body
 1. response body
 1. flash messages
 

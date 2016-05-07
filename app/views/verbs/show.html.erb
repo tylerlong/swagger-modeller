@@ -30,7 +30,22 @@
 <% if @verb.query_parameters.count == 0 %>
 <p>None</p>
 <% else %>
-query parameters
+<table class="table">
+  <thead>
+    <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <% @verb.query_parameters.each do |qp| %>
+      <tr>
+        <td><%= qp.name %></td>
+        <td><%= qp.type %></td>
+        <td><%= qp.format %></td>
+        <td><%= qp.required %></td>
+        <td><%= truncate qp.description, length: 64 %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>
 
 </div>

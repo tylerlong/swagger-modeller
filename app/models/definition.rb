@@ -8,7 +8,7 @@ class Definition < ActiveRecord::Base
     new_props = parse_properties
     properties.each do |prop|
       if not new_props.any?{ |new_prop| new_prop.name == prop.name }
-        prop.destroy # destroy
+        prop.destroy # delete
       end
     end
     new_props.each do |new_prop|
