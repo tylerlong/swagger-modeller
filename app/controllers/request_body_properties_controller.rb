@@ -11,6 +11,6 @@ class RequestBodyPropertiesController < ApplicationController
     @verb = Verb.find(params[:verb_id])
     @verb.request_body_text = params[:request_body_text]
     @verb.save!
-    redirect_to specification_path_verb_path(@spec, @path, @verb)
+    redirect_to specification_path_verb_path(@spec, @path, @verb, anchor: 'request_body')
   end
 end

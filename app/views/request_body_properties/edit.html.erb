@@ -13,7 +13,7 @@
 <%= form_tag(specification_path_verb_request_body_properties_path(@spec, @path, @verb), method: "put") do %>
   <%= text_area_tag(:request_body_text, @verb.request_body_text) %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
-  <%= link_to "Cancel", specification_path_verb_path(@spec, @path, @verb), class: "btn btn-default" %>
+  <%= link_to "Cancel", specification_path_verb_path(@spec, @path, @verb, anchor: 'request_body'), class: "btn btn-default" %>
 <% end %>
 
 </div>

@@ -11,6 +11,6 @@ class QueryParametersController < ApplicationController
     @verb = Verb.find(params[:verb_id])
     @verb.query_parameters_text = params[:query_parameters_text]
     @verb.save!
-    redirect_to specification_path_verb_path(@spec, @path, @verb)
+    redirect_to specification_path_verb_path(@spec, @path, @verb, anchor: 'query_parameters')
   end
 end
