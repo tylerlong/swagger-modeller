@@ -7,7 +7,7 @@ class Property < ActiveRecord::Base
   validates :type, presence: true
   belongs_to :definition
 
-  require_dependency 'util'
+  require_dependency 'util/model_property'
   def self.parse(row)
     dict = ModelProperty.parse(row)
     dict.nil? ? nil : Property.new(dict)

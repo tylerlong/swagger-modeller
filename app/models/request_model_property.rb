@@ -7,4 +7,10 @@ class RequestModelProperty < ActiveRecord::Base
   validates :type, presence: true
   validates :description, presence: true
   belongs_to :request_model
+
+  require_dependency 'util/model_property'
+  def self.parse(row)
+    dict = ModelProperty.parse(row)
+    dict.nil? ? nil : RequestModelProperty.new(dict)
+  end
 end

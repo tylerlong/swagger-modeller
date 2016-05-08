@@ -8,7 +8,7 @@ class QueryParameter < ActiveRecord::Base
   validates :description, presence: true
   belongs_to :verb
 
-  require_dependency 'util'
+  require_dependency 'util/model_property'
   def self.parse(row)
     dict = ModelProperty.parse(row)
     dict.nil? ? nil : QueryParameter.new(dict)
