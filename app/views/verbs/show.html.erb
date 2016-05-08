@@ -12,6 +12,20 @@
 <%= link_to 'Edit', edit_specification_path_verb_path(@spec, @path, @verb), class: "btn btn-primary" %>
 <%= link_to 'Destroy', specification_path_verb_path(@spec, @path, @verb), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
 
+<hr/>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+  <li role="presentation"><a href="#query_parameters" aria-controls="query_parameters" role="tab" data-toggle="tab">Query Parameters</a></li>
+  <li role="presentation"><a href="#request_body" aria-controls="request_body" role="tab" data-toggle="tab">Request Body</a></li>
+  <li role="presentation"><a href="#response_body" aria-controls="response_body" role="tab" data-toggle="tab">Response Body</a></li>
+</ul>
+
+
+<div class="tab-content">
+
+<!-- tab #1 -->
+<div role="tabpanel" class="tab-pane active" id="info">
 <dl>
   <dt>Method</dt>
   <dd><%= @verb.method %></dd>
@@ -22,10 +36,12 @@
   <dt>status</dt>
   <dd><%= verb_status(@verb) %></dd>
 </dl>
+</div>
 
-<h3>Query Parameters</h3>
+<!-- tab #2: Query Parameters -->
+<div role="tabpanel" class="tab-pane" id="query_parameters">
 
-<p><%= link_to "Edit", edit_specification_path_verb_query_parameters_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+<p><br/><%= link_to "Edit", edit_specification_path_verb_query_parameters_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
 
 <% if @verb.query_parameters.count == 0 %>
 <p>None</p>
@@ -47,11 +63,12 @@
   </tbody>
 </table>
 <% end %>
+</div>
 
+<!-- tab #3: Request Body -->
+<div role="tabpanel" class="tab-pane" id="request_body">
 
-<h3>Request Body</h3>
-
-<p><%= link_to "Edit", edit_specification_path_verb_request_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+<p><br/><%= link_to "Edit", edit_specification_path_verb_request_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
 
 <% if @verb.request_body_properties.count == 0 %>
 <p>None</p>
@@ -73,5 +90,12 @@
   </tbody>
 </table>
 <% end %>
+</div> <!-- tab3 -->
 
+<!-- tab #4: Response Body -->
+<div role="tabpanel" class="tab-pane" id="response_body">
+  <h1>Response Body</h1>
+</div> <!-- tab4 -->
+
+</div> <!-- tabs -->
 </div>
