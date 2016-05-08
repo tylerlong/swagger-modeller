@@ -68,6 +68,7 @@ Rails.application.routes.draw do
           get 'edit', on: :collection
           put 'update', on: :collection
         end
+        resources :request_models
       end
     end
     resources :path_parameters, only: [] do

@@ -90,11 +90,24 @@
   </tbody>
 </table>
 <% end %>
+
+<h2>Models</h2><!-- request models -->
+
+<p><br/><%= link_to "Create a model", new_specification_path_verb_request_model_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+
+<% if @verb.request_models.count == 0 %>
+None
+<% else %>
+<% @verb.request_models.each do |reqm| %>
+<h3><%= reqm.name %> <%= link_to "Edit", edit_specification_path_verb_request_model_path(@spec, @path, @verb, reqm), class: "btn btn-primary btn-sm" %> <%= link_to "Destroy", specification_path_verb_request_model_path(@spec, @path, @verb, reqm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", :method => :delete %></h3>
+<% end %>
+<% end %>
+
 </div><!-- tab #3 -->
 
 <!-- tab #4: Response Body -->
 <div role="tabpanel" class="tab-pane" id="response_body">
-  <h1>Response Body</h1>
+  <!-- <h1>Response Body</h1> -->
 </div><!-- tab #4 -->
 
 </div><!-- tabs -->
