@@ -1,5 +1,15 @@
 module PropertiesModel
 
+  def parse(text, modelClass)
+    rows = text.split("\n").collect(&:strip).reject{ |row| row.blank? }
+    items = rows.collect{ |row| modelClass.parse(row) }.reject{ |item| item == nil }.each_with_index.collect do |item, index|
+        item.position = index
+        item
+    end
+    return items
+  end
+  module_function :parse
+
   def update_properties!(old_items, new_items)
     old_items.each do |old_item|
       if not new_items.any? { |new_item| new_item.name == old_item.name }

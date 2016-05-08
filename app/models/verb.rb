@@ -17,15 +17,11 @@ class Verb < ActiveRecord::Base
     PropertiesModel.update_properties!(query_parameters, parse_parameters)
   end
 
-  # todo: remove duplicate
   def parse_parameters
-    rows = query_parameters_text.split("\n").collect(&:strip).reject{ |row| row.blank? }
-    qps = rows.collect{ |row| QueryParameter.parse(row) }.reject{ |qp| qp == nil }.each_with_index.collect do |qp, index|
-      qp.position = index
-      qp.verb = self
-      qp
+    PropertiesModel.parse(query_parameters_text, QueryParameter).collect do |item|
+      item.verb = self
+      item
     end
-    return qps
   end
 
   def request_body_text=(value)
@@ -33,14 +29,10 @@ class Verb < ActiveRecord::Base
     PropertiesModel.update_properties!(request_body_properties, parse_properties)
   end
 
-  # todo: remove duplicate
   def parse_properties
-    rows = request_body_text.split("\n").collect(&:strip).reject{ |row| row.blank? }
-    rbps = rows.collect{ |row| RequestBodyProperty.parse(row) }.reject{ |rbp| rbp == nil }.each_with_index.collect do |rbp, index|
-      rbp.position = index
-      rbp.verb = self
-      rbp
+    PropertiesModel.parse(request_body_text, RequestBodyProperty).collect do |item|
+      item.verb = self
+      item
     end
-    return rbps
   end
 end
