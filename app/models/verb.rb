@@ -9,6 +9,8 @@ class Verb < ActiveRecord::Base
   has_many :query_parameters, dependent: :destroy
   has_many :request_body_properties, dependent: :destroy
   has_many :request_models, dependent: :destroy
+  has_many :response_body_properties, dependent: :destroy
+  has_many :response_models, dependent: :destroy
 
   require_dependency 'util/properties_model'
 
@@ -26,11 +28,23 @@ class Verb < ActiveRecord::Base
 
   def request_body_text=(value)
     write_attribute(:request_body_text, value)
-    PropertiesModel.update_properties!(request_body_properties, parse_properties)
+    PropertiesModel.update_properties!(request_body_properties, parse_request_properties)
   end
 
-  def parse_properties
+  def response_body_text=(value)
+    write_attribute(:response_body_text, value)
+    PropertiesModel.update_properties!(response_body_properties, parse_response_properties)
+  end
+
+  def parse_request_properties
     PropertiesModel.parse(request_body_text, RequestBodyProperty).collect do |item|
+      item.verb = self
+      item
+    end
+  end
+
+  def parse_response_properties
+    PropertiesModel.parse(response_body_text, ResponseBodyProperty).collect do |item|
       item.verb = self
       item
     end
