@@ -8,6 +8,7 @@ class RequestModelsController < ApplicationController
   def create
     reqm = RequestModel.new(reqm_params)
     reqm.save!
+    reqm.update_properties!
     spec = Specification.find(params[:specification_id])
     path = Path.find(params[:path_id])
     verb = Verb.find(params[:verb_id])
@@ -24,6 +25,7 @@ class RequestModelsController < ApplicationController
   def update
     reqm = RequestModel.find(params[:id])
     reqm.update_attributes(reqm_params)
+    reqm.update_properties!
     spec = Specification.find(params[:specification_id])
     path = Path.find(params[:path_id])
     verb = Verb.find(params[:verb_id])

@@ -78,13 +78,13 @@
     <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
   </thead>
   <tbody>
-    <% @verb.request_body_properties.each do |rbp| %>
+    <% @verb.request_body_properties.each do |item| %>
       <tr>
-        <td><%= rbp.name %></td>
-        <td><%= rbp.type %></td>
-        <td><%= rbp.format %></td>
-        <td><%= rbp.required %></td>
-        <td><%= truncate rbp.description, length: 64 %></td>
+        <td><%= item.name %></td>
+        <td><%= item.type %></td>
+        <td><%= item.format %></td>
+        <td><%= item.required %></td>
+        <td><%= truncate item.description, length: 64 %></td>
       </tr>
     <% end %>
   </tbody>
@@ -99,7 +99,31 @@
 None
 <% else %>
 <% @verb.request_models.each do |reqm| %>
-<h3><%= reqm.name %> <%= link_to "Edit", edit_specification_path_verb_request_model_path(@spec, @path, @verb, reqm), class: "btn btn-primary btn-sm" %> <%= link_to "Destroy", specification_path_verb_request_model_path(@spec, @path, @verb, reqm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", :method => :delete %></h3>
+<h3>
+  <%= reqm.name %>
+  <%= link_to "Edit", edit_specification_path_verb_request_model_path(@spec, @path, @verb, reqm), class: "btn btn-primary btn-sm" %>
+  <%= link_to "Destroy", specification_path_verb_request_model_path(@spec, @path, @verb, reqm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", :method => :delete %>
+</h3>
+  <% if reqm.request_model_properties.count == 0 %>
+  <p>None</p>
+  <% else %>
+  <table class="table">
+    <thead>
+      <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <% reqm.request_model_properties.each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.type %></td>
+          <td><%= item.format %></td>
+          <td><%= item.required %></td>
+          <td><%= truncate item.description, length: 64 %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
 <% end %>
 <% end %>
 

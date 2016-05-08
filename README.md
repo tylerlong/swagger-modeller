@@ -10,9 +10,9 @@
 1. compare endpoint with RoR routes. interesting
 1. code generation:
     1. comments
-1. request body
 1. response body
 1. flash messages
+1. remove duplication of table code in views
 
 
 ## notes
