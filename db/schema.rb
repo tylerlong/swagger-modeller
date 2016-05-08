@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160508011938) do
+ActiveRecord::Schema.define(version: 20160508091609) do
 
   create_table "definitions", force: :cascade do |t|
     t.integer  "specification_id", null: false
@@ -85,6 +85,20 @@ ActiveRecord::Schema.define(version: 20160508011938) do
   end
 
   add_index "request_body_properties", ["verb_id", "name"], name: "index_request_body_properties_on_verb_id_and_name", unique: true
+
+  create_table "request_model_properties", force: :cascade do |t|
+    t.integer  "request_model_id",                 null: false
+    t.integer  "position",         default: 0
+    t.string   "name",                             null: false
+    t.string   "type",                             null: false
+    t.string   "description",                      null: false
+    t.string   "format",           default: ""
+    t.boolean  "required",         default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "request_model_properties", ["request_model_id", "name"], name: "index_request_model_properties_on_request_model_id_and_name", unique: true
 
   create_table "request_models", force: :cascade do |t|
     t.integer  "verb_id",         null: false
