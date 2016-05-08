@@ -1,8 +1,8 @@
 module PropertiesModel
 
   def parse(text, modelClass)
-    rows = text.split("\n").collect(&:strip).reject{ |row| row.blank? }
-    items = rows.collect{ |row| modelClass.parse(row) }.reject{ |item| item == nil }.each_with_index.collect do |item, index|
+    rows = text.split("\n").collect(&:strip).reject(&:blank?)
+    items = rows.collect{ |row| modelClass.parse(row) }.reject(&:nil?).each_with_index.collect do |item, index|
         item.position = index
         item
     end

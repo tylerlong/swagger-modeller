@@ -4,31 +4,17 @@ class Definition < ActiveRecord::Base
   belongs_to :specification
   has_many :properties, dependent: :destroy
 
+  require_dependency 'util/properties_model'
+
   def update_properties!
-    new_props = parse_properties
-    properties.each do |prop|
-      if not new_props.any?{ |new_prop| new_prop.name == prop.name }
-        prop.destroy # delete
-      end
-    end
-    new_props.each do |new_prop|
-      prop = properties.detect{ |prop| prop.name == new_prop.name }
-      if prop.present?
-        prop.update_attributes(new_prop.attributes.reject{ |key| ['id', 'created_at', 'updated_at'].include?(key) }) # update
-      else
-        new_prop.save! # create
-      end
-    end
+    PropertiesModel.update_properties!(properties, parse_properties)
   end
 
   def parse_properties
-    rows = properties_text.split("\n").collect(&:strip).reject{ |row| row.blank? }
-    props = rows.collect{ |row| Property.parse(row) }.reject{ |prop| prop == nil }.each_with_index.collect do |prop, index|
-      prop.position = index
-      prop.definition = self
-      prop
+    PropertiesModel.parse(properties_text, Property).collect do |item|
+      item.definition = self
+      item
     end
-    return props
   end
 
   def prefix
