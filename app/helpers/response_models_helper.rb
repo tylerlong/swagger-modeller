@@ -1,0 +1,2 @@
+module ResponseModelsHelper
+end

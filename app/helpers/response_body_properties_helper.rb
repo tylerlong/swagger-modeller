@@ -1,0 +1,2 @@
+module ResponseBodyPropertiesHelper
+end

@@ -99,11 +99,11 @@
 None
 <% else %>
 <% @verb.request_models.each do |reqm| %>
-<h3>
+<h4>
   <%= reqm.name %>
   <%= link_to "Edit", edit_specification_path_verb_request_model_path(@spec, @path, @verb, reqm), class: "btn btn-primary btn-sm" %>
   <%= link_to "Destroy", specification_path_verb_request_model_path(@spec, @path, @verb, reqm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", :method => :delete %>
-</h3>
+</h4>
   <% if reqm.request_model_properties.count == 0 %>
   <p>None</p>
   <% else %>
@@ -129,9 +129,67 @@ None
 
 </div><!-- tab #3 -->
 
+
 <!-- tab #4: Response Body -->
 <div role="tabpanel" class="tab-pane" id="response_body">
-  <!-- <h1>Response Body</h1> -->
+  <p><br/><%= link_to "Edit", edit_specification_path_verb_response_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+
+  <% if @verb.response_body_properties.count == 0 %>
+  <p>None</p>
+  <% else %>
+  <table class="table">
+    <thead>
+      <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <% @verb.response_body_properties.each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.type %></td>
+          <td><%= item.format %></td>
+          <td><%= item.required %></td>
+          <td><%= truncate item.description, length: 64 %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+
+  <h2>Models</h2><!-- response models -->
+
+  <p><br/><%= link_to "Create a model", new_specification_path_verb_response_model_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+
+  <% if @verb.response_models.count == 0 %>
+  None
+  <% else %>
+  <% @verb.response_models.each do |rspm| %>
+  <h4>
+    <%= rspm.name %>
+    <%= link_to "Edit", edit_specification_path_verb_response_model_path(@spec, @path, @verb, rspm), class: "btn btn-primary btn-sm" %>
+    <%= link_to "Destroy", specification_path_verb_response_model_path(@spec, @path, @verb, rspm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", :method => :delete %>
+  </h4>
+    <% if rspm.response_model_properties.count == 0 %>
+    <p>None</p>
+    <% else %>
+    <table class="table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <% rspm.response_model_properties.each do |item| %>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= item.type %></td>
+            <td><%= item.format %></td>
+            <td><%= item.required %></td>
+            <td><%= truncate item.description, length: 64 %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+  <% end %>
+  <% end %>
 </div><!-- tab #4 -->
 
 </div><!-- tabs -->
