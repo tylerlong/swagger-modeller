@@ -116,7 +116,33 @@
   <br/><%= link_to "Create a model", new_specification_common_model_path(@spec), class: "btn btn-primary" %>
   </p>
   <% @spec.common_models.each do |comm| %>
-    <br/><%= comm.name %><br/>
+  <h4>
+    <a role="button" data-toggle="collapse" href="#<%= comm.name.parameterize %>" aria-expanded="false" aria-controls="<%= comm.name.parameterize %>">
+    <%= comm.name %>
+  </a> &nbsp;
+    <%= link_to "Edit", edit_specification_common_model_path(@spec, comm), class: "btn btn-primary btn-xs" %>
+    <%= link_to 'Destroy', specification_common_model_path(@spec, comm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
+  </h4>
+    <div class="collapse" id="<%= comm.name.parameterize %>">
+      <div class="well">
+        <table class="table">
+          <thead>
+            <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <% comm.common_model_properties.each do |item| %>
+              <tr>
+                <td><%= item.name %></td>
+                <td><%= item.type %></td>
+                <td><%= item.format %></td>
+                <td><%= item.required %></td>
+                <td><%= truncate item.description, length: 64 %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   <% end %>
 </div><!-- tab #5 -->
 

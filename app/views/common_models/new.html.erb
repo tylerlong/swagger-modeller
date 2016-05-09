@@ -1,0 +1,20 @@
+<div class="container">
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'models') %></li>
+  <li class="active">Create a model</li>
+</ol>
+
+<h1>Create a model</h1>
+
+<%= form_tag(specification_common_models_path(@spec), method: "post") do %>
+  <br/><%= label_tag(:name, "Name:") %>
+  <br/><%= text_field_tag(:name, "", class: "form-control") %>
+  <br/><%= label_tag(:properties_text, "Properties:") %>
+  <br/><%= text_area_tag(:properties_text, "") %>
+  <br/><%= submit_tag("Create", class: "btn btn-primary") %>
+  <%= link_to "Cancel", specification_path(@spec, anchor: 'models'), class: "btn btn-default" %>
+<% end %>
+
+</div>
