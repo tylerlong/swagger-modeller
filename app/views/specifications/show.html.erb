@@ -17,6 +17,7 @@
   <li role="presentation"><a href="#paths" aria-controls="paths" role="tab" data-toggle="tab">Paths</a></li>
   <li role="presentation"><a href="#path_parameters" aria-controls="path_parameters" role="tab" data-toggle="tab">Path Parameters</a></li>
   <li role="presentation"><a href="#definitions" aria-controls="definitions" role="tab" data-toggle="tab">Definitions</a></li>
+  <li role="presentation"><a href="#models" aria-controls="models" role="tab" data-toggle="tab">Models</a></li>
 </ul>
 
 
@@ -107,6 +108,17 @@
     <% end %>
   </div>
 </div><!-- tab #4 -->
+
+
+<!-- tab #5: models -->
+<div role="tabpanel" class="tab-pane" id="models">
+  <p>
+  <br/><%= link_to "Create a model", new_specification_common_model_path(@spec), class: "btn btn-primary" %>
+  </p>
+  <% @spec.common_models.each do |comm| %>
+    <br/><%= comm.name %><br/>
+  <% end %>
+</div><!-- tab #5 -->
 
 </div><!-- tabs -->
 

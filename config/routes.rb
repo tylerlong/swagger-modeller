@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   root 'specifications#index'
 
   resources :specifications do
+    resources :common_models, path: '/models'
     resources :definitions
     resources :paths do
       resources :verbs, path: '/requests' do

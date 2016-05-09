@@ -4,6 +4,7 @@ class Specification < ActiveRecord::Base
   validates :version, presence: true, uniqueness: { scope: :title}
   validates :title, presence: true
   has_many :definitions, dependent: :destroy
+  has_many :common_models, dependent: :destroy
   has_many :paths, dependent: :destroy
   has_many :path_parameters, dependent: :destroy
 
