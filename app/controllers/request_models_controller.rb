@@ -43,6 +43,8 @@ class RequestModelsController < ApplicationController
   private
 
   def reqm_params
-    params.permit(:name, :properties_text, :verb_id)
+    result = params.permit(:name, :properties_text, :verb_id)
+    result[:name] = result[:name].gsub(/\s+/, '')
+    result
   end
 end

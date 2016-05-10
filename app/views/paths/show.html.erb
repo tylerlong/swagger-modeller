@@ -32,7 +32,7 @@
   <td><%= link_to verb.name, specification_path_verb_path(@spec, @path, verb) %></td>
   <td><%= verb.method %></td>
   <td><%= verb.batch %></td>
-  <td><%= verb.visibility %></td>
+  <td><%= verb_visibility(verb) %></td>
   <td><%= verb_status(verb) %></td>
 </tr>
 <% end %>

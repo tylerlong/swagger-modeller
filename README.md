@@ -13,6 +13,7 @@
 1. flash messages
 1. remove duplication of table code in views
 1. What is Rails concerns folder for?
+1. only show request body for POST/PUT
 
 
 ## notes
