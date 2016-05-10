@@ -53,8 +53,8 @@
   <br/><%= link_to "Create a path", new_specification_path_path(@spec), class: "btn btn-primary" %>
   </p>
   <table class="table">
-    <% @spec.paths.each do |path| %>
-      <tr><td><%= link_to path.uri, specification_path_path(@spec, path) %></td></tr>
+    <% @spec.paths.each_with_index do |path, index| %>
+      <tr><td><%= index + 1 %>. <%= link_to path.uri, specification_path_path(@spec, path) %></td></tr>
     <% end %>
   </table>
 </div><!-- tab #2 -->
@@ -63,9 +63,9 @@
 <div role="tabpanel" class="tab-pane" id="path_parameters">
   <p><br/><%= link_to "Edit", edit_specification_path_parameters_path(@spec), class: "btn btn-primary" %></p>
   <table class="table">
-    <tr><th>Name</th><th>Type</th><th>Description</th></tr>
-    <% @spec.path_parameters.each do |papa| %>
-    <tr><td><%= papa.name %></td><td><%= papa.type %></td><td><%= papa.description %></td></tr>
+    <tr><th>#.</th><th>Name</th><th>Type</th><th>Description</th></tr>
+    <% @spec.path_parameters.each_with_index do |papa, index| %>
+    <tr><td><%= index + 1 %>.</td><td><%= papa.name %></td><td><%= papa.type %></td><td><%= papa.description %></td></tr>
     <% end %>
   </table>
 </div><!-- tab #3 -->
@@ -115,9 +115,9 @@
   <p>
   <br/><%= link_to "Create a model", new_specification_common_model_path(@spec), class: "btn btn-primary" %>
   </p>
-  <% @spec.common_models.each do |comm| %>
+  <% @spec.common_models.each_with_index do |comm, index| %>
   <h4>
-    <a role="button" data-toggle="collapse" href="#<%= comm.name.parameterize %>" aria-expanded="false" aria-controls="<%= comm.name.parameterize %>">
+    <%= index + 1 %>. <a role="button" data-toggle="collapse" href="#<%= comm.name.parameterize %>" aria-expanded="false" aria-controls="<%= comm.name.parameterize %>">
     <%= comm.name %>
   </a> &nbsp;
     <%= link_to "Edit", edit_specification_common_model_path(@spec, comm), class: "btn btn-primary btn-xs" %>
