@@ -117,14 +117,15 @@
   </p>
   <% @spec.common_models.each_with_index do |comm, index| %>
   <h4>
-    <%= index + 1 %>. <a role="button" data-toggle="collapse" href="#<%= comm.name.parameterize %>" aria-expanded="false" aria-controls="<%= comm.name.parameterize %>">
-    <%= comm.name %>
-  </a> &nbsp;
-    <%= link_to "Edit", edit_specification_common_model_path(@spec, comm), class: "btn btn-primary btn-xs" %>
-    <%= link_to 'Destroy', specification_common_model_path(@spec, comm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
+    <%= index + 1 %>.
+    <a role="button" data-toggle="collapse" href="#<%= comm.name.parameterize %>" aria-expanded="false" aria-controls="<%= comm.name.parameterize %>">
+      <%= comm.name %>
+    </a>
   </h4>
     <div class="collapse" id="<%= comm.name.parameterize %>">
       <div class="well">
+        <%= link_to "Edit", edit_specification_common_model_path(@spec, comm), class: "btn btn-primary btn-xs" %>
+        <%= link_to 'Destroy', specification_common_model_path(@spec, comm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
         <table class="table">
           <thead>
             <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
@@ -134,7 +135,7 @@
               <tr>
                 <td><%= item.name %></td>
                 <td><%= item.type %></td>
-                <td><%= item.format %></td>
+                <td><%= truncate item.format, length: 32 %></td>
                 <td><%= item.required %></td>
                 <td><%= truncate item.description, length: 64 %></td>
               </tr>

@@ -33,6 +33,8 @@ class CommonModelsController < ApplicationController
   private
 
   def comm_params
-    params.permit(:name, :properties_text, :specification_id)
+    result = params.permit(:name, :properties_text, :specification_id)
+    result[:name] = result[:name].gsub(/\s+/, '')
+    result
   end
 end
