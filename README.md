@@ -16,7 +16,8 @@
 1. remove definitions
     1. now it is hidden. going to remove it later
 1. link models, unless it doesn't exist
-1. 导出为swagger spec
+1. Export as swagger spec
+1. edit model redirection, annoying. cannot find the model being edit
 
 
 ## notes

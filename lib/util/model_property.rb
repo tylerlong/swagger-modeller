@@ -12,8 +12,8 @@ module ModelProperty
     if type.start_with?('Collection of ') # array
       dict[:type] = 'array'
       dict[:format] = type[14..-1].gsub(/\s+/, '')
-      if dict[:foramt] == 'URIs'
-        dict[:foramt] = 'string'
+      if dict[:format] == 'URIs'
+        dict[:format] = 'string'
       end
       return dict
     end

@@ -26,7 +26,7 @@ class CommonModelProperty < ActiveRecord::Base
       end
     end
     if not ['integer', 'array', 'string', 'boolean'].include? type # custom type
-      result = { "$ref" => '#/definitions/' + type, description: description, }
+      result = { "$ref" => '#/definitions/' + type }
     end
     if type == 'string' and format.start_with?("'") and format.end_with?("'") #enum
       result[:enum] = format.split('|').collect{ |word| word.gsub(/\A[\s']+|[\s']+\z/,'') }
