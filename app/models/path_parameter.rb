@@ -7,4 +7,18 @@ class PathParameter < ActiveRecord::Base
   validates :type, presence: true
   validates :description, presence: true
   belongs_to :specification
+
+  def self.swagger
+    result = {}
+    PathParameter.all.each do |pp|
+      result[pp.name] = {
+        name: pp.name,
+        in: 'path',
+        description: pp.description,
+        type: pp.type,
+        required: true,
+      }
+    end
+    result
+  end
 end

@@ -68,8 +68,9 @@ class Specification < ActiveRecord::Base
       schemes: schemes.split(/\s+/).reject(&:blank?),
       produces: produces.split(/\s+/).reject(&:blank?),
       consumes: consumes.split(/\s+/).reject(&:blank?),
+      parameters: PathParameter.swagger,
+      paths: {},
     }
-    result[:paths] = {}
     paths.each do |path|
       path_swagger = path.swagger
       if path_swagger.present?
