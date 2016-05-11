@@ -14,6 +14,12 @@ class Path < ActiveRecord::Base
         result[verb.method.downcase] = verb_swagger
       end
     end
+    if result.present?
+      path_parameters = uri.scan(/\{([a-zA-Z]+?)\}/).flatten
+      if path_parameters.present?
+        result[:parameters] = path_parameters.collect{ |pp| { '$ref' => "#/parameters/#{pp}" } }
+      end
+    end
     return result
   end
 end

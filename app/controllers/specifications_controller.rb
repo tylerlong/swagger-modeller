@@ -37,7 +37,7 @@ class SpecificationsController < ApplicationController
 
   def swagger_yaml
     spec = Specification.find(params[:id])
-    render text: spec.swagger.to_yaml, content_type: 'text/yaml'
+    render text: spec.swagger.to_yaml + "\n", content_type: 'text/yaml'
   end
 
   private
