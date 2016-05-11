@@ -43,9 +43,7 @@
 
 <p><br/><%= link_to "Edit", edit_specification_path_verb_query_parameters_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
 
-<% if @verb.query_parameters.count == 0 %>
-<p>None</p>
-<% else %>
+<% if @verb.query_parameters.count > 0 %>
 <table class="table">
   <thead>
     <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
