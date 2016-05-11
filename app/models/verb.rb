@@ -49,4 +49,22 @@ class Verb < ActiveRecord::Base
       item
     end
   end
+
+  def swagger
+    if visibility.include?('Basic') && (status == '' || status == 'Normal')
+      return {
+        description: name,
+        responses: {
+          default: {
+            description: 'OK',
+            schema: {
+              properties: {
+
+              },
+            },
+          },
+        },
+      }
+    end
+  end
 end

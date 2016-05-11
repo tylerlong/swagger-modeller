@@ -53,4 +53,30 @@ class Specification < ActiveRecord::Base
       end
     end
   end
+
+  def swagger
+    result = {
+      swagger: '2.0',
+      info: {
+        version: version,
+        title: title,
+        description: description,
+        termsOfService: termsOfService,
+      },
+      host: host,
+      basePath: basePath,
+      schemes: schemes.split(/\s+/).reject(&:blank?),
+      produces: produces.split(/\s+/).reject(&:blank?),
+      consumes: consumes.split(/\s+/).reject(&:blank?),
+    }
+    result[:paths] = {}
+    paths.each do |path|
+      path_swagger = path.swagger
+      if path_swagger.present?
+        result[:paths][path.uri] = path_swagger
+      end
+    end
+    result = JSON[result.to_json] # stringify_keys recursively: https://gist.github.com/mkuhnt/6815250
+    result
+  end
 end

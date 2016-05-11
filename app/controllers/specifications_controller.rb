@@ -30,16 +30,14 @@ class SpecificationsController < ApplicationController
     redirect_to spec
   end
 
-  def swagger
-    { hello: 'world' }
-  end
-
   def swagger_json
-    render json: swagger
+    spec = Specification.find(params[:id])
+    render json: spec.swagger
   end
 
   def swagger_yaml
-    render text: swagger.to_yaml, content_type: 'text/yaml'
+    spec = Specification.find(params[:id])
+    render text: spec.swagger.to_yaml, content_type: 'text/yaml'
   end
 
   private
