@@ -16,8 +16,6 @@
 1. remove definitions
     1. now it is hidden. going to remove it later
 1. link models, unless it doesn't exist
-1. don't add model prefix. add it dynamically when export
-1. 凡是没有paging信息的返回结果都应该提炼成单独的model
 1. 导出为swagger spec
 
 
