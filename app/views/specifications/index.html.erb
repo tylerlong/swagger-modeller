@@ -8,13 +8,16 @@
 
 <table class="table">
   <thead>
-    <tr><th>Specification</th><th>Description</th></tr>
+    <tr><th>Specification</th><th>Description</th>
+    <th>Swagger Spec (Json)</th><th>Swagger Spec (Yaml)</th></tr>
   </thead>
   <tbody>
   <% Specification.all.each do |spec| %>
     <tr>
       <td><%= link_to spec.display_name, spec %></td>
       <td><%= truncate spec.description, length: 64 %></td>
+      <td><%= link_to 'Download', swagger_json_specification_path(spec), class: 'btn btn-info' %></td>
+      <td><%= link_to 'Download', swagger_yaml_specification_path(spec), class: 'btn btn-info' %></td>
     </tr>
   <% end %>
   </tbody>

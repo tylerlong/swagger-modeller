@@ -57,6 +57,8 @@ Rails.application.routes.draw do
   root 'specifications#index'
 
   resources :specifications do
+    get 'swagger_yaml', on: :member
+    get 'swagger_json', on: :member
     resources :common_models, path: '/models'
     resources :definitions
     resources :paths do
