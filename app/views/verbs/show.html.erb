@@ -17,7 +17,9 @@
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
   <li role="presentation"><a href="#query_parameters" aria-controls="query_parameters" role="tab" data-toggle="tab">Query Parameters</a></li>
+  <% if @verb.method == 'POST' || @verb.method == 'PUT' %>
   <li role="presentation"><a href="#request_body" aria-controls="request_body" role="tab" data-toggle="tab">Request Body</a></li>
+  <% end %>
   <li role="presentation"><a href="#response_body" aria-controls="response_body" role="tab" data-toggle="tab">Response Body</a></li>
 </ul>
 
@@ -64,6 +66,7 @@
 </div><!-- tab #2 -->
 
 <!-- tab #3: Request Body -->
+<% if @verb.method == 'POST' || @verb.method == 'PUT' %>
 <div role="tabpanel" class="tab-pane" id="request_body">
 
 <p><br/><%= link_to "Edit", edit_specification_path_verb_request_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
@@ -125,7 +128,9 @@ None
 <% end %>
 <% end %>
 
-</div><!-- tab #3 -->
+</div>
+<% end %>
+<!-- tab #3 -->
 
 
 <!-- tab #4: Response Body -->

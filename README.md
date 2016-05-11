@@ -13,7 +13,6 @@
 1. flash messages
 1. remove duplication of table code in views
 1. What is Rails concerns folder for?
-1. only show request body for POST/PUT
 1. remove definitions
 1. link models, unless it doesn't exist
 1. don't add model prefix. add it dynamically when export
