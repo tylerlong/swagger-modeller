@@ -69,6 +69,7 @@ class Specification < ActiveRecord::Base
       produces: produces.split(/\s+/).reject(&:blank?),
       consumes: consumes.split(/\s+/).reject(&:blank?),
       parameters: PathParameter.swagger,
+      definitions: CommonModel.swagger,
       paths: {},
     }
     paths.each do |path|

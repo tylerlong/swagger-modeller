@@ -21,7 +21,8 @@
 
 ## notes
 
-In API Reference doc, "Collection of parameters" means following parameters in the table.
+1. In API Reference doc, "Collection of parameters" means following parameters in the table.
+1. In swagger spec, every `type: xxx`  could be replaced with `$ref: xxx`
 
 
 ## commands

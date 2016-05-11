@@ -19,4 +19,18 @@ class CommonModel < ActiveRecord::Base
       item
     end
   end
+
+  def self.swagger
+    result = {}
+    CommonModel.all.each do |cm|
+      result[cm.name] = {
+        type: 'object',
+        properties: {},
+      }
+      cm.common_model_properties.each do |cmp|
+        result[cm.name][:properties][cmp.name] = cmp.swagger
+      end
+    end
+    result
+  end
 end
