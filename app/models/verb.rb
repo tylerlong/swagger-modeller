@@ -52,19 +52,25 @@ class Verb < ActiveRecord::Base
 
   def swagger
     if visibility.include?('Basic') && (status == '' || status == 'Normal')
-      return {
+      result = {
         description: name,
         responses: {
           default: {
             description: 'OK',
-            schema: {
-              properties: {
-
-              },
-            },
+            schema: {},
           },
         },
       }
+      if response_body_properties.blank? && response_body_text.present?
+        if response_body_text = 'binary'
+          result[:responses][:default][:schema] = { type: 'string', format: 'binary' }
+        else
+          result[:responses][:default][:schema]['$ref'] = '#/definitions/' + response_body_text
+        end
+      else
+        # todo: { type: object, properties: {  } }
+      end
+      return result
     end
   end
 end
