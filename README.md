@@ -11,19 +11,23 @@
 1. code generation:
     1. comments
 1. flash messages
-1. remove duplication of table code in views
 1. What is Rails concerns folder for?
 1. remove definitions
     1. now it is hidden. going to remove it later
+1. remove request_model and response_model
+    1. now they are hidden, going to remove them later
 1. link models, unless it doesn't exist
-1. Export as swagger spec
 1. edit model redirection, annoying. cannot find the model being edit
+1. Advanced swagger spec
+1. remove duplication of table code in views
+    1. create partials
 
 
 ## notes
 
 1. In API Reference doc, "Collection of parameters" means following parameters in the table.
 1. In swagger spec, every `type: xxx`  could be replaced with `$ref: xxx`
+1. in erb files, `<% end %>` in commented code still take effects.
 
 
 ## commands

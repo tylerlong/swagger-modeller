@@ -28,176 +28,93 @@
 
 <!-- tab #1 -->
 <div role="tabpanel" class="tab-pane active" id="info">
-<dl>
-  <dt>Method</dt>
-  <dd><%= @verb.method %></dd>
-  <dt>Batch</dt>
-  <dd><%= @verb.batch %></dd>
-  <dt>Visibility</dt>
-  <dd><%= verb_visibility(@verb) %></dd>
-  <dt>status</dt>
-  <dd><%= verb_status(@verb) %></dd>
-</dl>
+    <dl>
+        <dt>Method</dt>
+        <dd><%= @verb.method %></dd>
+        <dt>Batch</dt>
+        <dd><%= @verb.batch %></dd>
+        <dt>Visibility</dt>
+        <dd><%= verb_visibility(@verb) %></dd>
+        <dt>status</dt>
+        <dd><%= verb_status(@verb) %></dd>
+    </dl>
 </div><!-- tab #1 -->
 
 <!-- tab #2: Query Parameters -->
 <div role="tabpanel" class="tab-pane" id="query_parameters">
-
-<p><br/><%= link_to "Edit", edit_specification_path_verb_query_parameters_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
-
-<% if @verb.query_parameters.count > 0 %>
-<table class="table">
-  <thead>
-    <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
-  </thead>
-  <tbody>
-    <% @verb.query_parameters.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.type %></td>
-        <td><%= truncate item.format, length: 32 %></td>
-        <td><%= item.required %></td>
-        <td><%= truncate item.description, length: 64 %></td>
-      </tr>
+    <p><br/><%= link_to "Edit", edit_specification_path_verb_query_parameters_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+    <% if @verb.query_parameters.count > 0 %>
+        <table class="table">
+          <thead>
+            <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <% @verb.query_parameters.each do |item| %>
+              <tr>
+                <td><%= item.name %></td>
+                <td><%= item.type %></td>
+                <td><%= truncate item.format, length: 32 %></td>
+                <td><%= item.required %></td>
+                <td><%= truncate item.description, length: 64 %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
     <% end %>
-  </tbody>
-</table>
-<% end %>
 </div><!-- tab #2 -->
 
 <!-- tab #3: Request Body -->
 <% if @verb.method == 'POST' || @verb.method == 'PUT' %>
-<div role="tabpanel" class="tab-pane" id="request_body">
-
-<p><br/><%= link_to "Edit", edit_specification_path_verb_request_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
-
-<% if @verb.request_body_properties.count == 0 %>
-<p><%= @verb.request_body_text %></p>
-<% else %>
-<table class="table">
-  <thead>
-    <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
-  </thead>
-  <tbody>
-    <% @verb.request_body_properties.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.type %></td>
-        <td><%= truncate item.format, length: 32 %></td>
-        <td><%= item.required %></td>
-        <td><%= truncate item.description, length: 64 %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<!-- request models
-      <h2>Models</h2>
-
-      <p><br/><%= link_to "Create a model", new_specification_path_verb_request_model_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
-
-      <% if @verb.request_models.count == 0 %>
-      None
-      <% else %>
-      <% @verb.request_models.each do |reqm| %>
-      <h4>
-        <%= reqm.name %>
-        <%= link_to "Edit", edit_specification_path_verb_request_model_path(@spec, @path, @verb, reqm), class: "btn btn-primary btn-xs" %>
-        <%= link_to "Destroy", specification_path_verb_request_model_path(@spec, @path, @verb, reqm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
-      </h4>
-        <% if reqm.request_model_properties.count == 0 %>
-          <p>None</p>
+    <div role="tabpanel" class="tab-pane" id="request_body">
+        <p><br/><%= link_to "Edit", edit_specification_path_verb_request_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+        <% if @verb.request_body_properties.count == 0 %>
+            <p><%= @verb.request_body_text %></p>
         <% else %>
-          <table class="table">
-            <thead>
-              <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
-            </thead>
-            <tbody>
-              <% reqm.request_model_properties.each do |item| %>
-                <tr>
-                  <td><%= item.name %></td>
-                  <td><%= item.type %></td>
-                  <td><%= truncate item.format, length: 32 %></td>
-                  <td><%= item.required %></td>
-                  <td><%= truncate item.description, length: 64 %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+            <table class="table">
+              <thead>
+                <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+              </thead>
+              <tbody>
+                <% @verb.request_body_properties.each do |item| %>
+                  <tr>
+                    <td><%= item.name %></td>
+                    <td><%= item.type %></td>
+                    <td><%= truncate item.format, length: 32 %></td>
+                    <td><%= item.required %></td>
+                    <td><%= truncate item.description, length: 64 %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
         <% end %>
-      <% end %>
--->
-
-
-<% end %>
-<% end %>
-
-</div>
+    </div>
 <% end %>
 <!-- tab #3 -->
 
 
 <!-- tab #4: Response Body -->
 <div role="tabpanel" class="tab-pane" id="response_body">
-  <p><br/><%= link_to "Edit", edit_specification_path_verb_response_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
-
-  <% if @verb.response_body_properties.count == 0 %>
-  <p><%= @verb.response_body_text %></p>
-  <% else %>
-  <table class="table">
-    <thead>
-      <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <% @verb.response_body_properties.each do |item| %>
-        <tr>
-          <td><%= item.name %></td>
-          <td><%= item.type %></td>
-          <td><%= truncate item.format, length: 32 %></td>
-          <td><%= item.required %></td>
-          <td><%= truncate item.description, length: 64 %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <h2>Models</h2><!-- response models -->
-
-  <p><br/><%= link_to "Create a model", new_specification_path_verb_response_model_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
-
-  <% if @verb.response_models.count == 0 %>
-  None
-  <% else %>
-  <% @verb.response_models.each do |rspm| %>
-  <h4>
-    <%= rspm.name %>
-    <%= link_to "Edit", edit_specification_path_verb_response_model_path(@spec, @path, @verb, rspm), class: "btn btn-primary btn-xs" %>
-    <%= link_to "Destroy", specification_path_verb_response_model_path(@spec, @path, @verb, rspm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
-  </h4>
-    <% if rspm.response_model_properties.count == 0 %>
-    <p>None</p>
+    <p><br/><%= link_to "Edit", edit_specification_path_verb_response_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+    <% if @verb.response_body_properties.count == 0 %>
+        <p><%= @verb.response_body_text %></p>
     <% else %>
-    <table class="table">
-      <thead>
-        <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
-      </thead>
-      <tbody>
-        <% rspm.response_model_properties.each do |item| %>
-          <tr>
-            <td><%= item.name %></td>
-            <td><%= item.type %></td>
-            <td><%= truncate item.format, length: 32 %></td>
-            <td><%= item.required %></td>
-            <td><%= truncate item.description, length: 64 %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+        <table class="table">
+          <thead>
+            <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <% @verb.response_body_properties.each do |item| %>
+              <tr>
+                <td><%= item.name %></td>
+                <td><%= item.type %></td>
+                <td><%= truncate item.format, length: 32 %></td>
+                <td><%= item.required %></td>
+                <td><%= truncate item.description, length: 64 %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
     <% end %>
-  <% end %>
-  <% end %>
-  <% end %>
 </div><!-- tab #4 -->
 
 </div><!-- tabs -->
