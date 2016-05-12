@@ -30,14 +30,13 @@ class SpecificationsController < ApplicationController
     redirect_to spec
   end
 
-  def swagger_json
+  def swagger
     spec = Specification.find(params[:id])
-    render text: JSON.pretty_generate(spec.swagger) + "\n", content_type: 'text/json'
-  end
-
-  def swagger_yaml
-    spec = Specification.find(params[:id])
-    render text: spec.swagger.to_yaml + "\n", content_type: 'text/yaml'
+    editions = (params[:v] || 'Basic').split(',').collect(&:strip)
+    respond_to do |format|
+      format.yaml { render text: spec.swagger(editions).to_yaml + "\n", content_type: 'text/yaml' }
+      format.json { render text: JSON.pretty_generate(spec.swagger(editions)) + "\n", content_type: 'text/json' }
+    end
   end
 
   private

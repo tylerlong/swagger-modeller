@@ -9,15 +9,25 @@
 <table class="table">
   <thead>
     <tr><th>Specification</th><th>Description</th>
-    <th>Swagger Spec (Json)</th><th>Swagger Spec (Yaml)</th></tr>
+    <th>Basic Spec</th><th>Advanced Spec</th><th>Internal Spec</th></tr>
   </thead>
   <tbody>
   <% Specification.all.each do |spec| %>
     <tr>
       <td><%= link_to spec.display_name, spec %></td>
       <td><%= truncate spec.description, length: 64 %></td>
-      <td><%= link_to 'Download', swagger_json_specification_path(spec), class: 'btn btn-info' %></td>
-      <td><%= link_to 'Download', swagger_yaml_specification_path(spec), class: 'btn btn-info' %></td>
+      <td>
+        <%= link_to 'JSON', swagger_specification_path(spec, format: 'json', v: 'Basic'), class: 'btn btn-info' %>
+        <%= link_to 'YAML', swagger_specification_path(spec, format: 'yaml', v: 'Basic'), class: 'btn btn-info' %>
+      </td>
+      <td>
+        <%= link_to 'JSON', swagger_specification_path(spec, format: 'json', v: 'Basic,Advanced'), class: 'btn btn-info' %>
+        <%= link_to 'YAML', swagger_specification_path(spec, format: 'yaml', v: 'Basic,Advanced'), class: 'btn btn-info' %>
+      </td>
+      <td>
+        <%= link_to 'JSON', swagger_specification_path(spec, format: 'json', v: 'Basic,Advanced,Internal'), class: 'btn btn-info' %>
+        <%= link_to 'YAML', swagger_specification_path(spec, format: 'yaml', v: 'Basic,Advanced,Internal'), class: 'btn btn-info' %>
+      </td>
     </tr>
   <% end %>
   </tbody>

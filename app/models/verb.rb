@@ -50,8 +50,8 @@ class Verb < ActiveRecord::Base
     end
   end
 
-  def swagger
-    if visibility.include?('Basic') && (status == '' || status == 'Normal')
+  def swagger(editions = ['Basic'])
+    if editions.detect{ |edition| visibility.include?(edition) }.present? && (status == '' || status == 'Normal')
       result = {
         description: name,
         responses: {

@@ -6,10 +6,10 @@ class Path < ActiveRecord::Base
   belongs_to :specification
   has_many :verbs, dependent: :destroy
 
-  def swagger
+  def swagger(editions = ['Basic'])
     result = {}
     verbs.each do |verb|
-      verb_swagger = verb.swagger
+      verb_swagger = verb.swagger(editions)
       if verb_swagger.present?
         result[verb.method.downcase] = verb_swagger
       end

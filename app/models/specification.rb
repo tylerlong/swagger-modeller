@@ -54,7 +54,7 @@ class Specification < ActiveRecord::Base
     end
   end
 
-  def swagger
+  def swagger(editions = ['Basic'])
     result = {
       swagger: '2.0',
       info: {
@@ -73,7 +73,7 @@ class Specification < ActiveRecord::Base
       paths: {},
     }
     paths.each do |path|
-      path_swagger = path.swagger
+      path_swagger = path.swagger(editions)
       if path_swagger.present?
         result[:paths][path.uri] = path_swagger
       end
