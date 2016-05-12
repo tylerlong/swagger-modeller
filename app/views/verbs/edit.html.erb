@@ -19,7 +19,7 @@
   <br/><%= label_tag(:visibility, "Visibility:") %>
   <br/><%= text_field_tag(:visibility, @verb.visibility, class: "form-control", placeholder: "Basic, Advanced, Internal...etc") %>
   <br/><%= label_tag(:status, "Status:") %>
-  <br/><%= select_tag(:status, options_for_select(['Normal', 'Deprecated', 'Disabled'], @verb.status == '' ? 'Normal' : @verb.status), class: "form-control") %>
+  <br/><%= select_tag(:status, options_for_select(['Normal', 'Deprecated', 'Disabled', 'NoDoc'], @verb.status == '' ? 'Normal' : @verb.status), class: "form-control") %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
   <%= link_to "Cancel", specification_path_verb_path(@spec, @path, @verb), class: "btn btn-default" %>
 <% end %>

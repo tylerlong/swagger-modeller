@@ -18,9 +18,14 @@
     1. now they are hidden, going to remove them later
 1. link models, unless it doesn't exist
 1. edit model redirection, annoying. cannot find the model being edit
+    1. models inline editing
 1. Advanced swagger spec
 1. remove duplication of table code in views
     1. create partials
+1. swagger export todo:
+    1. request body enum of models
+    1. request body model
+    1. request is Binary (update profile image)
 
 
 ## notes

@@ -6,8 +6,8 @@ module VerbsHelper
     if verb.status == 'Deprecated'
       return raw '<span class="label label-warning">Deprecated</span>'
     end
-    if verb.status == 'Disabled'
-      return raw '<span class="label label-danger">Disabled</span>'
+    if verb.status == 'Disabled' || verb.status == 'NoDoc'
+      return raw "<span class=\"label label-danger\">#{verb.status}</span>"
     end
     return raw "<span class=\"label label-info\">#{verb.status}</span>"
   end

@@ -6,7 +6,7 @@ module ModelProperty
       return nil
     end
     dict = { name: name, description: description }
-    if description.start_with?('Required.')
+    if description.start_with?('Required.') || description.start_with?('Mandatory.')
       dict[:required] = true
     end
     if type.start_with?('Collection of ') # array
