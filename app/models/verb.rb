@@ -63,7 +63,14 @@ class Verb < ActiveRecord::Base
 
 
       # parameters
-      parameters = query_parameters.collect(&:swagger) + request_body_properties.collect(&:swagger)
+      parameters = query_parameters.collect(&:swagger)
+      if request_body_properties.present?
+        request_body = { name: 'body', in: 'body', schema: { type: 'object', properties: {} } }
+        request_body_properties.each do |rbp|
+          request_body[:schema][:properties][rbp.name] = rbp.swagger
+        end
+        parameters << request_body
+      end
       if parameters.present?
         result[:parameters] = parameters
       end
