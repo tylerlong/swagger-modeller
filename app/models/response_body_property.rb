@@ -13,4 +13,8 @@ class ResponseBodyProperty < ActiveRecord::Base
     dict = ModelProperty.parse(row)
     dict.nil? ? nil : ResponseBodyProperty.new(dict)
   end
+
+  def swagger
+    ModelProperty.swagger(self)
+  end
 end

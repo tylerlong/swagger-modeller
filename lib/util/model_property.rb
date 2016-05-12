@@ -48,4 +48,28 @@ module ModelProperty
   end
   module_function :parse
 
+  def swagger(prop)
+    result = {
+      type: prop.type,
+      description: prop.description,
+    }
+    if prop.type == 'array'
+      result[:items] = { type: prop.format }
+      if not ['integer', 'array', 'string', 'boolean'].include? prop.format
+        result[:items] = { "$ref" => '#/definitions/' + prop.format }
+      end
+    end
+    if not ['integer', 'array', 'string', 'boolean'].include? prop.type # custom type
+      result = { "$ref" => '#/definitions/' + prop.type }
+    end
+    if prop.type == 'string' and prop.format.start_with?("'") and prop.format.end_with?("'") #enum
+      result[:enum] = prop.format.split('|').collect{ |word| word.gsub(/\A[\s']+|[\s']+\z/,'') }
+    end
+    if (prop.type == 'string' and prop.format == 'date-time') or (prop.type == 'integer' and prop.format.present?)
+      result[:format] = prop.format
+    end
+    result
+  end
+  module_function :swagger
+
 end

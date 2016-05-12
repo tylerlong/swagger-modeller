@@ -57,18 +57,24 @@ class Verb < ActiveRecord::Base
         responses: {
           default: {
             description: 'OK',
-            schema: {},
           },
         },
       }
-      if response_body_properties.blank? && response_body_text.present?
-        if response_body_text = 'binary'
-          result[:responses][:default][:schema] = { type: 'string', format: 'binary' }
+      if response_body_properties.blank?
+        if response_body_text.present? # model name
+          if response_body_text == 'Binary' # binary model
+            result[:responses][:default][:schema] = { type: 'string', format: 'binary' }
+          else # global model
+            result[:responses][:default][:schema] = { '$ref' => '#/definitions/' + response_body_text }
+          end
         else
-          result[:responses][:default][:schema]['$ref'] = '#/definitions/' + response_body_text
+          # no response at all
         end
-      else
-        # todo: { type: object, properties: {  } }
+      else # list of properties
+        result[:responses][:default][:schema] = { type: 'object', properties: {} }
+        response_body_properties.each do |rbp|
+          result[:responses][:default][:schema][:properties][rbp.name] = rbp.swagger
+        end
       end
       return result
     end
