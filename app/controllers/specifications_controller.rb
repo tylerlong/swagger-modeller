@@ -32,7 +32,7 @@ class SpecificationsController < ApplicationController
 
   def swagger_json
     spec = Specification.find(params[:id])
-    render json: spec.swagger
+    render text: JSON.pretty_generate(spec.swagger) + "\n", content_type: 'text/json'
   end
 
   def swagger_yaml
