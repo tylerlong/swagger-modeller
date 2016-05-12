@@ -60,6 +60,16 @@ class Verb < ActiveRecord::Base
           },
         },
       }
+
+
+      # parameters
+      parameters = query_parameters.collect(&:swagger) + request_body_properties.collect(&:swagger)
+      if parameters.present?
+        result[:parameters] = parameters
+      end
+
+
+      # response
       if response_body_properties.blank?
         if response_body_text.present? # model name
           if response_body_text == 'Binary' # binary model
@@ -76,6 +86,8 @@ class Verb < ActiveRecord::Base
           result[:responses][:default][:schema][:properties][rbp.name] = rbp.swagger
         end
       end
+
+
       return result
     end
   end

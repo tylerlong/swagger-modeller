@@ -13,4 +13,11 @@ class QueryParameter < ActiveRecord::Base
     dict = ModelProperty.parse(row)
     dict.nil? ? nil : QueryParameter.new(dict)
   end
+
+  def swagger
+    result = ModelProperty.swagger(self)
+    result[:name] = name
+    result[:in] = 'query'
+    result
+  end
 end

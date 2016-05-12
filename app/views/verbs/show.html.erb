@@ -91,40 +91,45 @@
   </tbody>
 </table>
 
-<h2>Models</h2><!-- request models -->
 
-<p><br/><%= link_to "Create a model", new_specification_path_verb_request_model_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+<!-- request models
+      <h2>Models</h2>
 
-<% if @verb.request_models.count == 0 %>
-None
-<% else %>
-<% @verb.request_models.each do |reqm| %>
-<h4>
-  <%= reqm.name %>
-  <%= link_to "Edit", edit_specification_path_verb_request_model_path(@spec, @path, @verb, reqm), class: "btn btn-primary btn-xs" %>
-  <%= link_to "Destroy", specification_path_verb_request_model_path(@spec, @path, @verb, reqm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
-</h4>
-  <% if reqm.request_model_properties.count == 0 %>
-  <p>None</p>
-  <% else %>
-  <table class="table">
-    <thead>
-      <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <% reqm.request_model_properties.each do |item| %>
-        <tr>
-          <td><%= item.name %></td>
-          <td><%= item.type %></td>
-          <td><%= truncate item.format, length: 32 %></td>
-          <td><%= item.required %></td>
-          <td><%= truncate item.description, length: 64 %></td>
-        </tr>
+      <p><br/><%= link_to "Create a model", new_specification_path_verb_request_model_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+
+      <% if @verb.request_models.count == 0 %>
+      None
+      <% else %>
+      <% @verb.request_models.each do |reqm| %>
+      <h4>
+        <%= reqm.name %>
+        <%= link_to "Edit", edit_specification_path_verb_request_model_path(@spec, @path, @verb, reqm), class: "btn btn-primary btn-xs" %>
+        <%= link_to "Destroy", specification_path_verb_request_model_path(@spec, @path, @verb, reqm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
+      </h4>
+        <% if reqm.request_model_properties.count == 0 %>
+          <p>None</p>
+        <% else %>
+          <table class="table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <% reqm.request_model_properties.each do |item| %>
+                <tr>
+                  <td><%= item.name %></td>
+                  <td><%= item.type %></td>
+                  <td><%= truncate item.format, length: 32 %></td>
+                  <td><%= item.required %></td>
+                  <td><%= truncate item.description, length: 64 %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
       <% end %>
-    </tbody>
-  </table>
-  <% end %>
-<% end %>
+-->
+
+
 <% end %>
 <% end %>
 

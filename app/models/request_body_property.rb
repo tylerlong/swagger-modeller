@@ -13,4 +13,17 @@ class RequestBodyProperty < ActiveRecord::Base
     dict = ModelProperty.parse(row)
     dict.nil? ? nil : RequestBodyProperty.new(dict)
   end
+
+  def swagger
+    # result = ModelProperty.swagger(self)
+    # result[:name] = name
+    # result[:in] = 'request'
+    # result
+    {
+      name: name,
+      in: 'body',
+      description: description,
+      schema: ModelProperty.swagger(self)
+    }
+  end
 end
