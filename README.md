@@ -30,6 +30,7 @@
 1. check duplicate models
     1. same properties list but different name
 1. check weird named top level models, make them non-top level.
+1. swagger required attribute
 
 
 ## notes

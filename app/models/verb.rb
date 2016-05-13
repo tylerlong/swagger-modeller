@@ -51,67 +51,74 @@ class Verb < ActiveRecord::Base
   end
 
   def swagger(editions = ['Basic'])
-    if editions.detect{ |edition| visibility.include?(edition) }.present? && (status == '' || status == 'Normal')
-      result = {
-        description: name,
-        responses: {
-          default: {
-            description: 'OK',
-          },
-        },
-      }
+    if not (editions.detect{ |edition| visibility.include?(edition) }.present? && (status == '' || status == 'Normal'))
+      return nil
+    end
 
-      # parameters
-      parameters = query_parameters.collect(&:swagger)
-      request_body = { name: 'body', in: 'body', schema: {} }
-      if request_body_properties.present? # table of properties
-        request_body[:schema] = { type: 'object', properties: {} }
-        request_body_properties.each do |rbp|
-          request_body[:schema][:properties][rbp.name] = rbp.swagger
+    result = {
+      description: name,
+      responses: {
+        default: {
+          description: 'OK',
+        },
+      },
+    }
+
+    ### parameters ###
+
+    # query parameters
+    parameters = query_parameters.collect(&:swagger)
+
+    # request body parameters
+    request_body = { name: 'body', in: 'body', schema: {} }
+    if request_body_properties.present? # table of properties
+      request_body[:schema] = { type: 'object', properties: {} }
+      request_body_properties.each do |rbp|
+        request_body[:schema][:properties][rbp.name] = rbp.swagger
+      end
+    else
+      if request_body_text.present?
+        if request_body_text == 'Binary'
+          request_body[:schema] = { type: 'string', format: 'binary' }
+        elsif request_body_text.include? "\n" # enum of models
+          request_body[:schema] = {
+            type: 'object',
+            enum: request_body_text.split(/[\r\n]+/).reject(&:blank?).collect do |model|
+              { '$ref' => "#/definitions/#{model}" }
+            end
+          }
+        else # model
+          request_body[:schema] = { '$ref' => "#/definitions/#{request_body_text}" }
+        end
+      end
+    end
+    if request_body[:schema].present?
+      parameters << request_body
+    end
+
+    if parameters.present?
+      result[:parameters] = parameters
+    end
+
+    ### response ###
+    if response_body_properties.blank?
+      if response_body_text.present? # model name
+        if response_body_text == 'Binary' # binary model
+          result[:responses][:default][:schema] = { type: 'string', format: 'binary' }
+        else # global model
+          result[:responses][:default][:schema] = { '$ref' => "#/definitions/#{response_body_text}" }
         end
       else
-        if request_body_text.present?
-          if request_body_text == 'Binary'
-            request_body[:schema] = { type: 'string', format: 'binary' }
-          elsif request_body_text.include? "\n" # enum of models
-            request_body[:schema] = {
-              type: 'object',
-              enum: request_body_text.split(/[\r\n]+/).reject(&:blank?).collect do |model|
-                { '$ref' => "#/definitions/#{model}" }
-              end
-            }
-          else # model
-            request_body[:schema] = { '$ref' => "#/definitions/#{request_body_text}" }
-          end
-        end
+        # no response at all
       end
-      if request_body[:schema].present?
-        parameters << request_body
+    else # list of properties
+      result[:responses][:default][:schema] = { type: 'object', properties: {} }
+      response_body_properties.each do |rbp|
+        result[:responses][:default][:schema][:properties][rbp.name] = rbp.swagger
       end
-
-      if parameters.present?
-        result[:parameters] = parameters
-      end
-
-      # response
-      if response_body_properties.blank?
-        if response_body_text.present? # model name
-          if response_body_text == 'Binary' # binary model
-            result[:responses][:default][:schema] = { type: 'string', format: 'binary' }
-          else # global model
-            result[:responses][:default][:schema] = { '$ref' => '#/definitions/' + response_body_text }
-          end
-        else
-          # no response at all
-        end
-      else # list of properties
-        result[:responses][:default][:schema] = { type: 'object', properties: {} }
-        response_body_properties.each do |rbp|
-          result[:responses][:default][:schema][:properties][rbp.name] = rbp.swagger
-        end
-      end
-
-      return result
     end
+
+    return result
+
   end
 end
