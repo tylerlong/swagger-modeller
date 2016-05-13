@@ -22,17 +22,25 @@
 1. Advanced swagger spec
 1. remove duplication of table code in views
     1. create partials
+    1. show #. of properties
 1. swagger export todo:
     1. request body enum of models
     1. request body model
     1. request is Binary (update profile image)
+1. show verbs inline with paths. collapse
+1. path parameters don't support enum, such as `scaleSize`.
+    1. reuse code of properties
+    1. reuse table? active record inheritance
+1. check duplicate models
+    1. same properties list but different name
+1. check weird named top level models, make them non-top level.
 
 
 ## notes
 
 1. In API Reference doc, "Collection of parameters" means following parameters in the table.
 1. In swagger spec, every `type: xxx`  could be replaced with `$ref: xxx`
-1. in erb files, `<% end %>` in commented code still take effects.
+1. in erb files, `<% end %>` in commented code still takes effects.
 
 
 ## commands
