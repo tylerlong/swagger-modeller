@@ -17,13 +17,7 @@ class PathParameter < ActiveRecord::Base
   def self.swagger
     result = {}
     PathParameter.all.each do |pp|
-      result[pp.name] = {
-        name: pp.name,
-        in: 'path',
-        description: pp.description,
-        type: pp.type,
-        required: true,
-      }
+      result[pp.name] = { name: pp.name, in: 'path', required: true }.merge ModelProperty.swagger(pp)
     end
     result
   end
