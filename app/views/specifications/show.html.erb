@@ -63,9 +63,21 @@
 <div role="tabpanel" class="tab-pane" id="path_parameters">
   <p><br/><%= link_to "Edit", edit_specification_path_parameters_path(@spec), class: "btn btn-primary" %></p>
   <table class="table">
-    <tr><th>#.</th><th>Name</th><th>Type</th><th>Description</th></tr>
+    <tr>
+      <th>#.</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Format</th>
+      <th>Description</th>
+    </tr>
     <% @spec.path_parameters.each_with_index do |papa, index| %>
-    <tr><td><%= index + 1 %>.</td><td><%= papa.name %></td><td><%= papa.type %></td><td><%= truncate papa.description, length: 64 %></td></tr>
+    <tr>
+      <td><%= index + 1 %>.</td>
+      <td><%= papa.name %></td>
+      <td><%= papa.type %></td>
+      <td><%= papa.format %></td>
+      <td><%= truncate papa.description, length: 64 %></td>
+    </tr>
     <% end %>
   </table>
 </div><!-- tab #3 -->

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509133352) do
+ActiveRecord::Schema.define(version: 20160513085927) do
 
   create_table "common_model_properties", force: :cascade do |t|
     t.integer  "common_model_id",                 null: false
@@ -49,12 +49,15 @@ ActiveRecord::Schema.define(version: 20160509133352) do
   add_index "definitions", ["specification_id", "name"], name: "index_definitions_on_specification_id_and_name", unique: true
 
   create_table "path_parameters", force: :cascade do |t|
-    t.integer  "specification_id", null: false
-    t.string   "name",             null: false
-    t.string   "type",             null: false
-    t.string   "description",      null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "specification_id",                null: false
+    t.string   "name",                            null: false
+    t.string   "type",                            null: false
+    t.string   "description",                     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "format",           default: ""
+    t.boolean  "required",         default: true
+    t.integer  "position",         default: 0
   end
 
   add_index "path_parameters", ["specification_id", "name"], name: "index_path_parameters_on_specification_id_and_name", unique: true
@@ -173,8 +176,8 @@ ActiveRecord::Schema.define(version: 20160509133352) do
   add_index "response_models", ["verb_id", "name"], name: "index_response_models_on_verb_id_and_name", unique: true
 
   create_table "specifications", force: :cascade do |t|
-    t.string   "version",        null: false
-    t.string   "title",          null: false
+    t.string   "version",                           null: false
+    t.string   "title",                             null: false
     t.string   "description"
     t.string   "termsOfService"
     t.string   "host"
@@ -182,8 +185,9 @@ ActiveRecord::Schema.define(version: 20160509133352) do
     t.string   "schemes"
     t.string   "produces"
     t.string   "consumes"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "path_parameters_text", default: ""
   end
 
   add_index "specifications", ["version", "title"], name: "index_specifications_on_version_and_title", unique: true

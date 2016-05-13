@@ -12,19 +12,17 @@ class Specification < ActiveRecord::Base
     "#{title} #{version}"
   end
 
-  def path_parameters_text
-    self.path_parameters.collect{ |item| "#{item.name}\t#{item.type}\t#{item.description}" }.join("\n")
-  end
-
   require_dependency 'util/properties_model'
 
-  def path_parameters_text=(data)
-    rows = data.split("\n").collect(&:strip).reject(&:blank?)
-    items = rows.collect do |row|
-      name, type, description = row.split("\t").collect(&:strip).reject(&:blank?)
-      self.path_parameters.build({ name: name, type: type, description: description })
+  def update_properties!
+    PropertiesModel.update_properties!(path_parameters, parse_properties)
+  end
+
+  def parse_properties
+    PropertiesModel.parse(path_parameters_text, PathParameter).collect do |item|
+      item.specification = self
+      item
     end
-    PropertiesModel.update_properties!(path_parameters, items)
   end
 
   # https://docs.google.com/spreadsheets/d/1Lne2Jz34J9mJ7shlVqglEy12JlmXtweeqHsHXTXHzaM/edit?ts=570c4d57#gid=1204854372

@@ -8,6 +8,12 @@ class PathParameter < ActiveRecord::Base
   validates :description, presence: true
   belongs_to :specification
 
+  require_dependency 'util/model_property'
+  def self.parse(row)
+    dict = ModelProperty.parse(row)
+    dict.nil? ? nil : PathParameter.new(dict)
+  end
+
   def self.swagger
     result = {}
     PathParameter.all.each do |pp|
