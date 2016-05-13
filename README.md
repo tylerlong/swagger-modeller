@@ -37,6 +37,9 @@
 
 ## commands
 
+
+##### Commands below are obsolete, please don't execute them.
+
 Validate definitions:
 
 ```
