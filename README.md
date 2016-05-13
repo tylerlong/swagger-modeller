@@ -21,9 +21,7 @@
     1. create partials
     1. show #. of properties
 1. show verbs inline with paths. collapse
-1. path parameters don't support enum, such as `scaleSize`.
-    1. reuse code of properties
-    1. reuse table? -- active record inheritance
+1. reuse db table? -- active record inheritance
 1. check duplicate models automatically
     1. same properties list but different name
 1. check weird named top level models, make them non-top level.
