@@ -23,10 +23,6 @@
 1. remove duplication of table code in views
     1. create partials
     1. show #. of properties
-1. swagger export todo:
-    1. request body enum of models
-    1. request body model
-    1. request is Binary (update profile image)
 1. show verbs inline with paths. collapse
 1. path parameters don't support enum, such as `scaleSize`.
     1. reuse code of properties

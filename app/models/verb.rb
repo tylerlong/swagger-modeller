@@ -61,20 +61,37 @@ class Verb < ActiveRecord::Base
         },
       }
 
-
       # parameters
       parameters = query_parameters.collect(&:swagger)
-      if request_body_properties.present?
-        request_body = { name: 'body', in: 'body', schema: { type: 'object', properties: {} } }
+      request_body = { name: 'body', in: 'body', schema: {} }
+      if request_body_properties.present? # table of properties
+        request_body[:schema] = { type: 'object', properties: {} }
         request_body_properties.each do |rbp|
           request_body[:schema][:properties][rbp.name] = rbp.swagger
         end
+      else
+        if request_body_text.present?
+          if request_body_text == 'Binary'
+            request_body[:schema] = { type: 'string', format: 'binary' }
+          elsif request_body_text.include? "\n" # enum of models
+            request_body[:schema] = {
+              type: 'object',
+              enum: request_body_text.split(/[\r\n]+/).reject(&:blank?).collect do |model|
+                { '$ref' => "#/definitions/#{model}" }
+              end
+            }
+          else # model
+            request_body[:schema] = { '$ref' => "#/definitions/#{request_body_text}" }
+          end
+        end
+      end
+      if request_body[:schema].present?
         parameters << request_body
       end
+
       if parameters.present?
         result[:parameters] = parameters
       end
-
 
       # response
       if response_body_properties.blank?
@@ -93,7 +110,6 @@ class Verb < ActiveRecord::Base
           result[:responses][:default][:schema][:properties][rbp.name] = rbp.swagger
         end
       end
-
 
       return result
     end
