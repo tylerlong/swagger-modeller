@@ -66,6 +66,17 @@ class Specification < ActiveRecord::Base
       schemes: schemes.split(/\s+/).reject(&:blank?),
       produces: produces.split(/\s+/).reject(&:blank?),
       consumes: consumes.split(/\s+/).reject(&:blank?),
+      securityDefinitions: {
+        oauth: {
+          type: 'oauth2',
+          flow: 'accessCode',
+          authorizationUrl: 'https://platform.devtest.ringcentral.com/restapi/oauth/authorize',
+          tokenUrl: 'https://platform.devtest.ringcentral.com/restapi/oauth/token',
+          scopes: {
+            default: 'default permissions',
+          },
+        },
+      },
       parameters: PathParameter.swagger,
       definitions: CommonModel.swagger,
       paths: {},
