@@ -23,9 +23,9 @@
   <br/><%= label_tag(:schemes, "Schemes:") %>
   <br/><%= text_field_tag(:schemes, @spec.schemes, class: "form-control") %>
   <br/><%= label_tag(:produces, "Produces:") %>
-  <br/><%= text_field_tag(:produces, @spec.schemes, class: "form-control") %>
+  <br/><%= text_field_tag(:produces, @spec.produces, class: "form-control") %>
   <br/><%= label_tag(:consumes, "Consumes:") %>
-  <br/><%= text_field_tag(:consumes, @spec.schemes, class: "form-control") %>
+  <br/><%= text_field_tag(:consumes, @spec.consumes, class: "form-control") %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
   <%= link_to "Cancel", @spec, class: "btn btn-default" %>
 <% end %>
