@@ -68,6 +68,9 @@ module ModelProperty
     if (prop.type == 'string' and prop.format == 'date-time') or (prop.type == 'integer' and prop.format.present?)
       result[:format] = prop.format
     end
+    if prop.name == 'accountId' || prop.name == 'extensionId'
+      result[:default] = '~'
+    end
     result
   end
   module_function :swagger
