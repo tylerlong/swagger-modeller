@@ -77,6 +77,9 @@ class Specification < ActiveRecord::Base
           },
         },
       },
+      security: [{
+        oauth: ['default'],
+      },],
       parameters: PathParameter.swagger,
       definitions: CommonModel.swagger,
       paths: {},
