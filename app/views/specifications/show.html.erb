@@ -16,7 +16,6 @@
   <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
   <li role="presentation"><a href="#path_parameters" aria-controls="path_parameters" role="tab" data-toggle="tab">Path Parameters</a></li>
   <li role="presentation"><a href="#paths" aria-controls="paths" role="tab" data-toggle="tab">Paths</a></li>
-  <!-- <li role="presentation"><a href="#definitions" aria-controls="definitions" role="tab" data-toggle="tab">Definitions</a></li> -->
   <li role="presentation"><a href="#models" aria-controls="models" role="tab" data-toggle="tab">Models</a></li>
 </ul>
 
@@ -83,46 +82,7 @@
 </div><!-- tab #3 -->
 
 
-<!-- tab #4: definitions -->
-<div role="tabpanel" class="tab-pane" id="definitions">
-  <p>
-  <br/><%= link_to "Create a definition", new_specification_definition_path(@spec), class: "btn btn-primary" %>
-  </p>
-
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <% @spec.definitions.group_by(&:prefix).each do |key, group| %>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="heading<%= key %>">
-        <h4 class="panel-title">
-          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= key %>" aria-expanded="false" aria-controls="collapse<%= key %>">
-            <%= key %>
-          </a>
-        </h4>
-      </div>
-      <div id="collapse<%= key %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= key %>">
-        <div class="panel-body">
-          <table class="table">
-            <thead>
-              <tr><th>Name</th><th>Description</th></tr>
-            </thead>
-            <tbody>
-              <% group.each do |defi| %>
-                <tr>
-                  <td><%= link_to defi.name, specification_definition_path(@spec, defi) %></td>
-                  <td><%= truncate defi.description, length: 64 %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  </div>
-</div><!-- tab #4 -->
-
-
-<!-- tab #5: models -->
+<!-- tab #4: models -->
 <div role="tabpanel" class="tab-pane" id="models">
   <p>
   <br/><%= link_to "Create a model", new_specification_common_model_path(@spec), class: "btn btn-primary" %>
@@ -157,7 +117,7 @@
       </div>
     </div>
   <% end %>
-</div><!-- tab #5 -->
+</div><!-- tab #4 -->
 
 </div><!-- tabs -->
 

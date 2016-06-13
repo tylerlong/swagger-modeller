@@ -59,7 +59,6 @@ Rails.application.routes.draw do
   resources :specifications do
     get 'swagger', on: :member
     resources :common_models, path: '/models'
-    resources :definitions
     resources :paths do
       resources :verbs, path: '/requests' do
         resources :query_parameters, only: [] do
@@ -82,10 +81,6 @@ Rails.application.routes.draw do
       get 'edit', on: :collection
       put 'update', on: :collection
     end
-  end
-
-  resources :definitions, only: [] do
-    get 'search', on: :collection
   end
 
 end

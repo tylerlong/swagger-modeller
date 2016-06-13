@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513085927) do
+ActiveRecord::Schema.define(version: 20160613092445) do
 
   create_table "common_model_properties", force: :cascade do |t|
     t.integer  "common_model_id",                 null: false
@@ -36,17 +36,6 @@ ActiveRecord::Schema.define(version: 20160513085927) do
   end
 
   add_index "common_models", ["specification_id", "name"], name: "index_common_models_on_specification_id_and_name", unique: true
-
-  create_table "definitions", force: :cascade do |t|
-    t.integer  "specification_id", null: false
-    t.string   "name",             null: false
-    t.string   "description"
-    t.string   "properties_text"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "definitions", ["specification_id", "name"], name: "index_definitions_on_specification_id_and_name", unique: true
 
   create_table "path_parameters", force: :cascade do |t|
     t.integer  "specification_id",                null: false

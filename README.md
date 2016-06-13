@@ -13,10 +13,6 @@ Swagger Specification built with Swagger Modeller:
 1. compare endpoint with RoR routes. interesting
     1. give each path a name, then `create`, `update`...etc.
 1. flash messages
-1. What is Rails concerns folder for?
-    1. http://stackoverflow.com/questions/14541823/how-to-use-concerns-in-rails-4
-1. remove definitions
-    1. now it is hidden. going to remove it later
 1. remove request_model and response_model
     1. now they are hidden, going to remove them later
 1. link models, unless it doesn't exist
