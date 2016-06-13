@@ -34,8 +34,27 @@ class SpecificationsController < ApplicationController
     spec = Specification.find(params[:id])
     editions = (params[:v] || 'Basic').split(',').collect(&:strip)
     respond_to do |format|
-      format.yaml { render text: spec.swagger(editions).to_yaml + "\n", content_type: 'text/yaml' }
-      format.json { render text: JSON.pretty_generate(spec.swagger(editions)) + "\n", content_type: 'text/json' }
+      data = spec.swagger(editions)
+      faxPost = data["paths"]["/restapi/v1.0/account/{accountId}/extension/{extensionId}/fax"]["post"]
+      faxPost['consumes'] = ['multipart/mixed; boundary=Boundary_1_14413901_1361871080888']
+      faxPost['parameters'] = [{ 'name' => 'body', 'in' => 'body', 'type' => 'string',
+        'description' => 'Multi-part MIME consisting of one part JSON body and one part text. For the MIME boundary, in this UI, use "Boundary_1_14413901_1361871080888".',
+        'default' => %{--Boundary_1_14413901_1361871080888
+Content-Type: application/json
+
+{
+  "to":[{"phoneNumber":"18005630003"}],
+  "faxResolution":"High"
+}
+
+--Boundary_1_14413901_1361871080888
+Content-Type: text/plain
+
+Hello World!
+
+--Boundary_1_14413901_1361871080888--} }]
+      format.yaml { render text: data.to_yaml + "\n", content_type: 'text/yaml' }
+      format.json { render text: JSON.pretty_generate(data) + "\n", content_type: 'text/json' }
     end
   end
 
