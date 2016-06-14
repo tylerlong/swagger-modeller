@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
   resources :specifications do
     get 'swagger', on: :member
+    get 'api_explorer', on: :member
     resources :common_models, path: '/models'
     resources :paths do
       resources :verbs, path: '/requests' do

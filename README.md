@@ -6,6 +6,11 @@
 This repository is for RingCentral only, it is not a generic tool. We do have the plan to make it a generic tool in future releases.
 
 
+## Issues
+
+In order to make fax working, we have to do some hack, which makes the swagger spec invalid. So we have separate spec for API Explorer.
+
+
 ## todo
 
 1. import swagger spec

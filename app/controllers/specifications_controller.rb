@@ -35,6 +35,16 @@ class SpecificationsController < ApplicationController
     editions = (params[:v] || 'Basic').split(',').collect(&:strip)
     respond_to do |format|
       data = spec.swagger(editions)
+      format.yaml { render text: data.to_yaml + "\n", content_type: 'text/yaml' }
+      format.json { render text: JSON.pretty_generate(data) + "\n", content_type: 'text/json' }
+    end
+  end
+
+  def api_explorer
+    spec = Specification.find(params[:id])
+    editions = (params[:v] || 'Basic').split(',').collect(&:strip)
+    respond_to do |format|
+      data = spec.swagger(editions)
       faxPost = data["paths"]["/restapi/v1.0/account/{accountId}/extension/{extensionId}/fax"]["post"]
       faxPost['consumes'] = ['multipart/mixed; boundary=Boundary_1_14413901_1361871080888']
       faxPost['parameters'] = [{ 'name' => 'body', 'in' => 'body', 'type' => 'string',
