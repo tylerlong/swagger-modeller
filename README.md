@@ -26,6 +26,7 @@ In order to make fax working, we have to do some hack, which makes the swagger s
 1. reuse db table? -- active record inheritance
 1. swagger required attribute
 1. show graphs
+1. move lib to concerns
 
 
 ## notes

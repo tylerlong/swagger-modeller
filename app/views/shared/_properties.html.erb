@@ -1,10 +1,11 @@
 <table class="table">
   <thead>
-    <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
+    <tr><th>#.</th><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
   </thead>
   <tbody>
-    <% properties.each do |item| %>
+    <% properties.each_with_index do |item, index| %>
       <tr>
+        <td><%= index + 1 %>.</td>
         <td><%= item.name %></td>
         <td><%= item.type %></td>
         <td><%= truncate item.format, length: 32 %></td>
