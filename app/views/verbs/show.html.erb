@@ -44,22 +44,7 @@
 <div role="tabpanel" class="tab-pane" id="query_parameters">
     <p><br/><%= link_to "Edit", edit_specification_path_verb_query_parameters_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
     <% if @verb.query_parameters.count > 0 %>
-        <table class="table">
-          <thead>
-            <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
-          </thead>
-          <tbody>
-            <% @verb.query_parameters.each do |item| %>
-              <tr>
-                <td><%= item.name %></td>
-                <td><%= item.type %></td>
-                <td><%= truncate item.format, length: 32 %></td>
-                <td><%= item.required %></td>
-                <td><%= truncate item.description, length: 64 %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+        <%= render partial: 'shared/properties', locals: { properties: @verb.query_parameters } %>
     <% end %>
 </div><!-- tab #2 -->
 
@@ -70,22 +55,7 @@
         <% if @verb.request_body_properties.count == 0 %>
             <p><%= @verb.request_body_text %></p>
         <% else %>
-            <table class="table">
-              <thead>
-                <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
-              </thead>
-              <tbody>
-                <% @verb.request_body_properties.each do |item| %>
-                  <tr>
-                    <td><%= item.name %></td>
-                    <td><%= item.type %></td>
-                    <td><%= truncate item.format, length: 32 %></td>
-                    <td><%= item.required %></td>
-                    <td><%= truncate item.description, length: 64 %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
+            <%= render partial: 'shared/properties', locals: { properties: @verb.request_body_properties } %>
         <% end %>
     </div>
 <% end %>
@@ -98,22 +68,7 @@
     <% if @verb.response_body_properties.count == 0 %>
         <p><%= @verb.response_body_text %></p>
     <% else %>
-        <table class="table">
-          <thead>
-            <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
-          </thead>
-          <tbody>
-            <% @verb.response_body_properties.each do |item| %>
-              <tr>
-                <td><%= item.name %></td>
-                <td><%= item.type %></td>
-                <td><%= truncate item.format, length: 32 %></td>
-                <td><%= item.required %></td>
-                <td><%= truncate item.description, length: 64 %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+        <%= render partial: 'shared/properties', locals: { properties: @verb.response_body_properties } %>
     <% end %>
 </div><!-- tab #4 -->
 

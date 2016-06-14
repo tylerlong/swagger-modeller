@@ -21,9 +21,7 @@ In order to make fax working, we have to do some hack, which makes the swagger s
 1. link models, unless it doesn't exist
 1. edit model redirection, annoying. cannot find the model being edit
     1. models inline editing
-1. remove duplication of table code in views
-    1. create partials
-    1. show #. of properties
+1. show #. of properties
 1. show verbs inline with paths. collapse
 1. reuse db table? -- active record inheritance
 1. swagger required attribute

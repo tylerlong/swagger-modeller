@@ -98,22 +98,7 @@
       <div class="well">
         <%= link_to "Edit", edit_specification_common_model_path(@spec, comm), class: "btn btn-primary btn-xs" %>
         <%= link_to 'Destroy', specification_common_model_path(@spec, comm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
-        <table class="table">
-          <thead>
-            <tr><th>Name</th><th>Type</th><th>Format</th><th>Required</th><th>Description</th></tr>
-          </thead>
-          <tbody>
-            <% comm.common_model_properties.each do |item| %>
-              <tr>
-                <td><%= item.name %></td>
-                <td><%= item.type %></td>
-                <td><%= truncate item.format, length: 32 %></td>
-                <td><%= item.required %></td>
-                <td><%= truncate item.description, length: 64 %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+        <%= render partial: 'shared/properties', locals: { properties: comm.common_model_properties } %>
       </div>
     </div>
   <% end %>
