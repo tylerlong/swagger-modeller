@@ -69,12 +69,10 @@ Rails.application.routes.draw do
           get 'edit', on: :collection
           put 'update', on: :collection
         end
-        resources :request_models
         resources :response_body_properties, only: [] do
           get 'edit', on: :collection
           put 'update', on: :collection
         end
-        resources :response_models
       end
     end
     resources :path_parameters, only: [] do

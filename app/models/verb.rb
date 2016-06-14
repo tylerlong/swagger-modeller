@@ -8,9 +8,7 @@ class Verb < ActiveRecord::Base
   belongs_to :path
   has_many :query_parameters, dependent: :destroy
   has_many :request_body_properties, dependent: :destroy
-  has_many :request_models, dependent: :destroy
   has_many :response_body_properties, dependent: :destroy
-  has_many :response_models, dependent: :destroy
 
   require_dependency 'util/properties_model'
 

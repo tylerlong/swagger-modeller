@@ -1,9 +1,9 @@
 # Swagger Modeller
 
-Swagger Specification built with Swagger Modeller:
 
-- [RingCentral Swagger Specification](https://gist.github.com/tylerlong/c19bc951c99b8994bfa2b540443249d3).
+## important notice
 
+This repository is for RingCentral only, it is not a generic tool. We do have the plan to make it a generic tool in future releases.
 
 
 ## todo
@@ -13,8 +13,6 @@ Swagger Specification built with Swagger Modeller:
 1. compare endpoint with RoR routes. interesting
     1. give each path a name, then `create`, `update`...etc.
 1. flash messages
-1. remove request_model and response_model
-    1. now they are hidden, going to remove them later
 1. link models, unless it doesn't exist
 1. edit model redirection, annoying. cannot find the model being edit
     1. models inline editing
