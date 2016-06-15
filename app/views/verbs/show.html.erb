@@ -53,7 +53,7 @@
     <div role="tabpanel" class="tab-pane" id="request_body">
         <p><br/><%= link_to "Edit", edit_specification_path_verb_request_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
         <% if @verb.request_body_properties.count == 0 %>
-            <p><%= @verb.request_body_text %></p>
+            <p><%= simple_format @verb.request_body_text %></p>
         <% else %>
             <%= render partial: 'shared/properties', locals: { properties: @verb.request_body_properties } %>
         <% end %>
@@ -66,7 +66,7 @@
 <div role="tabpanel" class="tab-pane" id="response_body">
     <p><br/><%= link_to "Edit", edit_specification_path_verb_response_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
     <% if @verb.response_body_properties.count == 0 %>
-        <p><%= @verb.response_body_text %></p>
+        <p><%= simple_format @verb.response_body_text %></p>
     <% else %>
         <%= render partial: 'shared/properties', locals: { properties: @verb.response_body_properties } %>
     <% end %>
