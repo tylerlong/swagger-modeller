@@ -14,7 +14,7 @@
   <br/><%= label_tag(:properties_text, "Properties:") %>
   <br/><%= text_area_tag(:properties_text, @comm.properties_text) %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
-  <%= link_to "Cancel", specification_path(@spec, anchor: 'models'), class: "btn btn-default" %>
+  <%= link_to "Cancel", specification_common_model_path(@spec, @comm), class: "btn btn-default" %>
 <% end %>
 
 </div>

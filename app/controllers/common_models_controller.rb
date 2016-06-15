@@ -3,6 +3,11 @@ class CommonModelsController < ApplicationController
     @spec = Specification.find(params[:specification_id])
   end
 
+  def show
+    @spec = Specification.find(params[:specification_id])
+    @comm = CommonModel.find(params[:id])
+  end
+
   def create
     comm = CommonModel.new(comm_params)
     comm.save!

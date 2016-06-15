@@ -1,0 +1,16 @@
+<div class="container">
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'models') %></li>
+  <li class="active"><%= @comm.name %></li>
+</ol>
+
+<h1><%= @comm.name %></h1>
+<%= link_to 'Back', specification_path(@spec, anchor: 'models'), class: "btn btn-info" %>
+<%= link_to 'Edit', edit_specification_common_model_path(@spec, @comm), class: "btn btn-primary" %>
+<%= link_to 'Destroy', specification_common_model_path(@spec, @comm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :method => :delete %>
+
+<%= render partial: 'shared/properties', locals: { properties: @comm.common_model_properties } %>
+
+</div>

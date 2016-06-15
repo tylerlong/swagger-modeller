@@ -79,6 +79,7 @@
   </h4>
     <div class="collapse" id="<%= comm.name.parameterize %>">
       <div class="well">
+        <%= link_to "View", specification_common_model_path(@spec, comm), class: "btn btn-primary btn-xs" %>
         <%= link_to "Edit", edit_specification_common_model_path(@spec, comm), class: "btn btn-primary btn-xs" %>
         <%= link_to 'Destroy', specification_common_model_path(@spec, comm), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
         <%= render partial: 'shared/properties', locals: { properties: comm.common_model_properties } %>
