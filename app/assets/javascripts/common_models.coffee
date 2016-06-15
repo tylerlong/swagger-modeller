@@ -9,10 +9,10 @@ $ ->
       $('textarea').get(0),
       {
         lineNumbers: true,
-        lineWrapping: true,
+        lineWrapping: false,
         viewportMargin: Infinity,
-        tabSize: 16,
-        indentUnit: 16,
+        tabSize: 32,
+        indentUnit: 32,
         indentWithTabs: true,
       }
     )
