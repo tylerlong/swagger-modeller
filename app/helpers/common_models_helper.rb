@@ -16,6 +16,6 @@ module CommonModelsHelper
   def link_to_model(text) # single line or multiple lines
     return raw text.split("\n").collect(&:strip)
       .collect{ |name| link_to name, search_common_models_path(name: name) }
-      .join('<br/>')
+      .join('<br/> &nbsp; or<br/>')
   end
 end
