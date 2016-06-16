@@ -13,7 +13,7 @@ class CommonModelsController < ApplicationController
     comm.save!
     comm.update_properties!
     spec = Specification.find(params[:specification_id])
-    redirect_to specification_url(spec, anchor: 'models')
+    redirect_to specification_common_model_url(spec, comm)
   end
 
   def edit
@@ -26,7 +26,7 @@ class CommonModelsController < ApplicationController
     comm.update_attributes(comm_params)
     comm.update_properties!
     spec = Specification.find(params[:specification_id])
-    redirect_to specification_url(spec, anchor: 'models')
+    redirect_to specification_common_model_url(spec, comm)
   end
 
   def destroy

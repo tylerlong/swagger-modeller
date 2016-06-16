@@ -13,19 +13,10 @@ In order to make fax inside API Explorer working, we have to do some hack, which
 
 ## todo
 
-1. import swagger spec
-    1. export then import, the data should remain unchanged.
-1. compare endpoint with RoR routes. interesting
-    1. give each path a name, then `create`, `update`...etc.
 1. flash messages
-1. link models, unless it doesn't exist
-1. edit model redirection, annoying. cannot find the model being edit
-    1. models inline editing
-1. show verbs inline with paths. collapse
 1. reuse db table? -- active record inheritance
 1. swagger required attribute
 1. show graphs
-1. move lib to concerns
 
 
 ## notes
