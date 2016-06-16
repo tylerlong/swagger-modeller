@@ -17,10 +17,12 @@ In order to make fax inside API Explorer working, we have to do some hack, which
 1. reuse db table? -- active record inheritance
 1. swagger required attribute
 1. show graphs
+1. add validation action, tell user what's wrong
+1. move lib/util to concerns, because no auto reload. have to restart rails server
 
 
 ## notes
 
 1. In API Reference doc, "Collection of parameters" means following parameters in the table.
-1. In swagger spec, every `type: xxx`  could be replaced with `$ref: xxx`
+1. In swagger spec, every `type: xxx` could be replaced with `$ref: xxx`
 1. in erb files, `<% end %>` in commented code still takes effects.

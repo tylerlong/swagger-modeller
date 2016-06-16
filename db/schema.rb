@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614030805) do
+ActiveRecord::Schema.define(version: 20160616072158) do
 
   create_table "common_model_properties", force: :cascade do |t|
     t.integer  "common_model_id",                 null: false
     t.integer  "position",        default: 0
     t.string   "name",                            null: false
-    t.string   "type",                            null: false
+    t.string   "data_type",                       null: false
     t.string   "description",                     null: false
     t.string   "format",          default: ""
     t.boolean  "required",        default: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20160614030805) do
   create_table "path_parameters", force: :cascade do |t|
     t.integer  "specification_id",                null: false
     t.string   "name",                            null: false
-    t.string   "type",                            null: false
+    t.string   "data_type",                       null: false
     t.string   "description",                     null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20160614030805) do
   create_table "query_parameters", force: :cascade do |t|
     t.integer  "verb_id",                     null: false
     t.string   "name",                        null: false
-    t.string   "type",                        null: false
+    t.string   "data_type",                   null: false
     t.string   "format",      default: ""
     t.boolean  "required",    default: false
     t.string   "description",                 null: false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20160614030805) do
     t.integer  "verb_id",                     null: false
     t.integer  "position",    default: 0
     t.string   "name",                        null: false
-    t.string   "type",                        null: false
+    t.string   "data_type",                   null: false
     t.string   "description",                 null: false
     t.string   "format",      default: ""
     t.boolean  "required",    default: false
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20160614030805) do
     t.integer  "verb_id",                     null: false
     t.integer  "position",    default: 0
     t.string   "name",                        null: false
-    t.string   "type",                        null: false
+    t.string   "data_type",                   null: false
     t.string   "description",                 null: false
     t.string   "format",      default: ""
     t.boolean  "required",    default: false

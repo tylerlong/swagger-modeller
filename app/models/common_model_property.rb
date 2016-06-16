@@ -1,10 +1,9 @@
 class CommonModelProperty < ActiveRecord::Base
   default_scope { order("position ASC") }
 
-  self.inheritance_column = 'table_type' # http://stackoverflow.com/questions/11470011/activerecordsubclassnotfound
   validates :common_model_id, presence: true
   validates :name, presence: true, uniqueness: { scope: :common_model_id }
-  validates :type, presence: true
+  validates :data_type, presence: true
   validates :description, presence: true
   belongs_to :common_model
 

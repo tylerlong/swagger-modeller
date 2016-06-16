@@ -11,7 +11,7 @@
 <%= form_tag(specification_path_parameters_path(@spec), method: "put") do %>
   <%= text_area_tag(:path_parameters_text, @spec.path_parameters_text) %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
-  <%= link_to "Cancel", specification_path(@spec, anchor: 'paths'), class: "btn btn-default" %>
+  <%= link_to "Cancel", specification_path(@spec, anchor: 'path_parameters'), class: "btn btn-default" %>
 <% end %>
 
 </div>

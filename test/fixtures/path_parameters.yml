@@ -3,11 +3,11 @@
 one:
   specification_id: 1
   name: MyString
-  type: 
+  data_type:
   description: MyString
 
 two:
   specification_id: 1
   name: MyString
-  type: 
+  data_type:
   description: MyString

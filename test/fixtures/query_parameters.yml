@@ -3,7 +3,7 @@
 one:
   verb_id: 1
   name: MyString
-  type: 
+  data_type:
   format: MyString
   required: false
   description: MyString
@@ -11,7 +11,7 @@ one:
 two:
   verb_id: 1
   name: MyString
-  type: 
+  data_type:
   format: MyString
   required: false
   description: MyString

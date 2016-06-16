@@ -1,13 +1,13 @@
 module CommonModelsHelper
   def link_to_type(prop)
-    if ['integer', 'string', 'boolean', 'array'].include?(prop.type)
-      return prop.type
+    if ['integer', 'string', 'boolean', 'array'].include?(prop.data_type)
+      return prop.data_type
     end
-    return link_to_model prop.type
+    return link_to_model prop.data_type
   end
 
   def link_to_format(prop)
-    if prop.type == 'array' && !['string'].include?(prop.format)
+    if prop.data_type == 'array' && !['string'].include?(prop.format)
       return link_to_model prop.format
     end
     return truncate prop.format, length: 32
