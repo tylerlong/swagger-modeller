@@ -19,10 +19,9 @@
   <li role="presentation"><a href="#models" aria-controls="models" role="tab" data-toggle="tab">Models</a></li>
 </ul>
 
-
 <div class="tab-content">
 
-<!-- tab #1 -->
+<!-- tab #1: info -->
 <div role="tabpanel" class="tab-pane active" id="info">
   <dl>
     <dt>Version</dt>
@@ -46,36 +45,42 @@
   </dl>
 </div><!-- tab #1 -->
 
-<!-- tab #2: paths -->
+<!-- tab #2: path_parameters -->
+<div role="tabpanel" class="tab-pane" id="path_parameters">
+  <p><br/><%= link_to "Edit", edit_specification_path_parameters_path(@spec), class: "btn btn-primary" %></p>
+  <%= render partial: 'shared/properties', locals: { properties: @spec.path_parameters } %>
+</div><!-- tab #2 -->
+
+<!-- tab #3: paths -->
 <div role="tabpanel" class="tab-pane" id="paths">
   <p>
   <br/><%= link_to "Create a path", new_specification_path_path(@spec), class: "btn btn-primary" %>
   </p>
   <table class="table">
     <% @spec.paths.each_with_index do |path, index| %>
-      <tr><td><%= index + 1 %>. <%= link_to path.uri, specification_path_path(@spec, path) %> &nbsp; <%= path_status(path) %></td></tr>
+      <tr><td>
+        <%= index + 1 %>.
+        &nbsp; <%= link_to path.uri, specification_path_path(@spec, path) %>
+        &nbsp; <%= path_status(path) %>
+      </td></tr>
     <% end %>
   </table>
-</div><!-- tab #2 -->
-
-<!-- tab #3: path_parameters -->
-<div role="tabpanel" class="tab-pane" id="path_parameters">
-  <p><br/><%= link_to "Edit", edit_specification_path_parameters_path(@spec), class: "btn btn-primary" %></p>
-  <%= render partial: 'shared/properties', locals: { properties: @spec.path_parameters } %>
 </div><!-- tab #3 -->
-
 
 <!-- tab #4: models -->
 <div role="tabpanel" class="tab-pane" id="models">
   <p>
   <br/><%= link_to "Create a model", new_specification_common_model_path(@spec), class: "btn btn-primary" %>
   </p>
-  <% @spec.common_models.each_with_index do |comm, index| %>
-  <h4>
-    <%= index + 1 %>.
-    <%= link_to comm.name, specification_common_model_path(@spec, comm) %>
-  </h4>
-  <% end %>
+  <table class="table">
+    <% @spec.common_models.each_with_index do |comm, index| %>
+      <tr><td>
+        <%= index + 1 %>.
+        &nbsp; <%= link_to comm.name, specification_common_model_path(@spec, comm) %>
+        &nbsp; <span class="badge" data-toggle="tooltip" data-placement="right" title="<%= pluralize comm.common_model_properties.count, "property" %>"><%= comm.common_model_properties.count %></span>
+      </td></tr>
+    <% end %>
+  </table>
 </div><!-- tab #4 -->
 
 </div><!-- tabs -->
