@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616072158) do
+ActiveRecord::Schema.define(version: 20160616092621) do
 
-  create_table "common_model_properties", force: :cascade do |t|
-    t.integer  "common_model_id",                 null: false
-    t.integer  "position",        default: 0
-    t.string   "name",                            null: false
-    t.string   "data_type",                       null: false
-    t.string   "description",                     null: false
-    t.string   "format",          default: ""
-    t.boolean  "required",        default: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+  create_table "model_properties", force: :cascade do |t|
+    t.integer  "model_id",                    null: false
+    t.integer  "position",    default: 0
+    t.string   "name",                        null: false
+    t.string   "data_type",                   null: false
+    t.string   "description",                 null: false
+    t.string   "format",      default: ""
+    t.boolean  "required",    default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
-  add_index "common_model_properties", ["common_model_id", "name"], name: "index_common_model_properties_on_common_model_id_and_name", unique: true
+  add_index "model_properties", ["model_id", "name"], name: "index_model_properties_on_model_id_and_name", unique: true
 
-  create_table "common_models", force: :cascade do |t|
+  create_table "models", force: :cascade do |t|
     t.integer  "specification_id", null: false
     t.string   "name",             null: false
     t.string   "properties_text",  null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20160616072158) do
     t.datetime "updated_at",       null: false
   end
 
-  add_index "common_models", ["specification_id", "name"], name: "index_common_models_on_specification_id_and_name", unique: true
+  add_index "models", ["specification_id", "name"], name: "index_models_on_specification_id_and_name", unique: true
 
   create_table "path_parameters", force: :cascade do |t|
     t.integer  "specification_id",                null: false

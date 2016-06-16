@@ -9,14 +9,14 @@ class PathParameter < ActiveRecord::Base
 
   require_dependency 'util/model_property'
   def self.parse(row)
-    dict = ModelProperty.parse(row)
+    dict = ModelPropertyUtil.parse(row)
     dict.nil? ? nil : PathParameter.new(dict)
   end
 
   def self.swagger
     result = {}
     PathParameter.all.each do |pp|
-      result[pp.name] = { name: pp.name, in: 'path', required: true }.merge ModelProperty.swagger(pp)
+      result[pp.name] = { name: pp.name, in: 'path', required: true }.merge ModelPropertyUtil.swagger(pp)
     end
     result
   end

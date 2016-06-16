@@ -9,12 +9,12 @@ class QueryParameter < ActiveRecord::Base
 
   require_dependency 'util/model_property'
   def self.parse(row)
-    dict = ModelProperty.parse(row)
+    dict = ModelPropertyUtil.parse(row)
     dict.nil? ? nil : QueryParameter.new(dict)
   end
 
   def swagger
-    result = ModelProperty.swagger(self)
+    result = ModelPropertyUtil.swagger(self)
     result[:name] = name
     result[:in] = 'query'
     result

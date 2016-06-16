@@ -1,4 +1,4 @@
-module ModelProperty
+module ModelPropertyUtil
 
   def parse(row)
     name, data_type, description = row.split("\t").collect(&:strip)

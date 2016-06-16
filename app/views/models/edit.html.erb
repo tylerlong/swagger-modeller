@@ -3,18 +3,18 @@
 <ol class="breadcrumb">
   <li><a href="/">Home</a></li>
   <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'models') %></li>
-  <li class="active"><%= @comm.name %></li>
+  <li class="active"><%= @model.name %></li>
 </ol>
 
 <h1>Edit a model</h1>
 
-<%= form_tag(specification_common_model_path(@spec, @comm), method: "put") do %>
+<%= form_tag(specification_model_path(@spec, @model), method: "put") do %>
   <br/><%= label_tag(:name, "Name:") %>
-  <br/><%= text_field_tag(:name, @comm.name, class: "form-control") %>
+  <br/><%= text_field_tag(:name, @model.name, class: "form-control") %>
   <br/><%= label_tag(:properties_text, "Properties:") %>
-  <br/><%= text_area_tag(:properties_text, @comm.properties_text) %>
+  <br/><%= text_area_tag(:properties_text, @model.properties_text) %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
-  <%= link_to "Cancel", specification_common_model_path(@spec, @comm), class: "btn btn-default" %>
+  <%= link_to "Cancel", specification_model_path(@spec, @model), class: "btn btn-default" %>
 <% end %>
 
 </div>

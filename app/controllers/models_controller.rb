@@ -1,48 +1,48 @@
-class CommonModelsController < ApplicationController
+class ModelsController < ApplicationController
   def new
     @spec = Specification.find(params[:specification_id])
   end
 
   def show
     @spec = Specification.find(params[:specification_id])
-    @comm = CommonModel.find(params[:id])
+    @model = Model.find(params[:id])
   end
 
   def create
-    comm = CommonModel.new(comm_params)
-    comm.save!
-    comm.update_properties!
+    model = Model.new(model_params)
+    model.save!
+    model.update_properties!
     spec = Specification.find(params[:specification_id])
-    redirect_to specification_common_model_url(spec, comm)
+    redirect_to specification_model_url(spec, model)
   end
 
   def edit
     @spec = Specification.find(params[:specification_id])
-    @comm = CommonModel.find(params[:id])
+    @model = Model.find(params[:id])
   end
 
   def update
-    comm = CommonModel.find(params[:id])
-    comm.update_attributes(comm_params)
-    comm.update_properties!
+    model = Model.find(params[:id])
+    model.update_attributes(model_params)
+    model.update_properties!
     spec = Specification.find(params[:specification_id])
-    redirect_to specification_common_model_url(spec, comm)
+    redirect_to specification_model_url(spec, model)
   end
 
   def destroy
-    CommonModel.find(params[:id]).destroy
+    Model.find(params[:id]).destroy
     spec = Specification.find(params[:specification_id])
     redirect_to specification_url(spec, anchor: 'models')
   end
 
   def search
-    comm = CommonModel.find_by_name(params[:name]) or not_found
-    redirect_to specification_common_model_url(comm.specification, comm)
+    model = Model.find_by_name(params[:name]) or not_found
+    redirect_to specification_model_url(model.specification, model)
   end
 
   private
 
-  def comm_params
+  def model_params
     result = params.permit(:name, :properties_text, :specification_id)
     result[:name] = result[:name].gsub(/\s+/, '')
     result

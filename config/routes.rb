@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   resources :specifications do
     get 'swagger', on: :member
     get 'api_explorer', on: :member
-    resources :common_models, path: '/models'
+    resources :models
     resources :paths do
       resources :verbs, path: '/requests' do
         resources :query_parameters, only: [] do
@@ -82,7 +82,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :common_models, only: [] do
+  resources :models, only: [] do
     get 'search', on: :collection
   end
 

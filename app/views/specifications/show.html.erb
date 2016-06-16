@@ -70,14 +70,14 @@
 <!-- tab #4: models -->
 <div role="tabpanel" class="tab-pane" id="models">
   <p>
-  <br/><%= link_to "Create a model", new_specification_common_model_path(@spec), class: "btn btn-primary" %>
+  <br/><%= link_to "Create a model", new_specification_model_path(@spec), class: "btn btn-primary" %>
   </p>
   <table class="table">
-    <% @spec.common_models.each_with_index do |comm, index| %>
+    <% @spec.models.each_with_index do |model, index| %>
       <tr><td>
         <%= index + 1 %>.
-        &nbsp; <%= link_to comm.name, specification_common_model_path(@spec, comm) %>
-        &nbsp; <span class="badge" data-toggle="tooltip" data-placement="right" title="<%= pluralize comm.common_model_properties.count, "property" %>"><%= comm.common_model_properties.count %></span>
+        &nbsp; <%= link_to model.name, specification_model_path(@spec, model) %>
+        &nbsp; <span class="badge" data-toggle="tooltip" data-placement="right" title="<%= pluralize model.model_properties.count, "property" %>"><%= model.model_properties.count %></span>
       </td></tr>
     <% end %>
   </table>

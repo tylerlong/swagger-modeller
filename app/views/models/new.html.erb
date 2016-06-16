@@ -8,7 +8,7 @@
 
 <h1>Create a model</h1>
 
-<%= form_tag(specification_common_models_path(@spec), method: "post") do %>
+<%= form_tag(specification_models_path(@spec), method: "post") do %>
   <br/><%= label_tag(:name, "Name:") %>
   <br/><%= text_field_tag(:name, "", class: "form-control") %>
   <br/><%= label_tag(:properties_text, "Properties:") %>

@@ -1,4 +1,4 @@
-module CommonModelsHelper
+module ModelsHelper
   def link_to_type(prop)
     if ['integer', 'string', 'boolean', 'array'].include?(prop.data_type)
       return prop.data_type
@@ -16,8 +16,8 @@ module CommonModelsHelper
   def link_to_model(text) # single line or multiple lines
     names = text.split("\n").collect(&:strip)
     links = names.collect do |name|
-      if CommonModel.find_by_name(name)
-        link_to name, search_common_models_path(name: name)
+      if Model.find_by_name(name)
+        link_to name, search_models_path(name: name)
       else
         %(<span class="label label-danger" title="undefined model" data-toggle="tooltip">#{name}</span>)
       end

@@ -3,7 +3,7 @@ class Specification < ActiveRecord::Base
 
   validates :version, presence: true, uniqueness: { scope: :title}
   validates :title, presence: true
-  has_many :common_models, dependent: :destroy
+  has_many :models, dependent: :destroy
   has_many :paths, dependent: :destroy
   has_many :path_parameters, dependent: :destroy
 
@@ -80,7 +80,7 @@ class Specification < ActiveRecord::Base
         oauth: ['default'],
       },],
       parameters: PathParameter.swagger,
-      definitions: CommonModel.swagger,
+      definitions: Model.swagger,
       paths: {},
     }
     paths.each do |path|

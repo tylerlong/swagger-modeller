@@ -9,11 +9,11 @@ class RequestBodyProperty < ActiveRecord::Base
 
   require_dependency 'util/model_property'
   def self.parse(row)
-    dict = ModelProperty.parse(row)
+    dict = ModelPropertyUtil.parse(row)
     dict.nil? ? nil : RequestBodyProperty.new(dict)
   end
 
   def swagger
-    ModelProperty.swagger(self)
+    ModelPropertyUtil.swagger(self)
   end
 end
