@@ -3,8 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-# anchor links and bootstrap tabs
 $ ->
+  # anchor links
   hash = window.location.hash
   hash && $('ul.nav a[href="' + hash + '"]').tab('show')
   setTimeout(
@@ -13,6 +13,7 @@ $ ->
    8
   )
 
+  # bootstrap tabs
   $('.nav-tabs a').click (e) ->
     $(this).tab('show')
     window.location.hash = this.hash
@@ -21,3 +22,20 @@ $ ->
        $(window).scrollTop(0)
      8
     )
+
+  # CodeMirror
+  if $('textarea').length > 0
+    CodeMirror.fromTextArea(
+      $('textarea').get(0),
+      {
+        lineNumbers: true,
+        lineWrapping: false,
+        viewportMargin: Infinity,
+        tabSize: 32,
+        indentUnit: 32,
+        indentWithTabs: true,
+      }
+    )
+
+  # bootstrap tooltips
+  $('[data-toggle="tooltip"]').tooltip()
