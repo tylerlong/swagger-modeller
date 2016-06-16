@@ -36,8 +36,8 @@ class CommonModelsController < ApplicationController
   end
 
   def search
-    # todo: 404 not found
-    render text: 'hello world'
+    comm = CommonModel.find_by_name(params[:name]) or not_found
+    redirect_to specification_common_model_url(comm.specification, comm)
   end
 
   private
