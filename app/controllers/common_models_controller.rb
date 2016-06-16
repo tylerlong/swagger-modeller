@@ -35,6 +35,11 @@ class CommonModelsController < ApplicationController
     redirect_to specification_url(spec, anchor: 'models')
   end
 
+  def search
+    # todo: 404 not found
+    render text: 'hello world'
+  end
+
   private
 
   def comm_params

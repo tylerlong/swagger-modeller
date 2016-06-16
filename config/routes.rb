@@ -82,4 +82,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :common_models, only: [] do
+    get 'search', on: :collection
+  end
+
 end
