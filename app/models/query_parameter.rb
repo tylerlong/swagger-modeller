@@ -7,16 +7,5 @@ class QueryParameter < ActiveRecord::Base
   validates :description, presence: true
   belongs_to :verb
 
-  require_dependency 'util/model_property'
-  def self.parse(row)
-    dict = ModelPropertyUtil.parse(row)
-    dict.nil? ? nil : QueryParameter.new(dict)
-  end
-
-  def swagger
-    result = ModelPropertyUtil.swagger(self)
-    result[:name] = name
-    result[:in] = 'query'
-    result
-  end
+  include PropertyUtil
 end

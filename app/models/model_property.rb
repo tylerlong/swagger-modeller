@@ -7,13 +7,5 @@ class ModelProperty < ActiveRecord::Base
   validates :description, presence: true
   belongs_to :model
 
-  require_dependency 'util/model_property'
-  def self.parse(row)
-    dict = ModelPropertyUtil.parse(row)
-    dict.nil? ? nil : ModelProperty.new(dict)
-  end
-
-  def swagger
-    ModelPropertyUtil.swagger(self)
-  end
+  include PropertyUtil
 end

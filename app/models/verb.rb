@@ -65,7 +65,12 @@ class Verb < ActiveRecord::Base
     ### parameters ###
 
     # query parameters
-    parameters = query_parameters.collect(&:swagger)
+    parameters = query_parameters.collect do |qp|
+      item = qp.swagger
+      item[:name] = qp.name
+      item[:in] = 'query'
+      item
+    end
 
     # request body parameters
     request_body = { name: 'body', in: 'body', schema: {} }
