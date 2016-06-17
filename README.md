@@ -19,9 +19,7 @@ In order to make fax inside API Explorer working, we have to do some hack, which
 1. swagger required attribute
 1. show graphs
 1. add validation action, tell user what's wrong
-1. multiple specs support is broken
 1. clone spec. create an identical spec, with version appended ".1"
-1. don't mix data between multiple specs
 
 
 ## notes
