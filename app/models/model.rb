@@ -34,8 +34,9 @@ class Model < ActiveRecord::Base
   end
 
   def referenced_by_request_body
-    verbs = Verb.joins('left join request_body_properties as rbp on rbp.verb_id = verbs.id')
-        .where('rbp.id is null and verbs.request_body_text <> ?', '')
+    verbs = Verb.joins(%{left join request_body_properties as rbp on rbp.verb_id = verbs.id
+                         join paths on verbs.path_id = paths.id})
+        .where('paths.specification_id = ? and rbp.id is null and verbs.request_body_text <> ?', specification_id, '')
     verbs = verbs.select do |verb|
       verb.request_body_text.split("\n").collect(&:strip).include? name
     end
@@ -47,8 +48,9 @@ class Model < ActiveRecord::Base
   end
 
   def referenced_by_response_body
-    verbs = Verb.joins('left join response_body_properties as rbp on rbp.verb_id = verbs.id')
-        .where('rbp.id is null and verbs.response_body_text <> ?', '')
+    verbs = Verb.joins(%{left join response_body_properties as rbp on rbp.verb_id = verbs.id
+                         join paths on verbs.path_id = paths.id})
+        .where('paths.specification_id = ? and rbp.id is null and verbs.response_body_text <> ?', specification_id, '')
     verbs = verbs.select do |verb|
       verb.response_body_text.split("\n").collect(&:strip).include? name
     end
