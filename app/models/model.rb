@@ -21,14 +21,10 @@ class Model < ActiveRecord::Base
   end
 
   def swagger
-    result = {
+    {
       type: 'object',
-      properties: {},
+      properties: Hash[model_properties.collect{ |mp| [mp.name, mp.swagger] }]
     }
-    model_properties.each do |cmp|
-      result[:properties][cmp.name] = cmp.swagger
-    end
-    result
   end
 
   def referenced_by_model
