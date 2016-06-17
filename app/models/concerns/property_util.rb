@@ -2,10 +2,11 @@ module PropertyUtil
   extend ActiveSupport::Concern
 
   included do
-    # statements
+    validates :data_type, presence: true
+    validates :description, presence: true
   end
 
-  def swagger()
+  def swagger
     result = {
       type: data_type,
       description: description,
