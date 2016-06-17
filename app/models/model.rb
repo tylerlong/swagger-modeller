@@ -7,14 +7,14 @@ class Model < ActiveRecord::Base
   belongs_to :specification
   has_many :model_properties, dependent: :destroy
 
-  require_dependency 'util/properties_model'
+  include ModelUtil
 
   def update_properties!
-    PropertiesModel.update_properties!(model_properties, parse_properties)
+    Model.update_properties!(model_properties, parse_properties)
   end
 
   def parse_properties
-    PropertiesModel.parse(properties_text, ModelProperty).collect do |item|
+    Model.parse(properties_text, ModelProperty).collect do |item|
       item.model = self
       item
     end

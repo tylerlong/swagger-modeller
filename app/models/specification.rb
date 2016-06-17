@@ -11,14 +11,14 @@ class Specification < ActiveRecord::Base
     "#{title} #{version}"
   end
 
-  require_dependency 'util/properties_model'
+  include ModelUtil
 
   def update_properties!
-    PropertiesModel.update_properties!(path_parameters, parse_properties)
+    Specification.update_properties!(path_parameters, parse_properties)
   end
 
   def parse_properties
-    PropertiesModel.parse(path_parameters_text, PathParameter).collect do |item|
+    Specification.parse(path_parameters_text, PathParameter).collect do |item|
       item.specification = self
       item
     end

@@ -10,15 +10,15 @@ class Verb < ActiveRecord::Base
   has_many :request_body_properties, dependent: :destroy
   has_many :response_body_properties, dependent: :destroy
 
-  require_dependency 'util/properties_model'
+  include ModelUtil
 
   def query_parameters_text=(value)
     write_attribute(:query_parameters_text, value)
-    PropertiesModel.update_properties!(query_parameters, parse_parameters)
+    Verb.update_properties!(query_parameters, parse_parameters)
   end
 
   def parse_parameters
-    PropertiesModel.parse(query_parameters_text, QueryParameter).collect do |item|
+    Verb.parse(query_parameters_text, QueryParameter).collect do |item|
       item.verb = self
       item
     end
@@ -26,23 +26,23 @@ class Verb < ActiveRecord::Base
 
   def request_body_text=(value)
     write_attribute(:request_body_text, value)
-    PropertiesModel.update_properties!(request_body_properties, parse_request_properties)
+    Verb.update_properties!(request_body_properties, parse_request_properties)
   end
 
   def response_body_text=(value)
     write_attribute(:response_body_text, value)
-    PropertiesModel.update_properties!(response_body_properties, parse_response_properties)
+    Verb.update_properties!(response_body_properties, parse_response_properties)
   end
 
   def parse_request_properties
-    PropertiesModel.parse(request_body_text, RequestBodyProperty).collect do |item|
+    Verb.parse(request_body_text, RequestBodyProperty).collect do |item|
       item.verb = self
       item
     end
   end
 
   def parse_response_properties
-    PropertiesModel.parse(response_body_text, ResponseBodyProperty).collect do |item|
+    Verb.parse(response_body_text, ResponseBodyProperty).collect do |item|
       item.verb = self
       item
     end
