@@ -39,11 +39,19 @@ class Model < ActiveRecord::Base
   end
 
   def referenced_by_request_body
-    RequestBodyProperty.where('data_type = ? or format = ?', name, name).collect(&:verb).uniq
+    verbs = Verb.joins('left join request_body_properties as rbp on rbp.verb_id = verbs.id').where('rbp.id is null and verbs.request_body_text <> ?', '')
+    verbs = verbs.select do |verb|
+      verb.request_body_text.split("\n").collect(&:strip).include? name
+    end
+    verbs.concat(RequestBodyProperty.where('data_type = ? or format = ?', name, name).collect(&:verb)).uniq
   end
 
   def referenced_by_response_body
-    ResponseBodyProperty.where('data_type = ? or format = ?', name, name).collect(&:verb).uniq
+    verbs = Verb.joins('left join response_body_properties as rbp on rbp.verb_id = verbs.id').where('rbp.id is null and verbs.response_body_text <> ?', '')
+    verbs = verbs.select do |verb|
+      verb.response_body_text.split("\n").collect(&:strip).include? name
+    end
+    verbs.concat(ResponseBodyProperty.where('data_type = ? or format = ?', name, name).collect(&:verb)).uniq
   end
 
 end
