@@ -13,4 +13,21 @@
 
 <%= render partial: 'shared/properties', locals: { properties: @model.model_properties } %>
 
+<br/>
+
+<h2>References by:</h2>
+<table class="table">
+  <%
+    (ModelProperty.where('data_type = ? or format = ?', @model.name, @model.name).collect(&:model).uniq
+          .collect{ |model| link_to model.name, specification_model_path(@spec, model) }
+    .concat RequestBodyProperty.where('data_type = ? or format = ?', @model.name, @model.name).collect(&:verb).uniq
+          .collect{ |verb| link_to verb.name, specification_path_verb_path(@spec, verb.path, verb, anchor: 'request_body') }
+    .concat ResponseBodyProperty.where('data_type = ? or format = ?', @model.name, @model.name).collect(&:verb).uniq
+          .collect{ |verb| link_to verb.name, specification_path_verb_path(@spec, verb.path, verb, anchor: 'response_body') }
+    ).each_with_index do |link, index|
+  %>
+    <tr><td><%= index + 1 %>. &nbsp; <%= link %></td></tr>
+  <% end %>
+</table>
+
 </div>
