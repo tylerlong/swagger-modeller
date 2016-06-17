@@ -20,16 +20,13 @@ class Model < ActiveRecord::Base
     end
   end
 
-  def self.swagger
-    result = {}
-    Model.all.each do |cm|
-      result[cm.name] = {
-        type: 'object',
-        properties: {},
-      }
-      cm.model_properties.each do |cmp|
-        result[cm.name][:properties][cmp.name] = cmp.swagger
-      end
+  def swagger
+    result = {
+      type: 'object',
+      properties: {},
+    }
+    model_properties.each do |cmp|
+      result[:properties][cmp.name] = cmp.swagger
     end
     result
   end

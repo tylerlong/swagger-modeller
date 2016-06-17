@@ -53,7 +53,7 @@ class Specification < ActiveRecord::Base
         oauth: ['default'],
       },],
       parameters: PathParameter.swagger,
-      definitions: Model.swagger,
+      definitions: Hash[models.collect{ |model| [model.name, model.swagger] }],
       paths: {},
     }
     paths.each do |path|
