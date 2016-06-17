@@ -52,7 +52,7 @@ class Specification < ActiveRecord::Base
       security: [{
         oauth: ['default'],
       },],
-      parameters: PathParameter.swagger,
+      parameters: Hash[path_parameters.collect{ |pp| [pp.name, { name: pp.name, in: 'path', required: true }.merge(pp.swagger)] }],
       definitions: Hash[models.collect{ |model| [model.name, model.swagger] }],
       paths: {},
     }

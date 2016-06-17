@@ -6,12 +6,4 @@ class PathParameter < ActiveRecord::Base
   belongs_to :specification
 
   include PropertyUtil
-
-  def self.swagger
-    result = {}
-    PathParameter.all.each do |pp|
-      result[pp.name] = { name: pp.name, in: 'path', required: true }.merge pp.swagger
-    end
-    result
-  end
 end
