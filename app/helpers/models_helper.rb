@@ -24,4 +24,13 @@ module ModelsHelper
     end
     return raw links.join('<br/> &nbsp; or<br/>')
   end
+
+  def referenced_by(model)
+    specification = model.specification
+    links = []
+    links.concat model.referenced_by_model.collect{ |model| link_to model.name, specification_model_path(specification, model) }
+    links.concat model.referenced_by_request_body.collect{ |verb| link_to verb.name + ' Request Body', specification_path_verb_path(specification, verb.path, verb, anchor: 'request_body') }
+    links.concat model.referenced_by_response_body.collect{ |verb| link_to verb.name + ' Response Body', specification_path_verb_path(specification, verb.path, verb, anchor: 'response_body') }
+    return links
+  end
 end

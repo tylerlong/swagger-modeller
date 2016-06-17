@@ -33,4 +33,17 @@ class Model < ActiveRecord::Base
     end
     result
   end
+
+  def referenced_by_model
+    ModelProperty.where('data_type = ? or format = ?', name, name).collect(&:model).uniq
+  end
+
+  def referenced_by_request_body
+    RequestBodyProperty.where('data_type = ? or format = ?', name, name).collect(&:verb).uniq
+  end
+
+  def referenced_by_response_body
+    ResponseBodyProperty.where('data_type = ? or format = ?', name, name).collect(&:verb).uniq
+  end
+
 end
