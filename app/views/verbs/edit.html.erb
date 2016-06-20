@@ -14,6 +14,8 @@
   <br/><%= text_field_tag(:name, @verb.name, class: "form-control", placeholder: "What is this request about?") %>
   <br/><%= label_tag(:since, "Since:") %>
   <br/><%= text_field_tag(:since, @verb.since, class: "form-control", placeholder: "1.0.24 (Release 8.0)") %>
+  <br/><%= label_tag(:description, "Description:") %>
+  <br/><%= text_area_tag(:description, @verb.description, class: 'article-editor') %>
   <br/><%= label_tag(:method, "Method:") %>
   <br/><%= select_tag(:method, options_for_select(['GET', 'POST', 'PUT', 'DELETE'], @verb.method), class: "form-control") %>
   <br/><%= label_tag(:batch, "Batch:") %>

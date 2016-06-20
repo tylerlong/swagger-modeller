@@ -12,6 +12,10 @@
 <%= form_tag(specification_path_verbs_path(@spec, @path), method: "post") do %>
   <br/><%= label_tag(:name, "Name:") %>
   <br/><%= text_field_tag(:name, "", class: "form-control", placeholder: "What is this request about?") %>
+  <br/><%= label_tag(:since, "Since:") %>
+  <br/><%= text_field_tag(:since, "", class: "form-control", placeholder: "1.0.24 (Release 8.0)") %>
+  <br/><%= label_tag(:description, "Description:") %>
+  <br/><%= text_area_tag(:description, "", class: 'article-editor') %>
   <br/><%= label_tag(:method, "Method:") %>
   <br/><%= select_tag(:method, options_for_select(['GET', 'POST', 'PUT', 'DELETE'], 'GET'), class: "form-control") %>
   <br/><%= label_tag(:batch, "Batch:") %>

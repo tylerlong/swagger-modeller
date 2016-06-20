@@ -24,6 +24,7 @@ In order to make fax inside API Explorer working, we have to do some hack, which
 1. add `examples` table
     1. name, description, request, response
     1. a verb has multiple examples
+1. Markdown Plus as markdown editor
 
 
 ## notes
