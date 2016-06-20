@@ -1,0 +1,4 @@
+<br/><%= label_tag(:name, "Name:") %>
+<br/><%= text_field_tag(:name, model.name.presence || '', class: "form-control") %>
+<br/><%= label_tag(:properties_text, "Properties:") %>
+<br/><%= text_area_tag(:properties_text, model.properties_text.presence || '', class: "properties-editor") %>

@@ -9,10 +9,7 @@
 <h1>Edit a model</h1>
 
 <%= form_tag(specification_model_path(@spec, @model), method: "put") do %>
-  <br/><%= label_tag(:name, "Name:") %>
-  <br/><%= text_field_tag(:name, @model.name, class: "form-control") %>
-  <br/><%= label_tag(:properties_text, "Properties:") %>
-  <br/><%= text_area_tag(:properties_text, @model.properties_text, class: "properties-editor") %>
+  <%= render partial: 'models/form', locals: { model: @model } %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
   <%= link_to "Cancel", specification_model_path(@spec, @model), class: "btn btn-default" %>
 <% end %>
