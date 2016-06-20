@@ -20,6 +20,10 @@ In order to make fax inside API Explorer working, we have to do some hack, which
 1. show graphs
 1. add validation action, tell user what's wrong
 1. clone spec. create an identical spec, with version appended ".1"
+1. add global `permissions` list, just like the path parameters list.
+1. add `examples` table
+    1. name, description, request, response
+    1. a verb has multiple examples
 
 
 ## notes

@@ -42,7 +42,7 @@ class VerbsController < ApplicationController
   private
 
   def verb_params
-    result = params.permit(:name, :visibility, :method, :batch, :status, :path_id)
+    result = params.permit(:name, :since, :visibility, :method, :batch, :status, :path_id)
     result[:batch] = result[:batch] == 'Yes'
     return result
   end

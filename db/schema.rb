@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616092621) do
+ActiveRecord::Schema.define(version: 20160620012524) do
 
   create_table "model_properties", force: :cascade do |t|
     t.integer  "model_id",                    null: false
@@ -131,6 +131,10 @@ ActiveRecord::Schema.define(version: 20160616092621) do
     t.string   "query_parameters_text", default: ""
     t.string   "request_body_text",     default: ""
     t.string   "response_body_text",    default: ""
+    t.string   "since",                 default: ""
+    t.string   "description",           default: ""
+    t.string   "api_group",             default: ""
+    t.string   "permissions",           default: ""
   end
 
   add_index "verbs", ["path_id", "name"], name: "index_verbs_on_path_id_and_name", unique: true
