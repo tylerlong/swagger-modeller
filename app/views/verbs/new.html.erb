@@ -18,10 +18,12 @@
   <br/><%= text_area_tag(:description, "", class: 'article-editor') %>
   <br/><%= label_tag(:method, "Method:") %>
   <br/><%= select_tag(:method, options_for_select(['GET', 'POST', 'PUT', 'DELETE'], 'GET'), class: "form-control") %>
+  <br/><%= label_tag(:api_group, "API Group:") %>
+  <br/><%= select_tag(:api_group, options_for_select(['Light', 'Medium', 'Heavy'], 'Light'), class: "form-control") %>
   <br/><%= label_tag(:batch, "Batch:") %>
   <br/><%= select_tag(:batch, options_for_select(['Yes', 'No'], 'No'), class: "form-control") %>
   <br/><%= label_tag(:visibility, "Visibility:") %>
-  <br/><%= text_field_tag(:visibility, "", class: "form-control", placeholder: "Basic, Advanced, Internal...etc") %>
+  <br/><%= select_tag(:visibility, options_for_select(['Public Basic', 'Public Advanced', 'Public Internal', 'Internal', 'Integration'], 'Public Basic'), class: "form-control") %>
   <br/><%= label_tag(:status, "Status:") %>
   <br/><%= select_tag(:status, options_for_select(['Normal', 'Deprecated', 'Disabled', 'NoDoc'], 'Normal'), class: "form-control") %>
   <br/><%= submit_tag("Create", class: "btn btn-primary") %>
