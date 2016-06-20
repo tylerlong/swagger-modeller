@@ -10,24 +10,7 @@
 <h1>Edit a request</h1>
 
 <%= form_tag(specification_path_verb_path(@spec, @path, @verb), method: "put") do %>
-  <br/><%= label_tag(:name, "Name:") %>
-  <br/><%= text_field_tag(:name, @verb.name, class: "form-control", placeholder: "What is this request about?") %>
-  <br/><%= label_tag(:since, "Since:") %>
-  <br/><%= text_field_tag(:since, @verb.since, class: "form-control", placeholder: "1.0.24 (Release 8.0)") %>
-  <br/><%= label_tag(:description, "Description:") %>
-  <br/><%= text_area_tag(:description, @verb.description, class: 'article-editor', placeholder: 'Styling with Markdown is supported') %>
-  <br/><%= label_tag(:method, "Method:") %>
-  <br/><%= select_tag(:method, options_for_select(['GET', 'POST', 'PUT', 'DELETE'], @verb.method), class: "form-control") %>
-  <br/><%= label_tag(:api_group, "API Group:") %>
-  <br/><%= select_tag(:api_group, options_for_select(['Light', 'Medium', 'Heavy'], @verb.api_group == '' ? 'Light' : @verb.api_group), class: "form-control") %>
-  <br/><%= label_tag(:permissions, "Required Permissions:") %>
-  <br/><%= text_field_tag(:permissions, @verb.permissions, class: "form-control", placeholder: "Multiple permissions separated by commas") %>
-  <br/><%= label_tag(:batch, "Batch:") %>
-  <br/><%= select_tag(:batch, options_for_select(['Yes', 'No'], @verb.batch ? 'Yes' : 'No'), class: "form-control") %>
-  <br/><%= label_tag(:visibility, "Visibility:") %>
-  <br/><%= select_tag(:visibility, options_for_select(['Public Basic', 'Public Advanced', 'Public Internal', 'Internal', 'Integration'], @verb.visibility), class: "form-control") %>
-  <br/><%= label_tag(:status, "Status:") %>
-  <br/><%= select_tag(:status, options_for_select(['Normal', 'Deprecated', 'Disabled', 'NoDoc'], @verb.status == '' ? 'Normal' : @verb.status), class: "form-control") %>
+  <%= render partial: 'verbs/form', locals: { verb: @verb } %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
   <%= link_to "Cancel", specification_path_verb_path(@spec, @path, @verb), class: "btn btn-default" %>
 <% end %>

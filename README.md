@@ -27,6 +27,7 @@ In order to make fax inside API Explorer working, we have to do some hack, which
 1. Markdown Plus as markdown editor
     1. postpone. because not sure we can accept markdown
 1. reuse form in `edit` and `new`
+1. Create a partial for each tab
 
 
 ## notes
