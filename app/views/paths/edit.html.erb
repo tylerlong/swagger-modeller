@@ -9,8 +9,7 @@
 <h1>Edit a path</h1>
 
 <%= form_tag(specification_path_path(@spec, @path), method: "put") do %>
-  <br/><%= label_tag(:uri, "URI:") %>
-  <br/><%= text_field_tag(:uri, @path.uri, class: "form-control") %>
+  <%= render partial: 'paths/form', locals: { path: @path } %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
   <%= link_to "Cancel", specification_path_path(@spec, @path), class: "btn btn-default" %>
 <% end %>

@@ -7,7 +7,7 @@
 
 <h1>Create a specification</h1>
 
-<%= form_tag("/specifications", method: "post") do %>
+<%= form_tag(specifications_path, method: "post") do %>
   <%= render partial: 'specifications/form', locals: { spec: Specification.new } %>
   <br/><%= submit_tag("Create", class: "btn btn-primary") %>
   <a href="/" class="btn btn-default">Cancel</a>

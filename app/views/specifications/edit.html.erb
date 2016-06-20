@@ -7,7 +7,7 @@
 
 <h1>Edit a specification</h1>
 
-<%= form_tag("/specifications/#{@spec.id}", method: "put") do %>
+<%= form_tag(specification_path(@spec), method: "put") do %>
   <%= render partial: 'specifications/form', locals: { spec: @spec } %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
   <%= link_to "Cancel", @spec, class: "btn btn-default" %>
