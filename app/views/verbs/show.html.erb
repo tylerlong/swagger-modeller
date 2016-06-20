@@ -25,26 +25,9 @@
 
 <div class="tab-content">
 
-<!-- tab #1 -->
+<!-- tab #1: info -->
 <div role="tabpanel" class="tab-pane active" id="info">
-    <dl>
-        <dt>Since</dt>
-        <dd><%= @verb.since %></dd>
-        <dt>Description</dt>
-        <dd><pre><%= @verb.description %></pre></dd>
-        <dt>Method</dt>
-        <dd><%= @verb.method %></dd>
-        <dt>API Group</dt>
-        <dd><%= @verb.api_group %></dd>
-        <dt>Required Permissions</dt>
-        <dd><%= @verb.permissions %></dd>
-        <dt>Batch</dt>
-        <dd><%= @verb.batch %></dd>
-        <dt>Visibility</dt>
-        <dd><%= verb_visibility(@verb) %></dd>
-        <dt>status</dt>
-        <dd><%= verb_status(@verb) %></dd>
-    </dl>
+    <%= render partial: 'verbs/info', locals: { verb: @verb } %>
 </div><!-- tab #1 -->
 
 <!-- tab #2: Query Parameters -->
@@ -65,8 +48,7 @@
             <%= render partial: 'shared/properties', locals: { properties: @verb.request_body_properties } %>
         <% end %>
     </div>
-<% end %>
-<!-- tab #3 -->
+<% end %><!-- tab #3 -->
 
 <!-- tab #4: Response Body -->
 <div role="tabpanel" class="tab-pane" id="response_body">
