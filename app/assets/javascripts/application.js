@@ -16,4 +16,5 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require codemirror
+//= require codemirror/addons/display/placeholder
 //= require_tree .
