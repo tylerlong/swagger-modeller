@@ -20,6 +20,8 @@
   <br/><%= select_tag(:method, options_for_select(['GET', 'POST', 'PUT', 'DELETE'], 'GET'), class: "form-control") %>
   <br/><%= label_tag(:api_group, "API Group:") %>
   <br/><%= select_tag(:api_group, options_for_select(['Light', 'Medium', 'Heavy'], 'Light'), class: "form-control") %>
+  <br/><%= label_tag(:permissions, "Required Permissions:") %>
+  <br/><%= text_field_tag(:permissions, "", class: "form-control", placeholder: "Multiple permissions separated by commas") %>
   <br/><%= label_tag(:batch, "Batch:") %>
   <br/><%= select_tag(:batch, options_for_select(['Yes', 'No'], 'No'), class: "form-control") %>
   <br/><%= label_tag(:visibility, "Visibility:") %>
