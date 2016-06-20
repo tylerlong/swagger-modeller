@@ -6,6 +6,7 @@ class Specification < ActiveRecord::Base
   has_many :models, dependent: :destroy
   has_many :paths, dependent: :destroy
   has_many :path_parameters, dependent: :destroy
+  has_many :permissions, dependent: :destroy
 
   def display_name
     "#{title} #{version}"
