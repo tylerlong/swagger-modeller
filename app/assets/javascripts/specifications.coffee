@@ -24,9 +24,9 @@ $ ->
     )
 
   # CodeMirror
-  if $('textarea').length > 0
+  if $('textarea.properties-editor').length > 0
     CodeMirror.fromTextArea(
-      $('textarea').get(0),
+      $('textarea.properties-editor').get(0),
       {
         lineNumbers: true,
         lineWrapping: false,
@@ -34,6 +34,15 @@ $ ->
         tabSize: 32,
         indentUnit: 32,
         indentWithTabs: true,
+      }
+    )
+  if $('textarea.article-editor').length > 0
+    CodeMirror.fromTextArea(
+      $('textarea.article-editor').get(0),
+      {
+        lineNumbers: true,
+        lineWrapping: true,
+        viewportMargin: Infinity,
       }
     )
 

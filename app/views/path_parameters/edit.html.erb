@@ -9,7 +9,7 @@
 <h1>Edit path parameters</h1>
 
 <%= form_tag(specification_path_parameters_path(@spec), method: "put") do %>
-  <%= text_area_tag(:path_parameters_text, @spec.path_parameters_text) %>
+  <%= text_area_tag(:path_parameters_text, @spec.path_parameters_text, class: "properties-editor") %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
   <%= link_to "Cancel", specification_path(@spec, anchor: 'path_parameters'), class: "btn btn-default" %>
 <% end %>

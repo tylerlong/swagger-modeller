@@ -11,7 +11,7 @@
 <h1>Edit query parameters</h1>
 
 <%= form_tag(specification_path_verb_query_parameters_path(@spec, @path, @verb), method: "put") do %>
-  <%= text_area_tag(:query_parameters_text, @verb.query_parameters_text) %>
+  <%= text_area_tag(:query_parameters_text, @verb.query_parameters_text, class: "properties-editor") %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
   <%= link_to "Cancel", specification_path_verb_path(@spec, @path, @verb, anchor: 'query_parameters'), class: "btn btn-default" %>
 <% end %>

@@ -11,7 +11,7 @@
 <h1>Edit Request Body</h1>
 
 <%= form_tag(specification_path_verb_request_body_properties_path(@spec, @path, @verb), method: "put") do %>
-  <%= text_area_tag(:request_body_text, @verb.request_body_text) %>
+  <%= text_area_tag(:request_body_text, @verb.request_body_text, class: "properties-editor") %>
   <br/><%= submit_tag("Update", class: "btn btn-primary") %>
   <%= link_to "Cancel", specification_path_verb_path(@spec, @path, @verb, anchor: 'request_body'), class: "btn btn-default" %>
 <% end %>
