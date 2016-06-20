@@ -23,26 +23,7 @@
 
 <!-- tab #1: info -->
 <div role="tabpanel" class="tab-pane active" id="info">
-  <dl>
-    <dt>Version</dt>
-    <dd><%= @spec.version %></dd>
-    <dt>Title</dt>
-    <dd><%= @spec.title %></dd>
-    <dt>Description</dt>
-    <dd><%= @spec.description %></dd>
-    <dt>Terms of Service</dt>
-    <dd><%= @spec.termsOfService %></dd>
-    <dt>Host</dt>
-    <dd><%= @spec.host %></dd>
-    <dt>Base Path</dt>
-    <dd><%= @spec.basePath %></dd>
-    <dt>Schemes</dt>
-    <dd><%= @spec.schemes %></dd>
-    <dt>Produces</dt>
-    <dd><%= @spec.produces %></dd>
-    <dt>Consumes</dt>
-    <dd><%= @spec.consumes %></dd>
-  </dl>
+  <%= render partial: 'specifications/info', locals: { spec: @spec } %>
 </div><!-- tab #1 -->
 
 <!-- tab #2: path_parameters -->

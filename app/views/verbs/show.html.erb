@@ -27,37 +27,37 @@
 
 <!-- tab #1: info -->
 <div role="tabpanel" class="tab-pane active" id="info">
-    <%= render partial: 'verbs/info', locals: { verb: @verb } %>
+  <%= render partial: 'verbs/info', locals: { verb: @verb } %>
 </div><!-- tab #1 -->
 
 <!-- tab #2: Query Parameters -->
 <div role="tabpanel" class="tab-pane" id="query_parameters">
-    <p><br/><%= link_to "Edit", edit_specification_path_verb_query_parameters_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
-    <% if @verb.query_parameters.count > 0 %>
-        <%= render partial: 'shared/properties', locals: { properties: @verb.query_parameters } %>
-    <% end %>
+  <p><br/><%= link_to "Edit", edit_specification_path_verb_query_parameters_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+  <% if @verb.query_parameters.count > 0 %>
+    <%= render partial: 'shared/properties', locals: { properties: @verb.query_parameters } %>
+  <% end %>
 </div><!-- tab #2 -->
 
 <!-- tab #3: Request Body -->
 <% if @verb.method == 'POST' || @verb.method == 'PUT' %>
-    <div role="tabpanel" class="tab-pane" id="request_body">
-        <p><br/><%= link_to "Edit", edit_specification_path_verb_request_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
-        <% if @verb.request_body_properties.count == 0 %>
-            <p><%= link_to_model @verb.request_body_text %></p>
-        <% else %>
-            <%= render partial: 'shared/properties', locals: { properties: @verb.request_body_properties } %>
-        <% end %>
-    </div>
+  <div role="tabpanel" class="tab-pane" id="request_body">
+    <p><br/><%= link_to "Edit", edit_specification_path_verb_request_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+    <% if @verb.request_body_properties.count == 0 %>
+      <p><%= link_to_model @verb.request_body_text %></p>
+    <% else %>
+      <%= render partial: 'shared/properties', locals: { properties: @verb.request_body_properties } %>
+    <% end %>
+  </div>
 <% end %><!-- tab #3 -->
 
 <!-- tab #4: Response Body -->
 <div role="tabpanel" class="tab-pane" id="response_body">
-    <p><br/><%= link_to "Edit", edit_specification_path_verb_response_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
-    <% if @verb.response_body_properties.count == 0 %>
-        <p><%= link_to_model @verb.response_body_text %></p>
-    <% else %>
-        <%= render partial: 'shared/properties', locals: { properties: @verb.response_body_properties } %>
-    <% end %>
+  <p><br/><%= link_to "Edit", edit_specification_path_verb_response_body_properties_path(@spec, @path, @verb), class: "btn btn-primary" %></p>
+  <% if @verb.response_body_properties.count == 0 %>
+    <p><%= link_to_model @verb.response_body_text %></p>
+  <% else %>
+    <%= render partial: 'shared/properties', locals: { properties: @verb.response_body_properties } %>
+  <% end %>
 </div><!-- tab #4 -->
 
 </div><!-- tabs -->
