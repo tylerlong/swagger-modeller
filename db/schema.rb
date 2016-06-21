@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621081634) do
+ActiveRecord::Schema.define(version: 20160621091438) do
+
+  create_table "examples", force: :cascade do |t|
+    t.integer  "verb_id",                         null: false
+    t.string   "name",        default: "Example"
+    t.string   "description", default: ""
+    t.string   "request",     default: ""
+    t.string   "response",    default: ""
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "examples", ["verb_id", "name"], name: "index_examples_on_verb_id_and_name", unique: true
 
   create_table "model_properties", force: :cascade do |t|
     t.integer  "model_id",                    null: false

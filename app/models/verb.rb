@@ -9,6 +9,7 @@ class Verb < ActiveRecord::Base
   has_many :query_parameters, dependent: :destroy
   has_many :request_body_properties, dependent: :destroy
   has_many :response_body_properties, dependent: :destroy
+  has_many :examples, dependent: :destroy
 
   include ModelUtil
 
