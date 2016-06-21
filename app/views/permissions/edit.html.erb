@@ -1,0 +1,17 @@
+<div class="container">
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'permissions') %></li>
+  <li class="active">Permissions</li>
+</ol>
+
+<h1>Edit permissions</h1>
+
+<%= form_tag(specification_permissions_path(@spec), method: "put") do %>
+  <%= text_area_tag(:permissions_text, @spec.permissions_text, class: "properties-editor") %>
+  <br/><%= submit_tag("Update", class: "btn btn-primary") %>
+  <%= link_to "Cancel", specification_path(@spec, anchor: 'permissions'), class: "btn btn-default" %>
+<% end %>
+
+</div>

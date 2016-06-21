@@ -14,6 +14,7 @@
 
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+  <li role="presentation"><a href="#permissions" aria-controls="permissions" role="tab" data-toggle="tab">Permissions</a></li>
   <li role="presentation"><a href="#path_parameters" aria-controls="path_parameters" role="tab" data-toggle="tab">Path Parameters</a></li>
   <li role="presentation"><a href="#paths" aria-controls="paths" role="tab" data-toggle="tab">Paths</a></li>
   <li role="presentation"><a href="#models" aria-controls="models" role="tab" data-toggle="tab">Models</a></li>
@@ -26,13 +27,19 @@
   <%= render partial: 'specifications/info', locals: { spec: @spec } %>
 </div><!-- tab #1 -->
 
-<!-- tab #2: path_parameters -->
+<!-- tab #2: permissions -->
+<div role="tabpanel" class="tab-pane" id="permissions">
+  <p><br/><%= link_to "Edit", edit_specification_permissions_path(@spec), class: "btn btn-primary" %></p>
+  <%= render partial: 'shared/permissions', locals: { permissions: @spec.permissions } %>
+</div><!-- tab #2 -->
+
+<!-- tab #3: path_parameters -->
 <div role="tabpanel" class="tab-pane" id="path_parameters">
   <p><br/><%= link_to "Edit", edit_specification_path_parameters_path(@spec), class: "btn btn-primary" %></p>
   <%= render partial: 'shared/properties', locals: { properties: @spec.path_parameters } %>
-</div><!-- tab #2 -->
+</div><!-- tab #3 -->
 
-<!-- tab #3: paths -->
+<!-- tab #4: paths -->
 <div role="tabpanel" class="tab-pane" id="paths">
   <p>
   <br/><%= link_to "Create a path", new_specification_path_path(@spec), class: "btn btn-primary" %>
@@ -46,9 +53,9 @@
       </td></tr>
     <% end %>
   </table>
-</div><!-- tab #3 -->
+</div><!-- tab #4 -->
 
-<!-- tab #4: models -->
+<!-- tab #5: models -->
 <div role="tabpanel" class="tab-pane" id="models">
   <p>
   <br/><%= link_to "Create a model", new_specification_model_path(@spec), class: "btn btn-primary" %>
@@ -62,7 +69,7 @@
       </td></tr>
     <% end %>
   </table>
-</div><!-- tab #4 -->
+</div><!-- tab #5 -->
 
 </div><!-- tabs -->
 

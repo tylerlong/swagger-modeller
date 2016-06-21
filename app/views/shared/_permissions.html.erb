@@ -1,0 +1,14 @@
+<table class="table">
+  <thead>
+    <tr><th>#.</th><th>Name</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <% permissions.each_with_index do |item, index| %>
+      <tr>
+        <td><%= index + 1 %>.</td>
+        <td><%= item.name %></td>
+        <td><%= truncate item.description, length: 128 %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

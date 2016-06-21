@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620105425) do
+ActiveRecord::Schema.define(version: 20160621081634) do
 
   create_table "model_properties", force: :cascade do |t|
     t.integer  "model_id",                    null: false
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20160620105425) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "path_parameters_text", default: ""
+    t.string   "permissions_text",     default: ""
   end
 
   add_index "specifications", ["version", "title"], name: "index_specifications_on_version_and_title", unique: true
