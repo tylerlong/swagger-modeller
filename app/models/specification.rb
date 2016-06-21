@@ -14,15 +14,36 @@ class Specification < ActiveRecord::Base
 
   include ModelUtil
 
-  def update_properties!
-    Specification.update_properties!(path_parameters, parse_properties)
+  def update_path_parameters!
+    Specification.update_properties!(path_parameters, parse_path_parameters)
   end
 
-  def parse_properties
+  def parse_path_parameters
     Specification.parse(path_parameters_text, PathParameter).collect do |item|
       item.specification = self
       item
     end
+  end
+
+  def update_permissions!
+    Specification.update_properties!(permissions, parse_permissions)
+  end
+
+  def parse_permissions
+    lines = permissions_text.strip.split("\n").collect(&:strip).reject(&:blank?)
+    perms = lines.collect do |line|
+      tokens = line.split("\t").collect(&:strip).reject(&:blank?)
+      if tokens.length == 2
+        perm = Permission.new
+        perm.name = tokens[0]
+        perm.description = tokens[1]
+        perm.specification = self
+        perm
+      else
+        nil
+      end
+    end
+    perms.reject(&:nil?)
   end
 
   def swagger(editions = ['Basic'])

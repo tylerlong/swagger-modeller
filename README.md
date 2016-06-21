@@ -26,6 +26,9 @@ In order to make fax inside API Explorer working, we have to do some hack, which
     1. a verb has multiple examples
 1. Markdown Plus as markdown editor
     1. postpone. because not sure Markdown is acceptable
+1. export the spec as plain text and do source code version control.
+    1. which means we need the feature to load/import a spec
+1. API Explorer, send sms, doesn't work if extensionId is empty string, have to remove that field.
 
 
 ## notes

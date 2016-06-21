@@ -80,6 +80,10 @@ Rails.application.routes.draw do
       get 'edit', on: :collection
       put 'update', on: :collection
     end
+    resources :permissions, only: [] do
+      get 'edit', on: :collection
+      put 'update', on: :collection
+    end
   end
 
   resources :models, only: [] do

@@ -3,7 +3,7 @@ class PathParameter < ActiveRecord::Base
 
   validates :specification_id, presence: true
   validates :name, presence: true, uniqueness: { scope: :specification_id }
-  validates :description, :presence: true
+  validates :description, presence: true
   belongs_to :specification
 
   include PropertyUtil
