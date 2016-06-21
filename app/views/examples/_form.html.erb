@@ -1,0 +1,8 @@
+<br/><%= label_tag(:name, "Name:") %>
+<br/><%= text_field_tag(:name, example.name.presence || '', class: "form-control", placeholder: "Example 1") %>
+<br/><%= label_tag(:description, "Description:") %>
+<br/><%= text_area_tag(:description, example.description.presence || '', class: 'article-editor', placeholder: 'What is this example about?') %>
+<br/><%= label_tag(:request, "Request:") %>
+<br/><%= text_area_tag(:request, example.request.presence || '', class: 'article-editor', placeholder: 'HTTP Request') %>
+<br/><%= label_tag(:response, "Response:") %>
+<br/><%= text_area_tag(:response, example.response.presence || '', class: 'article-editor', placeholder: 'HTTP Response') %>

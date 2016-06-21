@@ -21,6 +21,7 @@
   <li role="presentation"><a href="#request_body" aria-controls="request_body" role="tab" data-toggle="tab">Request Body</a></li>
   <% end %>
   <li role="presentation"><a href="#response_body" aria-controls="response_body" role="tab" data-toggle="tab">Response Body</a></li>
+  <li role="presentation"><a href="#examples" aria-controls="examples" role="tab" data-toggle="tab">Examples</a></li>
 </ul>
 
 <div class="tab-content">
@@ -59,6 +60,23 @@
     <%= render partial: 'shared/properties', locals: { properties: @verb.response_body_properties } %>
   <% end %>
 </div><!-- tab #4 -->
+
+<!-- tab #5: Examples -->
+<div role="tabpanel" class="tab-pane" id="examples">
+  <p>
+    <br/><%= link_to "Create an example", new_specification_path_verb_example_path(@spec, @path, @verb), class: "btn btn-primary" %>
+  </p>
+  <% @verb.examples.each do |example| %>
+    <h3><%= example.name %></h3>
+    <%= link_to 'Edit', edit_specification_path_verb_example_path(@spec, @path, @verb, example), class: "btn btn-primary btn-xs" %>
+    <%= link_to 'Destroy', specification_path_verb_example_path(@spec, @path, @verb, example), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
+    <p><%= example.description %></p>
+    <h4>Request</h4>
+    <pre><%= example.request %></pre>
+    <h4>Response</h4>
+    <pre><%= example.response %></pre>
+  <% end %>
+</div><!-- tab #5 -->
 
 </div><!-- tabs -->
 </div>

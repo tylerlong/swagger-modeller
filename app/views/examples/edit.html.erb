@@ -1,0 +1,19 @@
+<div class="container">
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'paths') %></li>
+  <li><%= link_to @path.uri, specification_path_path(@spec, @path) %></li>
+  <li><%= link_to @verb.name, specification_path_verb_path(@spec, @path, @verb, anchor: 'examples') %></li>
+  <li class="active"><%= @example.name %></li>
+</ol>
+
+<h1>Edit an example</h1>
+
+<%= form_tag(specification_path_verb_example_path(@spec, @path, @verb, @example), method: "put") do %>
+  <%= render partial: 'examples/form', locals: { example: @example } %>
+  <br/><%= submit_tag("Update", class: "btn btn-primary") %>
+  <%= link_to "Cancel", specification_path_verb_path(@spec, @path, @verb, anchor: 'examples'), class: "btn btn-default" %>
+<% end %>
+
+</div>
