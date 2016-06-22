@@ -15,6 +15,7 @@ In order to make fax inside API Explorer working, we have to do some hack, which
 
 1. swagger required attribute
 1. add validation action, tell user what's wrong
+    1. no examples
 1. clone spec. create an identical spec, with version appended ".1"
 1. Markdown Plus as markdown editor
     1. postpone. because not sure Markdown is acceptable
@@ -24,6 +25,7 @@ In order to make fax inside API Explorer working, we have to do some hack, which
 1. Export to API Reference
 1. add "Error Codes" section to verb
 1. Create tags, such as "Meetings", "Dictionary", "CallLog"...etc.
+1. tweak label colors
 
 
 ## notes

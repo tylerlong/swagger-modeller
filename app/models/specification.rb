@@ -46,6 +46,10 @@ class Specification < ActiveRecord::Base
     paths.select{ |path| path.verbs.blank? }
   end
 
+  def unreferenced_models
+    models.select{ |model| model.referenced_by_model.blank? && model.referenced_by_request_body.blank? && model.referenced_by_response_body.blank? }
+  end
+
   def update_path_parameters!
     Specification.update_properties!(path_parameters, parse_path_parameters)
   end

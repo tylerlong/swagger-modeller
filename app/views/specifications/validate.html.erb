@@ -38,5 +38,10 @@
 
 <h2>Models</h2>
 
+<% if @spec.unreferenced_models.present? %>
+  <div class="alert alert-warning" role="alert">The follow models are defined but unused: <%= @spec.unreferenced_models.collect(&:name).join(', ') %></div>
+<% else %>
+  <div class="alert alert-success" role="alert">Everything seems fine!</div>
+<% end %>
 
 </div>
