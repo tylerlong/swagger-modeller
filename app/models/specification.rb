@@ -42,6 +42,10 @@ class Specification < ActiveRecord::Base
     defined_path_parameters - used_path_parameters
   end
 
+  def empty_paths
+    paths.select{ |path| path.verbs.blank? }
+  end
+
   def update_path_parameters!
     Specification.update_properties!(path_parameters, parse_path_parameters)
   end
