@@ -29,6 +29,19 @@ class Specification < ActiveRecord::Base
     defined_permissions - used_permissions
   end
 
+  def used_path_parameters
+    paths.collect{ |path| path.uri.scan(/\{([a-zA-Z]+?)\}/).flatten }.flatten.uniq
+  end
+  def defined_path_parameters
+    path_parameters.collect(&:name).uniq
+  end
+  def used_undefined_path_parameters
+    used_path_parameters - defined_path_parameters
+  end
+  def defined_unused_path_parameters
+    defined_path_parameters - used_path_parameters
+  end
+
   def update_path_parameters!
     Specification.update_properties!(path_parameters, parse_path_parameters)
   end

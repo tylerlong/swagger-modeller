@@ -18,4 +18,14 @@
   <div class="alert alert-success" role="alert">Everything seems fine!</div>
 <% end %>
 
+<h2>Path parameters</h2>
+
+<% if @spec.used_undefined_path_parameters.present? %>
+  <div class="alert alert-danger" role="alert">The following path parameters are used but undefined: <%= @spec.used_undefined_path_parameters.join(', ') %></div>
+<% elsif @spec.defined_unused_path_parameters.present? %>
+  <div class="alert alert-warning" role="alert">The following path parameters are defined but unused: <%= @spec.defined_unused_path_parameters.join(', ') %></div>
+<% else %>
+  <div class="alert alert-success" role="alert">Everything seems fine!</div>
+<% end %>
+
 </div>
