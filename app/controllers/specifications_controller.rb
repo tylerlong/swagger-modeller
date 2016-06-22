@@ -40,6 +40,10 @@ class SpecificationsController < ApplicationController
     end
   end
 
+  def validate
+
+  end
+
   def api_explorer
     spec = Specification.find(params[:id])
     editions = (params[:v] || 'Basic').split(',').collect(&:strip)

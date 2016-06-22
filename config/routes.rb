@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   root 'specifications#index'
 
   resources :specifications do
+    get 'validate', on: :member
     get 'swagger', on: :member
     get 'api_explorer', on: :member
     resources :models

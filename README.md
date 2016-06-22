@@ -13,11 +13,7 @@ In order to make fax inside API Explorer working, we have to do some hack, which
 
 ## todo
 
-1. flash messages
-1. reuse db table? -- active record inheritance
-    1. not necessary. It has both pros and cons
 1. swagger required attribute
-1. show graphs
 1. add validation action, tell user what's wrong
 1. clone spec. create an identical spec, with version appended ".1"
 1. Markdown Plus as markdown editor
@@ -25,6 +21,7 @@ In order to make fax inside API Explorer working, we have to do some hack, which
 1. export the spec as plain text and do source code version control.
     1. which means we need the feature to load/import a spec
 1. API Explorer, send sms, doesn't work if extensionId is empty string, have to remove that field.
+1. Export to API Reference
 
 
 ## notes

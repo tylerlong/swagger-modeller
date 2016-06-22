@@ -11,6 +11,7 @@
     <tr>
       <th>Specification</th>
       <th>Description</th>
+      <th>Validate</th>
       <th>Swagger Spec</th>
       <th>API Explorer Spec</th>
     </tr>
@@ -20,6 +21,7 @@
     <tr>
       <td><%= link_to spec.display_name, spec %></td>
       <td><%= truncate spec.description, length: 64 %></td>
+      <td><%= link_to 'Validate', validate_specification_path(spec), class: 'btn btn-primary' %></td>
       <td>
         <%= link_to 'JSON', swagger_specification_path(spec, format: 'json', v: 'Basic,Advanced'), class: 'btn btn-info' %>
         <%= link_to 'YAML', swagger_specification_path(spec, format: 'yaml', v: 'Basic,Advanced'), class: 'btn btn-info' %>
