@@ -22,6 +22,8 @@ In order to make fax inside API Explorer working, we have to do some hack, which
     1. which means we need the feature to load/import a spec
 1. API Explorer, send sms, doesn't work if extensionId is empty string, have to remove that field.
 1. Export to API Reference
+1. add "Error Codes" section to verb
+1. Create tags, such as "Meetings", "Dictionary", "CallLog"...etc.
 
 
 ## notes

@@ -41,7 +41,7 @@ class SpecificationsController < ApplicationController
   end
 
   def validate
-
+    @spec = Specification.find(params[:id])
   end
 
   def api_explorer

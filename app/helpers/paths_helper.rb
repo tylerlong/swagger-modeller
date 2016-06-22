@@ -21,6 +21,10 @@ module PathsHelper
       return raw "<span class=\"label label-danger\">Internal</span>"
     end
 
-    return raw "<span class=\"label label-danger\">#{path.verbs.first.status}</span>"
+    if path.verbs.blank?
+      return raw "<span class=\"label label-info\">Empty</span>"
+    else
+      return raw "<span class=\"label label-danger\">#{path.verbs.first.status}</span>"
+    end
   end
 end

@@ -14,6 +14,21 @@ class Specification < ActiveRecord::Base
 
   include ModelUtil
 
+  def used_permissions
+    paths.collect(&:verbs).flatten.collect do |verb|
+      verb.permissions.split(",").collect(&:strip).reject(&:blank?)
+    end.flatten.uniq
+  end
+  def defined_permissions
+    permissions.collect(&:name).uniq
+  end
+  def used_undefined_permissions
+    used_permissions - defined_permissions
+  end
+  def defined_unused_permissions
+    defined_permissions - used_permissions
+  end
+
   def update_path_parameters!
     Specification.update_properties!(path_parameters, parse_path_parameters)
   end

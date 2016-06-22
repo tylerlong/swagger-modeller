@@ -46,7 +46,7 @@ module PropertyUtil
       if data_type.start_with?('Collection of ') # array
         dict[:data_type] = 'array'
         dict[:format] = data_type[14..-1].gsub(/\s+/, '')
-        if dict[:format] == 'URIs'
+        if dict[:format] == 'URIs' || dict[:format] == 'strings'
           dict[:format] = 'string'
         end
         return new(dict)

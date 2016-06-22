@@ -1,1 +1,21 @@
-This spec passed validation!
+<div class="container">
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><%= link_to @spec.display_name, specification_path(@spec) %></li>
+  <li class="active">Validation</li>
+</ol>
+
+<h1><%= @spec.display_name %> validation</h1>
+
+<h2>Permissions</h2>
+
+<% if @spec.used_undefined_permissions.present? %>
+  <div class="alert alert-danger" role="alert">The following permissions are used but undefined: <%= @spec.used_undefined_permissions.join(', ') %></div>
+<% elsif @spec.defined_unused_permissions.present? %>
+  <div class="alert alert-warning" role="alert">The following permissions are defined but unused: <%= @spec.defined_unused_permissions.join(', ') %></div>
+<% else %>
+  <div class="alert alert-success" role="alert">Everything seems fine!</div>
+<% end %>
+
+</div>

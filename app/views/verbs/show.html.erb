@@ -67,14 +67,17 @@
     <br/><%= link_to "Create an example", new_specification_path_verb_example_path(@spec, @path, @verb), class: "btn btn-primary" %>
   </p>
   <% @verb.examples.each do |example| %>
-    <h3><%= example.name %></h3>
-    <%= link_to 'Edit', edit_specification_path_verb_example_path(@spec, @path, @verb, example), class: "btn btn-primary btn-xs" %>
-    <%= link_to 'Destroy', specification_path_verb_example_path(@spec, @path, @verb, example), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
+    <h3>
+      <%= example.name %>
+      <%= link_to 'Edit', edit_specification_path_verb_example_path(@spec, @path, @verb, example), class: "btn btn-primary btn-xs" %>
+      <%= link_to 'Destroy', specification_path_verb_example_path(@spec, @path, @verb, example), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", :method => :delete %>
+    </h3>
     <p><%= example.description %></p>
     <h4>Request</h4>
     <pre><%= example.request %></pre>
     <h4>Response</h4>
     <pre><%= example.response %></pre>
+    <hr/>
   <% end %>
 </div><!-- tab #5 -->
 
