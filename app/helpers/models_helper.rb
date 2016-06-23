@@ -5,12 +5,24 @@ module ModelsHelper
     end
     return link_to_model prop.data_type
   end
+  def md_link_to_type(prop)
+    if ['integer', 'string', 'boolean', 'array'].include?(prop.data_type)
+      return prop.data_type
+    end
+    return md_link_to_model prop.data_type
+  end
 
   def link_to_format(prop)
     if prop.data_type == 'array' && !['string'].include?(prop.format)
       return link_to_model prop.format
     end
     return truncate prop.format, length: 32
+  end
+  def md_link_to_format(prop)
+    if prop.data_type == 'array' && !['string'].include?(prop.format)
+      return md_link_to_model prop.format
+    end
+    return raw prop.format.gsub('|', '\|')
   end
 
   def link_to_model(text) # single line or multiple lines
@@ -23,6 +35,17 @@ module ModelsHelper
       end
     end
     return raw links.join('<br/> &nbsp; or<br/>')
+  end
+  def md_link_to_model(text) # single line or multiple lines
+    names = text.split("\n").collect(&:strip)
+    links = names.collect do |name|
+      if Model.find_by_name(name)
+        "[#{name}](##{name.downcase.gsub('.', '')})"
+      else
+        name
+      end
+    end
+    return raw links.join('\n\n or \n\n')
   end
 
   def referenced_by(model)
