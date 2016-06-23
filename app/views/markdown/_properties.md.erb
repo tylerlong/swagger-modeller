@@ -4,6 +4,6 @@ None
 Parameter | Type | Description
 ---|---|---
 <% properties.each do |prop| %>
-<%= prop.name.gsub('|', '\|') %> | <%= prop.data_type.gsub('|', '\|') %> | <%= prop.description.gsub('|', '\|') %>
+<%= raw prop.name.gsub('|', '\|') %> | <%= raw prop.data_type.gsub('|', '\|') %> | <%= raw prop.description.gsub('|', '\|') %>
 <% end %>
 <% end %>

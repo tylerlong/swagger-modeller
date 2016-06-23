@@ -3,3 +3,10 @@
 <% @spec.paths.each do |path| %>
 <%= render partial: 'markdown/path', locals: { path: path } %>
 <% end %>
+
+
+## Models
+
+<% @spec.models.each do |model| %>
+<%= render partial: 'markdown/model', locals: { model: model } %>
+<% end %>
