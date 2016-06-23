@@ -1,5 +1,9 @@
 ## <%= path.uri %>
 
+### Path Parameters
+
+<%= render partial: 'markdown/properties', locals: { properties: path.uri.scan(/\{([a-zA-Z]+?)\}/).flatten.collect{ |s| @spec.path_parameters.find_by_name(s) } } %>
+
 <% path.verbs.each do |verb| %>
 <%= render partial: 'markdown/verb', locals: { verb: verb } %>
 <% end %>

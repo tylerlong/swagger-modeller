@@ -1,0 +1,9 @@
+<% if properties.blank? %>
+None
+<% else %>
+Parameter | Type | Description
+---|---|---
+<% properties.each do |prop| %>
+<%= prop.name.gsub('|', '\|') %> | <%= prop.data_type.gsub('|', '\|') %> | <%= prop.description.gsub('|', '\|') %>
+<% end %>
+<% end %>

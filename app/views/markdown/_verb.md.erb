@@ -9,3 +9,17 @@ Method: <%= verb.method %>
 API Group: <%= verb.api_group %>
 
 Required Permissions: <%= verb.permissions %>
+
+#### Query Parameters
+
+<%= render partial: 'markdown/properties', locals: { properties: verb.query_parameters } %>
+
+#### Request Body
+
+<%= render partial: 'markdown/properties', locals: { properties: verb.request_body_properties } %>
+
+#### Response Body
+
+<%= render partial: 'markdown/properties', locals: { properties: verb.response_body_properties } %>
+
+#### Examples
