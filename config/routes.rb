@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     get 'validate', on: :member
     get 'swagger', on: :member
     get 'api_explorer', on: :member
+    get 'api_reference', on: :member
     resources :models
     resources :paths do
       resources :verbs, path: '/requests' do

@@ -14,6 +14,7 @@
       <th>Validate</th>
       <th>Swagger Spec</th>
       <th>API Explorer Spec</th>
+      <th>API Reference</th>
     </tr>
   </thead>
   <tbody>
@@ -29,6 +30,10 @@
       <td>
         <%= link_to 'JSON', api_explorer_specification_path(spec, format: 'json', v: 'Basic,Advanced'), class: 'btn btn-info' %>
         <%= link_to 'YAML', api_explorer_specification_path(spec, format: 'yaml', v: 'Basic,Advanced'), class: 'btn btn-info' %>
+      </td>
+      <td>
+        <%= link_to 'Markdown', api_reference_specification_path(spec, format: 'md', v: 'Basic,Advanced'), class: 'btn btn-info' %>
+        <%= link_to 'HTML', api_reference_specification_path(spec, format: 'html', v: 'Basic,Advanced'), class: 'btn btn-info' %>
       </td>
     </tr>
   <% end %>

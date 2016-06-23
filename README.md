@@ -23,6 +23,7 @@ In order to make fax inside API Explorer working, we have to do some hack, which
 1. Export to API Reference
 1. add "Error Codes" section to verb
 1. Create tags, such as "Meetings", "Dictionary", "CallLog"...etc.
+1. Support “Notifications Event Types”
 
 
 ## notes
