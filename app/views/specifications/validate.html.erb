@@ -31,15 +31,17 @@
 <h2>Paths</h2>
 
 <% if @spec.empty_paths.present? %>
-  <div class="alert alert-warning" role="alert">The follow paths are empty: <%= @spec.empty_paths.collect(&:uri).join(', ') %></div>
+  <div class="alert alert-warning" role="alert">The following paths are empty: <%= @spec.empty_paths.collect(&:uri).join(', ') %></div>
 <% else %>
   <div class="alert alert-success" role="alert">Everything seems fine!</div>
 <% end %>
 
 <h2>Models</h2>
 
-<% if @spec.unreferenced_models.present? %>
-  <div class="alert alert-warning" role="alert">The follow models are defined but unused: <%= @spec.unreferenced_models.collect(&:name).join(', ') %></div>
+<% if @spec.undefined_models.present? %>
+  <div class="alert alert-danger" role="alert">The following models are used but undefined: <%= @spec.undefined_models.join(', ') %></div>
+<% elsif @spec.unreferenced_models.present? %>
+  <div class="alert alert-warning" role="alert">The following models are defined but unused: <%= @spec.unreferenced_models.collect(&:name).join(', ') %></div>
 <% else %>
   <div class="alert alert-success" role="alert">Everything seems fine!</div>
 <% end %>

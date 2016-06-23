@@ -49,6 +49,19 @@ class Specification < ActiveRecord::Base
   def unreferenced_models
     models.select{ |model| model.referenced_by_model.blank? && model.referenced_by_request_body.blank? && model.referenced_by_response_body.blank? }
   end
+  def undefined_models
+    props = models.collect(&:model_properties).flatten + paths.collect(&:verbs).flatten.collect(&:request_body_properties).flatten
+    props += paths.collect(&:verbs).flatten.collect(&:response_body_properties).flatten
+    props.collect do |prop| # used model
+      if !['integer', 'string', 'boolean', 'array'].include?(prop.data_type)
+        prop.data_type
+      elsif prop.data_type == 'array' && !['string'].include?(prop.format)
+        prop.format
+      else
+        nil
+      end
+    end.reject(&:nil?).reject{ |model| models.find_by_name(model).present? }.uniq
+  end
 
   def update_path_parameters!
     Specification.update_properties!(path_parameters, parse_path_parameters)
