@@ -1,0 +1,5 @@
+## <%= path.uri %>
+
+<% path.verbs.each do |verb| %>
+<%= render partial: 'markdown/verb', locals: { verb: verb } %>
+<% end %>

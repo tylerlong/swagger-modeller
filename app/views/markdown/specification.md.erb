@@ -1,0 +1,5 @@
+# <%= @spec.display_name %> Reference
+
+<% @spec.paths.each do |path| %>
+<%= render partial: 'markdown/path', locals: { path: path } %>
+<% end %>

@@ -45,10 +45,11 @@ class SpecificationsController < ApplicationController
   end
 
   def api_reference
-    spec = Specification.find(params[:id])
-    editions = (params[:v] || 'Basic').split(',').collect(&:strip)
+    @spec = Specification.find(params[:id])
     respond_to do |format|
-      format.md { render text: spec.markdown, content_type: 'text/markdown' }
+      format.md do
+        render 'markdown/specification'
+      end
       format.html { render text: "<h1>hello world</h1>" }
     end
   end

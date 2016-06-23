@@ -99,12 +99,6 @@ class Specification < ActiveRecord::Base
     perms.reject(&:nil?)
   end
 
-  def markdown
-    result = "# #{display_name} Reference"
-    result += "\n\n" + paths.collect(&:markdown).join("\n\n")
-    return result
-  end
-
   def swagger(editions = ['Basic'])
     result = {
       swagger: '2.0',

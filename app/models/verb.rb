@@ -49,16 +49,6 @@ class Verb < ActiveRecord::Base
     end
   end
 
-  def markdown
-    result = "### #{name}"
-    result += "\n\nSince: #{since}"
-    result += "\n\n#{description}"
-    result += "\n\nMethod: #{method}"
-    result += "\n\nAPI Group: #{api_group}"
-    result += "\n\nRequired Permissions: #{permissions}"
-    return result
-  end
-
   def swagger(editions = ['Basic'])
     if not (editions.detect{ |edition| visibility.include?(edition) }.present? && (status == '' || status == 'Normal'))
       return nil
