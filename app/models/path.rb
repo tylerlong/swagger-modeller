@@ -6,6 +6,12 @@ class Path < ActiveRecord::Base
   belongs_to :specification
   has_many :verbs, dependent: :destroy
 
+  def markdown
+    result = "## #{uri}"
+    result += "\n\n" + verbs.collect(&:markdown).join("\n\n")
+    return result
+  end
+
   def swagger(editions = ['Basic'])
     result = {}
     verbs.each do |verb|

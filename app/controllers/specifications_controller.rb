@@ -48,7 +48,7 @@ class SpecificationsController < ApplicationController
     spec = Specification.find(params[:id])
     editions = (params[:v] || 'Basic').split(',').collect(&:strip)
     respond_to do |format|
-      format.md { render text: "# hello world", content_type: 'text/markdown' }
+      format.md { render text: spec.markdown, content_type: 'text/markdown' }
       format.html { render text: "<h1>hello world</h1>" }
     end
   end
