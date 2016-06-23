@@ -11,18 +11,18 @@ module PathsHelper
       verb.visibility.include?('Advanced') && (verb.status == '' || verb.status == 'Normal')
     end
     if yellow.present?
-      return raw "<span class=\"label label-warning\">Advanced</span>"
+      return raw "<span class=\"label label-info\">Advanced</span>"
     end
 
     internal = path.verbs.detect do |verb|
       verb.visibility.include?('Internal')
     end
     if internal.present?
-      return raw "<span class=\"label label-danger\">Internal</span>"
+      return raw "<span class=\"label label-warning\">Internal</span>"
     end
 
     if path.verbs.blank?
-      return raw "<span class=\"label label-info\">Empty</span>"
+      return raw "<span class=\"label label-danger\">Empty</span>"
     else
       return raw "<span class=\"label label-danger\">#{path.verbs.first.status}</span>"
     end
