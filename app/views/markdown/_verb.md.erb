@@ -8,7 +8,9 @@ Method: <%= verb.method %>
 
 API Group: <%= verb.api_group %>
 
-Required Permissions: <%= verb.permissions %>
+#### Required Permissions
+
+<%= render partial: 'markdown/permissions', locals: { permissions: verb.permissions.split(",").collect(&:strip).collect{ |name| @spec.permissions.find_by_name(name) } } %>
 
 #### Query Parameters
 

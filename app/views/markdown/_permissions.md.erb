@@ -1,0 +1,9 @@
+<% if permissions.blank? %>
+None
+<% else %>
+Permission | Description
+---|---
+<% permissions.each do |perm| %>
+<%= perm.name.gsub('|', '\|') %> | <%= perm.description.gsub('|', '\|') %>
+<% end %>
+<% end %>
