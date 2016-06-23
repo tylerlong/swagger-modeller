@@ -1,0 +1,21 @@
+<% if examples.blank? %>
+None
+<% else %>
+<% examples.each do |example| %>
+##### <%= example.name %>
+
+<%= example.description %>
+
+###### Request Example
+
+```
+<%= raw example.request %>
+```
+
+###### Response Example
+
+```
+<%= raw example.response %>
+```
+<% end %>
+<% end %>

@@ -23,3 +23,5 @@ Required Permissions: <%= verb.permissions %>
 <%= render partial: 'markdown/properties', locals: { properties: verb.response_body_properties } %>
 
 #### Examples
+
+<%= render partial: 'markdown/examples', locals: { examples: verb.examples } %>
