@@ -63,6 +63,10 @@ class Specification < ActiveRecord::Base
     end.reject(&:nil?).reject{ |model| models.find_by_name(model).present? }.uniq
   end
 
+  def no_example_verbs
+    paths.collect(&:verbs).flatten.select{ |verb| verb.examples.blank? }
+  end
+
   def update_path_parameters!
     Specification.update_properties!(path_parameters, parse_path_parameters)
   end

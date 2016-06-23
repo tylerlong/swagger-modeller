@@ -46,4 +46,12 @@
   <div class="alert alert-success" role="alert">Everything seems fine!</div>
 <% end %>
 
+<h2>Examples</h2>
+
+<% if @spec.no_example_verbs.present? %>
+  <div class="alert alert-warning" role="alert">The following requests have no examples: <%= @spec.no_example_verbs.collect(&:name).join(', ') %></div>
+<% else %>
+  <div class="alert alert-success" role="alert">Everything seems fine!</div>
+<% end %>
+
 </div>
