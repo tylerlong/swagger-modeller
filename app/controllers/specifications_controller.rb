@@ -5,6 +5,11 @@ class SpecificationsController < ApplicationController
   def new
   end
 
+  def dump
+    %x{sqlite3 #{Rails.root.join('db', 'development.sqlite3')} .dump > #{Rails.root.join('db', 'development.sql')}}
+    render text: 'fdsafdsa'
+  end
+
   def create
     spec = Specification.new(spec_params)
     spec.save!
