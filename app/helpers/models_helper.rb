@@ -31,7 +31,8 @@ module ModelsHelper
       if Model.find_by_name(name)
         link_to name, search_models_path(name: name)
       else
-        %(<span class="label label-danger" title="undefined model" data-toggle="tooltip">#{name}</span>)
+        %(<span class="label label-danger" title="undefined model" data-toggle="tooltip">#{name}</span>
+        ) + link_to("Create a model", new_specification_model_path(Specification.first), class: "btn btn-xs btn-success")
       end
     end
     return raw links.join('<br/> &nbsp; or<br/>')
