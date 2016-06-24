@@ -48,4 +48,14 @@
 
 <%= link_to "Dump DB", dump_specifications_path, class: "btn btn-success" %>
 
+<h2>Load DB</h2>
+
+<p>In order to load `swagger_modeller.sql` into db, you need to do the following:</p>
+<ol>
+  <li>Stop `rails s`</li>
+  <li>Back up database `db/development.sqlite3`</li>
+  <li>`rm db/development.sqlite3`</li>
+  <li>`sqlite3 db/development.sqlite3 < swagger_modeller.sql`</li>
+</ol>
+
 </div>
