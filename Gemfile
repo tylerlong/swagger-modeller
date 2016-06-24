@@ -27,6 +27,7 @@ gem 'twitter-bootstrap-rails'
 gem 'flat-ui-rails'
 gem 'jquery-turbolinks'
 gem 'codemirror-rails'
+gem 'rdiscount'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

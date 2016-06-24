@@ -50,7 +50,9 @@ class SpecificationsController < ApplicationController
       format.md do
         render 'markdown/specification'
       end
-      format.html { render text: "<h1>hello world</h1>" }
+      format.html do
+        render 'markdown/specification', layout: 'markdown'
+      end
     end
   end
 
