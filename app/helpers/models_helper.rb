@@ -40,7 +40,7 @@ module ModelsHelper
     names = text.split("\n").collect(&:strip)
     links = names.collect do |name|
       if Model.find_by_name(name)
-        "[#{name}](##{name.downcase.gsub('.', '')})"
+        "[#{name}](##{name})"
       else
         name
       end
