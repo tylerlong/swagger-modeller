@@ -6,8 +6,8 @@ class SpecificationsController < ApplicationController
   end
 
   def dump
-    %x{sqlite3 #{Rails.root.join('db', 'development.sqlite3')} .dump > #{Rails.root.join('db', 'development.sql')}}
-    render text: 'fdsafdsa'
+    sql = %x{sqlite3 #{Rails.root.join('db', 'development.sqlite3')} .dump}
+    send_data sql, :filename => 'swagger_modeller.sql'
   end
 
   def create
