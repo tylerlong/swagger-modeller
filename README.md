@@ -10,6 +10,8 @@ This repository is for RingCentral only, it is not a generic tool. We do have th
 
 In order to make fax inside API Explorer working, we have to do some hack, which makes the swagger spec invalid. So we have separate spec for API Explorer(invalid but works for API Explorer).
 
+Some of the code doesn't take multiple specifications into consideration. So the "create new specification" button will be hidden right after you create the very first spec.
+
 
 ## todo
 
