@@ -4,7 +4,7 @@
   <li><a href="/">Home</a></li>
   <li><%= link_to @spec.display_name, specification_path(@spec, anchor: 'paths') %></li>
   <li><%= link_to @path.uri, specification_path_path(@spec, @path) %></li>
-  <li><%= link_to @verb.name, specification_path_verb_path(@spec, @path, @verb) %></li>
+  <li><%= link_to "[#{@verb.method}] " + @verb.name, specification_path_verb_path(@spec, @path, @verb) %></li>
   <li class="active">Query Parameters</li>
 </ol>
 
