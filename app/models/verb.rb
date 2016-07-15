@@ -50,7 +50,7 @@ class Verb < ActiveRecord::Base
   end
 
   def swagger(editions = ['Basic'])
-    if not (editions.detect{ |edition| visibility.include?(edition) }.present? && (status == '' || status == 'Normal' || staus == 'Deprecated'))
+    if not (editions.detect{ |edition| visibility.include?(edition) }.present? && (status == '' || status == 'Normal' || status == 'Deprecated'))
       return nil
     end
 
