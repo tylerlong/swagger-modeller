@@ -69,6 +69,12 @@ module PropertyUtil
         return new(dict)
       end
 
+      if data_type == 'binary' # binary
+        dict[:data_type] = 'string'
+        dict[:format] = 'binary'
+        return new(dict)
+      end
+
       if ['string', 'integer', 'number', 'boolean'].include?(data_type) # primitive data_types
         dict[:data_type] = data_type
         if dict[:data_type] == 'integer' && dict[:name] == 'conversationId'
