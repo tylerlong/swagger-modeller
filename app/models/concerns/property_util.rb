@@ -23,7 +23,7 @@ module PropertyUtil
     if data_type == 'string' and format.start_with?("'") and format.end_with?("'") #enum
       result[:enum] = format.split('|').collect{ |word| word.gsub(/\A[\s']+|[\s']+\z/,'') }
     end
-    if (data_type == 'string' and format == 'date-time') or (data_type == 'integer' and format.present?)
+    if (data_type == 'string' and (format == 'date-time' or format == 'binary' )) or (data_type == 'integer' and format.present?)
       result[:format] = format
     end
     if name == 'accountId' || name == 'extensionId'
