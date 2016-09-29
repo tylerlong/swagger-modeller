@@ -82,9 +82,7 @@ class Verb < ActiveRecord::Base
       end
     else
       if request_body_text.present?
-        if request_body_text == 'Binary'
-          request_body[:schema] = { type: 'string', format: 'binary' }
-        elsif request_body_text.include? "\n" # enum of models
+        if request_body_text.include? "\n" # enum of models
           request_body[:schema] = {
             type: 'object',
             enum: request_body_text.split(/[\r\n]+/).reject(&:blank?).collect do |model|
@@ -107,11 +105,7 @@ class Verb < ActiveRecord::Base
     ### response ###
     if response_body_properties.blank?
       if response_body_text.present? # model name
-        if response_body_text == 'Binary' # binary model
-          result[:responses][:default][:schema] = { type: 'string', format: 'binary' }
-        else # global model
-          result[:responses][:default][:schema] = { '$ref' => "#/definitions/#{response_body_text}" }
-        end
+        result[:responses][:default][:schema] = { '$ref' => "#/definitions/#{response_body_text}" }
       else
         # no response at all
       end
