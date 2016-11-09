@@ -66,6 +66,9 @@ class SpecificationsController < ApplicationController
     editions = (params[:v] || 'Basic').split(',').collect(&:strip)
     respond_to do |format|
       data = spec.swagger(editions)
+      data['paths'].delete('/restapi/oauth/authorize')
+      data['paths'].delete('/restapi/oauth/revoke')
+      data['paths'].delete('/restapi/oauth/token')
       faxPost = data["paths"]["/restapi/v1.0/account/{accountId}/extension/{extensionId}/fax"]["post"]
       faxPost['consumes'] = ['multipart/mixed; boundary=Boundary_1_14413901_1361871080888']
       faxPost['parameters'] = [{ 'name' => 'body', 'in' => 'body', 'type' => 'string',
