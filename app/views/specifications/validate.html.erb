@@ -18,6 +18,21 @@
   <div class="alert alert-success" role="alert">Everything seems fine!</div>
 <% end %>
 
+<h2>Tags</h2>
+
+<% has_error = false %>
+<% @spec.paths.each do |path| %>
+  <% path.verbs.each do |verb| %>
+    <% if verb.tags.length == 0 %>
+      <% has_error = true %>
+      <div class="alert alert-danger" role="alert"><%= verb.method %> <%= path.uri %> has no tags.</div>
+    <% end %>
+  <% end %>
+<% end %>
+<% if has_error == false %>
+  <div class="alert alert-success" role="alert">Everything seems fine!</div>
+<% end %>
+
 <h2>Path parameters</h2>
 
 <% if @spec.used_undefined_path_parameters.present? %>
