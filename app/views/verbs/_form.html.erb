@@ -10,6 +10,8 @@
 <br/><%= select_tag(:api_group, options_for_select(['Light', 'Medium', 'Heavy', 'Auth'], verb.api_group.presence || 'Light'), class: "form-control") %>
 <br/><%= label_tag(:permissions, "Required Permissions:") %>
 <br/><%= text_field_tag(:permissions, verb.permissions.presence || '', class: "form-control", placeholder: "Multiple permissions separated by commas") %>
+<br/><%= label_tag(:tags, "Tags:") %>
+<br/><%= text_field_tag(:tags, verb.tags.presence || '', class: "form-control", placeholder: "Multiple tags separated by commas") %>
 <br/><%= label_tag(:batch, "Batch:") %>
 <br/><%= select_tag(:batch, options_for_select(['Yes', 'No'], verb.batch ? 'Yes' : 'No'), class: "form-control") %>
 <br/><%= label_tag(:visibility, "Visibility:") %>
