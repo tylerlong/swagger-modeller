@@ -55,6 +55,7 @@ class Verb < ActiveRecord::Base
     end
 
     result = {
+      tags: tags.split(',').collect{ |tag| tag.strip },
       description: name,
       responses: {
         default: {
