@@ -1,12 +1,12 @@
 module ModelsHelper
   def link_to_type(prop)
-    if ['integer', 'string', 'boolean', 'array'].include?(prop.data_type)
+    if ['integer', 'number', 'string', 'boolean', 'array'].include?(prop.data_type)
       return prop.data_type
     end
     return link_to_model prop.data_type
   end
   def md_link_to_type(prop)
-    if ['integer', 'string', 'boolean', 'array'].include?(prop.data_type)
+    if ['integer', 'number', 'string', 'boolean', 'array'].include?(prop.data_type)
       return prop.data_type
     end
     return md_link_to_model prop.data_type

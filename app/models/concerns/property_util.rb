@@ -13,11 +13,11 @@ module PropertyUtil
     }
     if data_type == 'array'
       result[:items] = { type: format }
-      if not ['integer', 'array', 'string', 'boolean'].include? format
+      if not ['integer', 'number', 'array', 'string', 'boolean'].include? format
         result[:items] = { "$ref" => '#/definitions/' + format }
       end
     end
-    if not ['integer', 'array', 'string', 'boolean'].include? data_type # custom data_types
+    if not ['integer', 'number', 'array', 'string', 'boolean'].include? data_type # custom data_types
       result = { "$ref" => '#/definitions/' + data_type, description: description }
     end
     if data_type == 'string' and format.start_with?("'") and format.end_with?("'") #enum

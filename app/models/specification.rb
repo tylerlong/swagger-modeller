@@ -53,7 +53,7 @@ class Specification < ActiveRecord::Base
     props = models.collect(&:model_properties).flatten + paths.collect(&:verbs).flatten.collect(&:request_body_properties).flatten
     props += paths.collect(&:verbs).flatten.collect(&:response_body_properties).flatten
     props.collect do |prop| # used model
-      if !['integer', 'string', 'boolean', 'array'].include?(prop.data_type)
+      if !['integer', 'number', 'string', 'boolean', 'array'].include?(prop.data_type)
         prop.data_type
       elsif prop.data_type == 'array' && !['string'].include?(prop.format)
         prop.format
